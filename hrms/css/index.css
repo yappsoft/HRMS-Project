@@ -4,17 +4,16 @@ html,body{
 
 @font-face {
 font-family: pier;
-src:url(http://127.0.0.1/leviton/config/fonts/pier-regular.otf);
+src:url(../fonts/pier-regular.otf);
 }
 *{
 -webkit-font-smoothing: antialiased;
-text-transform: capitalize;
 
 }
 /* css for login page starts */
 .bgimgholder{
   height: 100vh;width: 100%;
-  background: url(http://127.0.0.1/leviton/images/background/background.jpg) no-repeat center center fixed;
+  background: url(../images/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -71,10 +70,12 @@ border-radius: 4px;
   width: 256px;
   color: white;
   background: #8cc63e;
+  outline: none;
 }
 .loginbtn:hover{
   width: 256px;
   color: white;
+    outline: none;
   background: #8cc63e;
 }
 .form-control {
@@ -272,7 +273,7 @@ button.navbtn1{
   border-radius: 70px;
   outline: 0;
   background: transparent;
-  background-image: url(http://127.0.0.1/leviton/images/upndown.png);
+  background-image: url(images/upndown.png);
   background-repeat: no-repeat;
   background-position: 91% 48%;
   color: white;
