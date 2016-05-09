@@ -78,13 +78,16 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
-            <ul style="margin-left:-20%;margin-top:39px">
-<a ng-href="#/dashboard" href="index.html">  <li class="dashboard"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a ng-href="#/tenant" href="user_details.html">  <li class="tenanticon"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/energyanalysis.png"></span>Request</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="../images/costanalysis.png"></span>Account Details</li></a>
-
-            </ul>
+			<ul style="margin-left:-20%;margin-top:39px">
+<a ng-href="#/dashboard" href="#/dashboard">  <li class="dashboard"><span><img src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/dashboard.png"></span>Dashboard</li></a>
+<a ng-href="#/tenant" href="#/tenant">  <li class="tenanticon"><span><img src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png"></span>Tenant Management</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png"></span>Energy Analysis</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png"></span>Cost Analysis</li></a>
+<a ng-href="#/tenantBill" href="#/tenantBill">  <li class="tenantbill"><span><img src="http://127.0.0.1/leviton/images/dashboard/tenantbill.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/tenantbill.png"></span>Tenant Bill</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="alarms"><span><img src="http://127.0.0.1/leviton/images/dashboard/alarms.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/alarms.png"></span>Alarms</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="meter-reading"><span><img src="http://127.0.0.1/leviton/images/dashboard/meter-reading.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/meter-reading.png"></span>Meter Reading</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="reports"><span><img src="http://127.0.0.1/leviton/images/dashboard/reports.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/reports.png"></span>Reports</li></a>
+</ul>
 			
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -104,14 +107,11 @@ ul li{list-style:none;}
 </main>
 
 <!--- mian table idv start -->
+ 
 
-<div class="container-fluid dashboardContainer"  style="width:183%">
+<div class="container-fluid dashboardContainer"  style="width:200%">
 <div class="container-fluid dashboardContentHolder ">
  <div class="tenant">
-  <div class="addTenant">
-    <a href="javascript:void(0)" class="addTenantButton">Add Company</a>
-  </div>
-  
   <!--- data view in table start here -->
 <table class="table table-hover">
   <thead>
@@ -119,10 +119,10 @@ ul li{list-style:none;}
     <tr>
       <th>#</th>
       <th>Company Name</th>
-      <th>Email</th>
-      <th>Subscription Date</th>
-      <th>No. of emp</th>
+      <th>Request Date</th>
       <th>Plan</th>
+      <th>No. of emp</th>
+      <th>Country</th>
       <th></th>
       <th></th>
       <th></th>
@@ -131,37 +131,33 @@ ul li{list-style:none;}
   </thead>
   <tbody>
   <?php
-    include 'conn.php';
-    $query="select * from companyreg_tbl ";
-    $rs=  mysqli_query($conn, $query);
-    $counter=0;
-    while($arr= mysqli_fetch_array($rs)){
-  ?>
-    
-  
+  include 'dbcon.php';
+    $sql = "select country_name, company_name, registration_date, company_plan, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_status = 'inactive' ";
+     $result = mysqli_query($con , $sql);
+    //var_dump($sql);
+     $counter = 0;
+    while($row = mysqli_fetch_array($result))
+    {
+    ?>
   <!---- start show data in row loop -->
   
    <!--- on click  redirect to usefull info page on click event not in href --> 
-    <tr onclick="myfunction('<?php echo $arr['company_id'];?>')">
+    <tr onclick="">
       <th scope="row"><?php echo ++$counter;?></th>
-  <input type="hidden" value="<?php echo $arr['company_id'];?>" id="companyid">
-      <td><?php echo $arr['company_name'];?></td>
-      <td><?php echo $arr['company_email'];?></td>
-      <td><?php echo $arr['subscription_date'];?></td>
-      <td><?php echo $arr['number_of_employee'];?></td>
-      <td><?php echo $arr['company_plan'];?></td>
-      <td><img height="25px" src="../images/edit1.png"></td>
-      <td><a href="user_delete.php?company_id=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/delete-icon.png"></a>
+      <td><?php echo $row['company_name'];?></td>
+      <td><?php echo $row['registration_date'];?></td>
+      <td><?php echo $row['company_plan'];?></td>
+      <td><?php echo $row['number_of_employee'];?></td>
+      <td><?php echo $row['country_name'];?></td>
+      <td><img height="25px" src="../images/edit1.png">
+      <td><img height="25px" src="../images/delete-icon.png">
 	  </td>
     </tr>
+    <?php
+}?>
 	<!--- //end loop data -->
   
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-  
-	<!--- //end loop data -->
-	<?php 
-    }
-    ?>  
+   	  
   </tbody>
 </table>
 <!---- end table  -->
@@ -241,6 +237,9 @@ ul li{list-style:none;}
 } );
 </script>
 <script>
+    
+</script>
+<script>
 	  
 	  <!-- jquery for fixed the div when open menu -->
 	  $().ready(function(){
@@ -257,18 +256,4 @@ ul li{list-style:none;}
 	  }
 
 	  </style>
-          <!--- script for click on table row to show records -->
-          <script>
-          function myfunction(id){
-               
-              var company_id = id;
-              
-        window.location = "user_details_per_emp.php?query1=" + company_id;
-              
-              
-              
-          }
-          
-          
-          
-          </script>  
+                
