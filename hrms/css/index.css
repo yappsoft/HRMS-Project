@@ -312,7 +312,7 @@ img.dashboardlogo {
 }
 img.menuLogo {
     height: 19px;
-    margin: 10px 11px 0 -23px;
+    margin: 21px 11px 0 -23px;
     cursor: pointer;
 }
 div.sidenav{
@@ -810,7 +810,7 @@ div.tenant{
 }
 div.addTenant {
 border-bottom: 2px solid #dadada;
-width: 95%;
+width: 100%;
 margin: 8px 0 0px 0;
 padding: 0 0 16px 0;
 }
@@ -2110,3 +2110,17 @@ div.tenantbilltablecontanetcontainer {
 }
 /*  622px ends*/
 /*css for media queries ends*/
+
+
+
+
+
+/* custom style start from here by vijay ijardar */
+
+
+
+.fixed-right{
+  margin-right:5px !important;
+  }
+
+  .table tbody>tr{cursor: pointer}
