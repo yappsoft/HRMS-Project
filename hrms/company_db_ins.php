@@ -34,7 +34,7 @@ $add_date = date('d-m-Y');
    ('$com_country', '$com_name', '$com_email', '$com_password', '$com_contact', '$com_emp', 'Free', '$add_date', 'inactive', '$add_date', 'inactive','$confirm_code')";
       $query = mysqli_query($con,$ins);
 	  //printf("Last inserted record has id %d\n", mysqli_insert_id($ins));
-var_dump($ins);
+//var_dump($ins);
       if($query){
 
         require('phpmailer/class.phpmailer.php');
