@@ -365,9 +365,7 @@ ul li{list-style:none;}
 
 			}
 		</script>
-  <script>
 
-</script>
 <script>
 
 	  <!-- jquery for fixed the div when open menu -->
@@ -378,16 +376,22 @@ ul li{list-style:none;}
 $.ajax({
   url: 'count_status.php',
   type:'get',
+  dataType:'json',
   success:function(data){
-    var free_acc = data;
+
+    //var json = $.parseJSON(data);
+    console.log(data);
+var free_acc = data.free_total;
+var paid_acc = data.paid_total;
+
     var chart = AmCharts.makeChart( "chartdiv", {
     "type": "pie",
     "theme": "light",
     "dataProvider": [ {
-      "title": "24 Paid Account",
-      "value": 3
+      "title": paid_acc+" Paid Account",
+      "value": paid_acc
     }, {
-      "title": free_acc + "Free Account",
+      "title": free_acc + " Free Account",
       "value": free_acc
     } ],
     "titleField": "title",

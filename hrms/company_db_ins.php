@@ -7,8 +7,13 @@ $sel = "select * from companyreg_tbl where `company_email` = '$ch_email'";
 $obj = mysqli_query($con,$sel);
 $row =mysqli_fetch_row($obj);
 $user_count = $row[0];
-if($user_count>0) echo "Email already Register with us";
-
+if($user_count>0){ 
+	
+echo "true";
+}else{
+	echo 'false';
+	
+}
 }else{
 
 // insert data in tble
@@ -26,12 +31,14 @@ if($user_count>0) echo "Email already Register with us";
  $com_contact = $_POST['com_no'];
  $com_emp = $_POST['com_emp'];
  $com_country = $_POST['com_country'];
+ $com_status = $_POST['com_status'];
+ 
 $confirm_code=md5(uniqid(rand()));
 $add_date = date('d-m-Y');
  if($com_name && $com_email != ''){
 
 	 $ins = "INSERT INTO `hrms_product`.`companyreg_tbl` (`country_id`, `company_name`, `company_email`, `company_password`, `company_contact`, `number_of_employee`, `company_plan`, `registration_date`, `is_email_var`, `subscription_date`, `company_status`,`verfication_code`) VALUES
-   ('$com_country', '$com_name', '$com_email', '$com_password', '$com_contact', '$com_emp', 'Free', '$add_date', 'inactive', '$add_date', 'inactive','$confirm_code')";
+   ('$com_country', '$com_name', '$com_email', '$com_password', '$com_contact', '$com_emp', 'Free', '$add_date', 'inactive', '$add_date', '$com_status','$confirm_code')";
       $query = mysqli_query($con,$ins);
 	  //printf("Last inserted record has id %d\n", mysqli_insert_id($ins));
 //var_dump($ins);
