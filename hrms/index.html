@@ -25,9 +25,11 @@
   <strong>Info!</strong>
 </div>
       <div class="col-md-6 col-lg-6 leftcontent">
-        <div class="row">
+       
+
+	   <div class="row">
           <div class="col-md-12 col-lg-12 ">
-            <img class="logoimg" height="75px" src="images/login-logo.png">
+            <img class="logoimg" height="75px">
           </div>
             <div class="col-md-12 col-lg-12">
               <h2>Attendance And  Employment</h2>
@@ -167,7 +169,7 @@
            </div>
             </div>
 
-         
+         <input type="hidden" value="inactive" name="com_status" id="com_status"/>
                 
 				      <div class="col-sm-12 col-md-12 col-lg-12">
                 <button type="submit" class="btn btn-block loginbtn" id="reg_button">Register</button>
@@ -191,11 +193,17 @@ url: "company_db_ins.php",
 data:'check_email='+$("#com_email").val(),
 type: "POST",
 success:function(data){
-
-$("#email_error").text(data).show();
+if(data == 'true'){
+     $("#email_error").text('Email already register').show();
 
 $("#com_email").removeClass('valid');
 $("#com_email").addClass('error');
+$("#reg_button").prop("disabled",'true');
+}else{
+$("#reg_button").prop("disabled",false);
+$("#email_error").text('Email already register').hide();
+
+}
 var errorflag = true;
 },
 error:function (){}
@@ -250,9 +258,35 @@ email: {
             com_email: "please enter a valid email address"
 
        },
-    submitHandler: submitForm 
+    submitHandler: loginsubmit 
        });
 	
+
+function loginsubmit(){
+    var data = $("#loginform").serialize();
+    //alert(data);
+    
+     $.ajax({
+                            type: "POST",
+                            url: "ajax_login.php",
+                            data: data,
+                            cache: false,
+                            success: function (response) {
+                                    if(response == 'spradmin'){
+                                window.location.href = "superadmin/index.php";
+                            }else if(response == 'admin'){
+                                
+                                 window.location.href = "admin/index.php";
+                            }else if(response == 'emp'){
+                                
+                                 window.location.href = "emp/index.php";
+                            }else if(response!= ''){
+                                
+                                alert(response);
+                            }
+                        }
+                        });
+}
 
 	
 	

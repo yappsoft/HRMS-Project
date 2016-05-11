@@ -79,11 +79,11 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a ng-href="#/dashboard" href="index.php">  <li class="dashboard"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a ng-href="#/tenant" href="user_detail.php">  <li class="tenanticon"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="#">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="#">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -211,15 +211,14 @@ ul li{list-style:none;}
 	  </script>
            <script>
                            
-                                  function sub(){alert("fdd");
+                                  function sub(){
                                  var data = $('#add_holiday').serialize();
                                     $.ajax({
                                      type: 'POST',
                                      url: 'addholiday_ins.php',
                                      data: data,
                                      success: function(responce){
-        alert("fff");                                 
-        //alert(responce);
+                                         window.location = "holiday_management.php";
                                      },
                                      error: function (responce) {
                                      alert(responce);

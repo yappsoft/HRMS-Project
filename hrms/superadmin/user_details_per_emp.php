@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php include '../dbcon.php';?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,17 +72,22 @@ ul li{list-style:none;}
                        
                    }	
                 </style>
-
+                <style>
+                    th{
+                        background-color: #354052;
+                        color: #fff;
+                    }
+                </style>
    
    </head>
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
             <ul style="margin-left:-20%;margin-top:39px">
-<a ng-href="#/dashboard" href="index.html">  <li class="dashboard"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a ng-href="#/tenant" href="user_details.html">  <li class="tenanticon"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/energyanalysis.png"></span>Request</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="../images/costanalysis.png"></span>Account Details</li></a>
+<a href="index.php">  <li class="dashboard"><span><img  alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
+<a  href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Request</li></a>
+<a  href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Account Details</li></a>
 
             </ul>
 			
@@ -105,80 +110,142 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:183%">
+<div class="container-fluid dashboardContainer"  style="width:141%">
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant">
+ <div class="tenant" style="padding-left: 0px;">
   <div class="addTenant">
-    <a href="javascript:void(0)" class="addTenantButton">Add Company</a>
   </div>
   
-  <!--- data view in table start here -->
+  <!--- data fatch from company table -->
+
+  <?php
+    
+    $companyid=$_GET['view_user'];
+    $query="select * from companyreg_tbl where company_id= $companyid";
+    $rs=  mysqli_query($con, $query);
+    $counter=0;
+    $arr= mysqli_fetch_array($rs);
+  ?>
+
+  
+
+<!---- end table  for company details -->
+<!--start table for employ of the perticuler company-->
+<div class="row ">
+
+<div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
+    <span style="color:#fff; font-weight: bold;">Company Details- <?php  echo $arr['company_name'];?></span>
+ 
+</div>
+<div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
+                 <form name="addTenantForm" class="ng-pristine ng-valid">
+                   <div class="col-sm-6 col-md-6 col-lg-6">
+                     <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Company Name:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                        <?php echo $arr['company_name'];?>
+                        </div>
+                     </div>
+                        <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Company Email:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                      <?php echo $arr['company_email'];?>
+                       </div>
+                        </div>
+                        
+                        <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Number Of Employee:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                           <?php echo $arr['number_of_employee'];?>
+                       </div>
+                         </div>
+                       <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Company Plan:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                          <?php echo $arr['company_plan'];?>
+                       </div>
+                     </div>
+                     
+                   </div>
+
+                   <div class="col-sm-6 col-md-6 col-lg-6 ">
+                       
+                     <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Registration Date:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                         <?php echo $arr['registration_date'];?> 
+                       </div>
+                     </div>
+                       <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Subscription Date:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                          <?php echo $arr['subscription_date'];?>
+                       </div>
+                        </div>
+                        <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Email Verification:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                          <?php echo $arr['is_email_var'];?>
+                       </div>
+                        </div>
+                       
+                   </div>
+                       
+                     </div>
+                   </div>
+
+
+<!--table for employee details of particuler-->
+
+  <br>
+
 <table class="table table-hover">
   <thead>
  
     <tr>
       <th>#</th>
-      <th>Company Name</th>
-      <th>Email</th>
-      <th>Subscription Date</th>
-      <th>No. of emp</th>
-      <th>Plan</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+     
+      <th>Employee Email</th>
+     
     </tr>
 
   </thead>
-    <tbody>
- 
+  <tbody>
+  <?php
     
+     $companyid=$_GET['view_user'];
+    $query="select * from employee_tbl where company_id= $companyid";
+    $rs=  mysqli_query($con, $query);
+    $counter=0;
+    while($arr= mysqli_fetch_array($rs))
+    {
+  ?>
+
   <!---- start show data in row loop -->
   
    <!--- on click  redirect to usefull info page on click event not in href --> 
-       <tr onclick="">
-      <th scope="row">1</th>
-      <td>Demo company</td>
-      <td>demo@company.com</td>
-      <td>30-12-2016</td>
-      <td>25</td>
-      <td>Paid</td>
-      <td><img height="25px" src="../images/edit1.png">
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
+    <tr onclick="myfunction()">
+      <td scope="row"><?php echo ++$counter;?></td>
+      <td><?php echo $arr['employee_id'];?></td>
+      <td><?php echo $arr['first_name']." ".$arr['last_name'];?> </td>
+      
+      <td><?php echo $arr['emp_email'];?></td>
+     
+      
     </tr>
 	<!--- //end loop data -->
   
    <!--- on click  redirect to usefull info page on click event not in href --> 
-    <tr onclick="">
-      <th scope="row">2</th>
-      <td>Demo company</td>
-      <td>demo@company.com</td>
-      <td>30-12-2016</td>
-      <td>25</td>
-      <td>Paid</td>
-      <td><img height="25px" src="../images/edit1.png">
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
-    </tr>
-	<!--- //end loop data -->  
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-     <tr onclick="">
-      <th scope="row">3</th>
-      <td>Demo company</td>
-      <td>demo@company.com</td>
-      <td>30-12-2016</td>
-      <td>25</td>
-      <td>Paid</td>
-      <td><img height="25px" src="../images/edit1.png">
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
-    </tr>
-	<!--- //end loop data -->
-	  
+ 
+	
   </tbody>
+    <?php }?>
 </table>
-<!---- end table  -->
- </div>
+<!---- end table  for company employee details -->
+ 
+</div>
 </div>
 </div>
 
@@ -270,4 +337,16 @@ ul li{list-style:none;}
 	  }
 
 	  </style>
-                
+          <!--- script for click on table row to show records -->
+          <script>
+          function myfunction(){
+              
+              
+              
+              
+              
+          }
+          
+          
+          
+          </script>  

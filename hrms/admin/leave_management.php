@@ -77,7 +77,7 @@ ul li{list-style:none;}
    </head>
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
-			
+			<!--main menu's start heare-->
 			<ul style="margin-left:-20%;margin-top:39px">
 <a  href="#">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="#">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
@@ -105,14 +105,11 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:292%">
+<div class="container-fluid dashboardContainer"  style="width:200%">
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left:15px">
-  <div class="addTenant">
-    <a href="add_holiday.php" class="addTenantButton">Add Holiday</a>
-  </div>
-  <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
-    <span style="color:#fff; font-weight: bold;">Holiday Management</span>
+    <div class="tenant" style="padding-left: 0px;">
+     <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
+    <span style="color:#fff; font-weight: bold;">Leave Management</span>
  
 </div>
   <!--- data view in table start here -->
@@ -121,38 +118,54 @@ ul li{list-style:none;}
  
     <tr>
       <th>#</th>
-      <th>Holiday Name</th>
-      <th>Holiday Date</th>
-      <th>Holiday Day</th>
-      
+      <th>Employee Name</th>
+      <th>Employee ID</th>
+      <th>Total Leaves</th>
+      <th>Leave Taken</th>
+      <th>Balance Leave</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
 
   </thead>
   <tbody>
- <?php
+  <?php
+  // php code start hear for show data from particuler employee
   include 'dbcon.php';
-        $sql = "select * from holiday_tbl";
-         $result = mysqli_query($con , $sql);
-     $counter = 0;
-    while($row = mysqli_fetch_array($result))
-    {
-    ?>
-  <!---- start show data in row loop -->
   
+    $query="select employee_tbl.employee_id,company_id,first_name, last_name,leave_manag_tbl.employee_id ,leave_manag_tbl.total_leave,leave_manag_tbl.leave_taken from employee_tbl INNER join leave_manag_tbl on employee_tbl.employee_id = leave_manag_tbl.employee_id where employee_tbl.company_id='1'";
+    $rs=  mysqli_query($con, $query);
+   
+    $counter=0;
+    while($arr= mysqli_fetch_array($rs))                // -----start while loop----------
+     {
+   
+        $total=$arr['total_leave'];
+         $taken=$arr['leave_taken'];
+         $balance = $total - $taken;
+         
+  ?>
+  <!---- start show data in row loop -->
+   
    <!--- on click  redirect to usefull info page on click event not in href --> 
     <tr onclick="">
       <th scope="row"><?php echo ++$counter;?></th>
-      <td><?php echo $row["holiday_name"]; ?></td>
-      <td><?php echo $row["holiday_date"];?></td>
-      <td><?php echo $row["holiday_days"];?></td>
-      <td><img height="25px"  src="../images/edit1.png"></td>
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
+      <td><?php echo $arr['first_name']." ".$arr['last_name'];?></td>
+      <td><?php echo $arr['employee_id'];?></td>
+      <td><?php echo $arr['total_leave'];?></td>
+      <td><?php echo $arr['leave_taken'];?></td>
+      <td><?php echo $balance;?></td>
+      <td><?php echo '&nbsp;';?></td>
+      <td><?php echo '';?></td>
+     
     </tr>
-	<!--- //end loop data -->
     <?php
-    
-    }?>	  
+    }     // end while loop
+    ?>
+	<!--- //end loop data -->
+  
+	  
   </tbody>
 </table>
 <!---- end table  -->
@@ -211,7 +224,7 @@ ul li{list-style:none;}
   
 <script>
 	  
-	  <!-- jquery for fixed the div when open menu -->
+	  // jquery for fixed the div when open menu
 	  $().ready(function(){
 	  $('.menuLogo ').click(function(){
 	  $("#acc-div").toggleClass('fixed-right');
