@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php include '../dbcon.php';?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	   <script src="../js/jquery.min.js"></script>
@@ -12,7 +12,7 @@
 
       <link rel="stylesheet" href="../css/chartist.min.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
-			
+
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
 		<script src="../js/modernizr.custom.js"></script>
@@ -61,7 +61,7 @@ ul li{list-style:none;}
                         height:511px;
                         overflow-y: auto;
                         overflow-x: hidden;
-                        
+
                     }
                     #chartdiv {
 	               width: 100%;
@@ -69,15 +69,15 @@ ul li{list-style:none;}
 	              font-size	: 8px;
                       padding: 20px;
                       padding-top: 20px !important;
-                       
-                   }	
+
+                   }
                 </style>
 
-  
+
    </head>
-  
+
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
-			
+
             <ul style="margin-left:-20%;margin-top:39px">
 <a  href="index.php">  <li class="dashboard"><span><img  alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
@@ -85,19 +85,19 @@ ul li{list-style:none;}
 <a  href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Account Details</li></a>
 
             </ul>
-			
+
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
-  
+
 <main class="maindiv">
  <div class="header navbar-fixed-top">
   <ul class="logocontainer">
     <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
-   
+
     <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
   </ul>
 <ul class="management_navigation_holder">
-  
+
   <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
 </ul>
 </div>
@@ -109,13 +109,13 @@ ul li{list-style:none;}
 <div class="container-fluid dashboardContentHolder ">
  <div class="tenant" style="padding-left: 40px;">
   <div class="addTenant">
-    <a href="javascript:void(0)" class="addTenantButton">Add Company</a>
+    <a href="add_users.html" class="addTenantButton">Add Company</a>
   </div>
-  
+
   <!--- data view in table start here -->
 <table class="table table-hover">
   <thead>
- 
+
     <tr>
       <th>#</th>
       <th>Company Name</th>
@@ -131,17 +131,17 @@ ul li{list-style:none;}
   </thead>
   <tbody>
   <?php
-    
+
     $query="select * from companyreg_tbl where company_status='active' ";
     $rs=  mysqli_query($con, $query);
     $counter=0;
     while($arr= mysqli_fetch_array($rs)){
   ?>
-    
-  
+
+
   <!---- start show data in row loop -->
-  
-   <!--- on click  redirect to usefull info page on click event not in href --> 
+
+   <!--- on click  redirect to usefull info page on click event not in href -->
     <tr onclick="myfunction('<?php echo $arr['company_id'];?>')">
       <th scope="row"><?php echo ++$counter;?></th>
   <input type="hidden" value="<?php echo $arr['company_id'];?>" id="companyid">
@@ -155,13 +155,13 @@ ul li{list-style:none;}
 	  </td>
     </tr>
 	<!--- //end loop data -->
-  
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-  
+
+   <!--- on click  redirect to usefull info page on click event not in href -->
+
 	<!--- //end loop data -->
-	<?php 
+	<?php
     }
-    ?>  
+    ?>
   </tbody>
 </table>
 <!---- end table  -->
@@ -176,12 +176,12 @@ ul li{list-style:none;}
 
    <script src="../js/jquery.min.js"></script>
    <script src="../js/bootstrap.min.js"></script>
-  
+
 </body>
 </html>
 	<script src="../js/classie.js"></script>
 		<script>
-		
+
 		$().ready(function(){
 		$(".maindiv").click(function(){
 		//alert();
@@ -200,26 +200,26 @@ ul li{list-style:none;}
 				showRightPush = document.getElementById( 'showRightPush' ),
 				body = document.body;
 
-			
+
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-		
+
 
 			function disableOther( button ) {
-				
+
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
 				}
-				
+
 			}
 		</script>
-  
+
 <script>
-	  
+
 	  <!-- jquery for fixed the div when open menu -->
 	  $().ready(function(){
 	  $('.menuLogo ').click(function(){
@@ -227,7 +227,7 @@ ul li{list-style:none;}
 	  });
 	  });
 	  </script>
-	  
+
 	  <!--- css for margin-regit div on paid & free Vijy -->
 	  <style>
 	  .fixed-right{
@@ -238,15 +238,15 @@ ul li{list-style:none;}
           <!--- script for click on table row to show records -->
           <script>
           function myfunction(id){
-               
+
               var company_id = id;
-              
+
         window.location = "user_details_per_emp.php?view_user=" + company_id;
-              
-              
-              
+
+
+
           }
-          
-          
-          
-          </script>  
+
+
+
+          </script>
