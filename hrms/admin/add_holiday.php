@@ -79,11 +79,11 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="#">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="#">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a ng-href="#/dashboard" href="index.php">  <li class="dashboard"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a ng-href="#/tenant" href="user_detail.php">  <li class="tenanticon"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -116,11 +116,11 @@ ul li{list-style:none;}
   <!--- data view in table start here -->
 
 <div class="row tenantgridcontainer">
-<div class="addtenantcontainer col-sm-12 col-md-12-col-lg-12">
+<div class="addtenantcontainer col-sm-12 col-md-12-col-lg-12" style="margin-left:-25px; width: 103%">
 
 <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
                  <form methode="post" id="add_holiday" class="ng-pristine ng-valid">
-                   <div class="col-sm-6 col-md-6 col-lg-6">
+                   <div class="col-sm-12 col-md-12 col-lg-12>
                      <div class="row">
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday name</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
@@ -132,16 +132,27 @@ ul li{list-style:none;}
                        </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                          <input type="text" id="accountno" name="holiday_day" placeholder="Holiday day" class=" tenantform"  required="">
+                           <select name="holiday_day" class="tenantform" style="padding-top: 7px">
+                              <option value="">Select</option>>
+                               <option value="sunday">Sunday</option>>
+                              <option value="monday">Monday</option>
+                              <option value="tuesday">Tuesday</option>
+                              <option value="wednesday">Wednesday</option>
+                              <option value="thursday">Thursday</option>
+                              <option value="friday">Friday</option>
+                              <option value="saturday">Saturday</option>
+                          </select>
                        </div>
-                    </div>
-                   </div>
-                   <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                      <ul class="tenantform">
                          <li><a href="" onclick="sub()" id="submit" name="submit">Submit</a></li>
-                           
+                         <li><a href="holiday_management.php" id="" name="cancel">Cancel</a></li> 
+                         <li><a href="" type="reset" id="" name="reset">Reset</a></li> 
                      </ul>
                    </div>
+                    </div>
+                   </div>
+                  
                  </form>
 </div>
 </div>
@@ -199,7 +210,7 @@ ul li{list-style:none;}
 				
 			}
 		</script>
- <!--data post--> 
+ 
 <script>
 	  
 	  <!-- jquery for fixed the div when open menu -->
@@ -209,6 +220,7 @@ ul li{list-style:none;}
 	  });
 	  });
 	  </script>
+          <!--data post--> 
            <script>
                            
                                   function sub(){
@@ -218,7 +230,8 @@ ul li{list-style:none;}
                                      url: 'addholiday_ins.php',
                                      data: data,
                                      success: function(responce){
-                                         window.location = "holiday_management.php";
+                                           //$(location).href('holiday_management.php')
+                                            windows.location = 'holiday_management.php';
                                      },
                                      error: function (responce) {
                                      alert(responce);

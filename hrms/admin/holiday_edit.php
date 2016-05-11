@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-
-<html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<?php include '../dbcon.php';?>
+<html lang="en">
+  
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,12 +17,13 @@
 			
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
-		<script src="../js/modernizr.custom.js"></script>
-                <!--chart for free and paid users-->
-                <script src="./js/amcharts.js"></script>
-                <script src="./js/pie.js"></script>
-                <script src="./js/light.js"></script>
+
 <!--end of chart-->
+    
+<!-- datepicker -->
+ 
+
+  <!--end datepicker--> 
                 <style type="text/css">
 				body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
@@ -72,8 +75,7 @@ ul li{list-style:none;}
                        
                    }	
                 </style>
-
-   
+ 
    </head>
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
@@ -105,64 +107,71 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:279%">
+<div class="container-fluid dashboardContainer"  style="width:100%">
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left:15px">
-  <div class="addTenant">
-    <a href="add_holiday.php" class="addTenantButton">Add Holiday</a>
-  </div>
+ <div class="tenant" style="padding-left:0px">
+  
   <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
     <span style="color:#fff; font-weight: bold;">Holiday Management</span>
  
 </div>
   <!--- data view in table start here -->
-<table class="table table-hover"  >
-  <thead>
- 
-    <tr>
-      <th>#</th>
-      <th>Holiday Name</th>
-      <th>Holiday Date</th>
-      <th>Holiday Day</th>
-      <th>Edit</th>
-      <th>Delete</th>
-      
-    </tr>
-
-  </thead>
-  <tbody>
- <?php
-  include 'dbcon.php';
-        $sql = "select * from holiday_tbl";
+<?php
+   
+   $holiday_id = $_GET["id"];
+        $sql = "select * from holiday_tbl where holiday_id = $holiday_id";
          $result = mysqli_query($con , $sql);
-     $counter = 0;
-    while($row = mysqli_fetch_array($result))
-    {
-    ?>
-  <!---- start show data in row loop -->
-  
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-    <tr onclick="">
-      <th scope="row"><?php echo ++$counter;?></th>
-      <td><?php echo $row["holiday_name"]; ?></td>
-      <td><?php echo $row["holiday_date"];?></td>
-      <td><?php echo $row["holiday_days"];?></td>
-      <td><a href="holiday_edit.php?id=<?php echo $row["holiday_id"];?>"><img height="25px"  src="../images/edit1.png"></a></td>
-      <td><a href="holiday_delete.php?id=<?php echo $row["holiday_id"];?>"><img height="25px" src="../images/delete-icon.png"></a>
-	  </td>
-    </tr>
-	<!--- //end loop data -->
-    <?php
+    $row = mysqli_fetch_array($result)
     
-    }?>	  
-  </tbody>
-</table>
-<!---- end table  -->
+    ?>
+<div class="row tenantgridcontainer">
+    <div class="addtenantcontainer col-sm-12 col-md-12-col-lg-12" style="margin-left:-25px; width: 103%">
+
+<div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
+                 <form methode="post" id="update_holiday" class="ng-pristine ng-valid">
+                     <input type="hidden" name="holiday_id" value="<?php echo $row["holiday_id"];?>">
+                   <div class="col-sm-12 col-md-12 col-lg-12">
+                     <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday name</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                           <input type="text" id="tenantname" value="<?php echo $row["holiday_name"];?>" name="holiday_name" placeholder="Holiday Name" class=" tenantform"  required="">
+                        </div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday date</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                     <input type="text" id="datepicker" value="<?php echo $row['holiday_date'];?>" name="holiday_date" placeholder="Holiday Date" class=" tenantform"  required="">
+                       </div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                           <select name="holiday_day" class="tenantform" style="padding-top: 7px">
+                              <option ><?php echo $row['holiday_days'];?></option>>
+                               <option value="sunday">Sunday</option>>
+                              <option value="monday">Monday</option>
+                              <option value="tuesday">Tuesday</option>
+                              <option value="wednesday">Wednesday</option>
+                              <option value="thursday">Thursday</option>
+                              <option value="friday">Friday</option>
+                              <option value="saturday">Saturday</option>
+                          </select>
+                       </div>
+                    </div>
+                   </div>
+                   <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                     <ul class="tenantform">
+                         <li><a href="" onclick="upt()" id="submit" name="submit1">Update</a></li>
+                         <li><a href="holiday_management.php" id="" name="submit">Cancel</a></li>  
+                     </ul>
+                   </div>
+                 </form>
+
+</div>
+</div>
  </div>
+    
+<!---- end table  -->
+
 </div>
 </div>
-
-
+</div>
 
 
 <!--- //end -->
@@ -210,7 +219,7 @@ ul li{list-style:none;}
 				
 			}
 		</script>
-  
+ 
 <script>
 	  
 	  <!-- jquery for fixed the div when open menu -->
@@ -220,7 +229,28 @@ ul li{list-style:none;}
 	  });
 	  });
 	  </script>
-	  
+          <!--update data post--> 
+           <script>
+                           
+                                  function upt(){
+                                    var data = $('#update_holiday').serialize();
+                                    $.ajax({
+                                     type: 'POST',
+                                     url: 'holiday_update.php',
+                                     data: data,
+                                     success: function(responce){
+                                        // alert(responce);
+                                       // window.location.href = "holiday_management.php";
+                                     },
+                                     error: function (responce) {   
+                                     alert(responce);
+                                    }
+                                 });
+                                  }
+                            
+                              
+                           </script>
+      <!--end data post-->                     
 	  <!--- css for margin-regit div on paid & free Vijy -->
 	  <style>
 	  .fixed-right{
@@ -228,4 +258,11 @@ ul li{list-style:none;}
 	  }
 
 	  </style>
-                
+                     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ <script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+</script>
