@@ -232,7 +232,7 @@ ul li{list-style:none;}
       <td><?php echo $arr['employee_id'];?></td>
       <td><?php echo $arr['first_name']." ".$arr['last_name'];?> </td>
 
-      <td><?php echo $arr['email'];?></td>
+      <td><?php echo $arr['emp_email'];?></td>
 
 
     </tr>
