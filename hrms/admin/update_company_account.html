@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	   <script src="../js/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>HRMS </title>
+    <link rel="stylesheet" href="../js/animate.css" media="screen" charset="utf-8">
+      <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
+
+
+        <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
+
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+		<link rel="stylesheet" type="text/css" href="../css/component.css" />
+		<script src="../js/modernizr.custom.js"></script>
+                <!--chart for free and paid users-->
+                <script src="../js/amcharts.js"></script>
+                <script src="../js/pie.js"></script>
+                <script src="../js/light.js"></script>
+<!--end of chart-->
+                <style type="text/css">
+				body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+
+}
+ ul >a li {
+    color: #a0abbf;
+    width: 208px;
+    height: 40px;
+    padding: 11px 0 0 13px;
+    border: 0px;
+    margin: 0 0 8px 0px;
+    border-left: 4px solid transparent;
+}
+#reg_button:hover{
+background:#efefef;
+}
+nav>ul >a{
+  border-left: 12px solid transparent;
+}
+ nav>ul >a:hover {
+    color: #fff !important;
+		background: #2C3543;
+       border-left: 12px solid #8cc63e;;
+}
+nav>ul >a:hover li{    color: #fff !important;}
+ul li{list-style:none;}
+                    .alertpf{
+                        height:511px;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+
+                    }
+                    #chartdiv {
+	               width: 100%;
+	               height: 200px;
+	              font-size	: 8px;
+                      padding: 20px;
+                      padding-top: 20px !important;
+
+                   }
+				   .col-lg-6{
+				   padding-bottom:10px;
+				   padding-top:4px;
+				   }
+                </style>
+
+
+   </head>
+
+  	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
+
+			<ul style="margin-left:-20%;margin-top:39px">
+  <a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.html">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+</ul>
+
+		</nav>
+  <body cz-shortcut-listen="true" class="cbp-spmenu-push">
+
+<main class="maindiv">
+ <div class="header navbar-fixed-top">
+  <ul class="logocontainer">
+    <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
+
+    <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
+  </ul>
+<ul class="management_navigation_holder">
+
+  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+</ul>
+</div>
+</main>
+
+<!---- side nav bar --->
+
+
+
+<div class="container-fluid dashboardContainer ng-scope">
+<div class="container-fluid dashboardContentHolder" style="height:616px">
+<div class="row tenantgridcontainer">
+<div class="addtenantcontainer col-sm-12 col-md-12-col-lg-12">
+<div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
+  <span>Add Company</span>
+  <img class="pull-right" src="../images/edit2.png" height="22px">
+</div>
+<div class="addtenantformholder col-sm-12 col-md-12 col-lg-12" style="height:370px;">
+        <form class=""id="registerform" method="post">
+                   <div class="col-sm-6 col-md-6 col-lg-6">
+                     <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Update Comapny name</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                   <input type="text" class="tenantform " id="com_name" name="com_name"  placeholder="Update Company Name" aria-describedby="basic-addon1" required="">
+                        </div>
+                       
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Update Contact no.</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+
+    <input type="text" class="tenantform" placeholder="Update Contact No" name="com_no" id="com_no">
+                       </div>
+                      
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">No of emp</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                          <select  name="com_emp">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                           
+                          </select>
+                       </div>
+                     </div>
+                   </div>
+
+                   <div class="col-sm-6 col-md-6 col-lg-6 ">
+                     <div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Enter Old Password</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                      
+                     <input type="password" class="tenantform" placeholder="*********" id="com_old_password" name="com_old_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
+                    
+                       </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Enter New Password</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                      
+                     <input type="password" class="tenantform" placeholder="*********" id="com_password" name="com_new_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
+                    
+                       </div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm New Password</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_new_password" name= "com_cof_new_password"data-toggle="tooltip" data-placement="right" title="Type again">
+                       
+                       </div>
+                       
+                       
+                     </div>
+                   </div>
+                   <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+				   	<div class="alert alert-info " id="reposnse"  style="display:none;">
+
+   </div>
+				   
+                     <ul class="tenantform">
+					 <button type="submit" style="    padding: 10px 20px 10px 20px;
+    border: 1px solid #7BC143;
+    border-radius: 24px;
+    font-weight: bold;
+    color: #646567;
+    margin: 0 0 0 0;background:#fff;outline:none;" id="reg_button">Save </button>
+                   
+                          <li><a href="user_details.php">cancel</a></li>
+                             <li><a href="user_details.php">close</a></li>
+                     </ul>
+                   </div>
+                 </form>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</body>
+
+</html>
+ <script src="../js/jquery.min.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
+
+</body>
+</html>
+	<script src="../js/classie.js"></script>
+		<script>
+
+		$().ready(function(){
+		$(".maindiv").click(function(){
+		//alert();
+		//$('.cbp-spmenu').removeClass('cbp-spmenu-open');
+		});
+		});
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+				menuTop = document.getElementById( 'cbp-spmenu-s3' ),
+				menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
+				showLeft = document.getElementById( 'showLeft' ),
+				showRight = document.getElementById( 'showRight' ),
+				showTop = document.getElementById( 'showTop' ),
+				showBottom = document.getElementById( 'showBottom' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				showRightPush = document.getElementById( 'showRightPush' ),
+				body = document.body;
+
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+
+			function disableOther( button ) {
+
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+
+			}
+		</script>
+		
+<script type="text/javascript" src="../js/validation.min.js"></script>
+<script>
+	function  checkAvailability() {
+
+jQuery.ajax({
+url: "../company_db_ins.php",
+data:'check_email='+$("#com_email").val(),
+type: "POST",
+success:function(data){
+if(data == 'true'){
+     $("#email_error").text('Email already register').show();
+
+$("#com_email").removeClass('valid');
+$("#com_email").addClass('error');
+$("#reg_button").prop("disabled",'true');
+}else{
+$("#reg_button").prop("disabled",false);
+$("#email_error").text('Email already register').hide();
+
+}
+var errorflag = true;
+},
+error:function (){}
+});
+}
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+	 $("#com_no").keypress(function (e) {
+
+            var  key = e.charCode || e.keyCode || 0;
+
+            // only numbers
+            if (key < 48 || key > 58) {
+
+                return false;
+            } if(key  <=10){
+			return false;
+			}
+
+        });
+
+	
+	
+	$("#reg_with").click(function(){
+	$("#login-form").hide();
+	$("#reg-form").show();
+	
+	});
+	///login form validation
+	$("#loginform").validate({
+      rules:
+   {
+
+password: {
+   required: true,
+   minlength: 8,
+   maxlength: 15
+   },
+email: {
+            required: true,
+            email: true
+            },
+		
+    },
+       messages:
+    {
+
+            com_password:{
+                      required: "please provide a password",
+                      minlength: "password at least have 8 characters"
+                     },
+            com_email: "please enter a valid email address"
+
+       },
+    submitHandler: submitForm 
+       });
+	
+
+	
+	
+	/// start singup form validation 
+	
+	
+$("#registerform").validate({
+      rules:
+   {
+   com_name: {
+      required: true,
+   minlength: 3
+   },
+   com_password: {
+   required: true,
+   minlength: 8,
+   maxlength: 15
+   },
+   com_cof_password: {
+   required: true,
+   equalTo: '#com_password'
+   },
+   com_email: {
+            required: true,
+            email: true
+            },
+			com_emp:{required:true},
+			com_country:{required:true},
+    },
+       messages:
+    {
+            com_name: "please enter company name",
+            com_password:{
+                      required: "please provide a password",
+                      minlength: "password at least have 8 characters"
+                     },
+            com_email: "please enter a valid email address",
+   com_cof_password:{
+      required: "please retype your password",
+      equalTo: "password doesn't match !"
+       }
+       },
+    submitHandler: submitForm 
+       });
+	function  submitForm(){
+	var datafrom = $('#registerform').serialize();
+	     $("#reg_button").text('').prop("disabled",'true');
+		      $("#reg_button").css({'background':'#fff','opacity':'.5'});
+		     $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
+	$.ajax({
+	method:"POST",
+	url:"../company_db_ins.php",
+	data:datafrom,
+	
+	success:function(response){
+	$('html, body').animate({scrollTop:0},500);
+	    $("#reg_button").text('Register');
+		 $("#reg_button").text('').prop("disabled",false);
+	$("#reposnse").text("Company rigster Successfully  & Verifiction mail Send").show();
+	   window.setTimeout(function(){
+	 window.location='user_detail.php';
+	   
+	   },3000)
+
+	
+	
+	},
+		
+	});
+	}
+	
+	
+	
+});
+</script>

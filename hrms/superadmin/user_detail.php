@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
+<?php include '../dbcon.php';?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	   <script src="../js/jquery.min.js"></script>
@@ -12,7 +12,7 @@
 
       <link rel="stylesheet" href="../css/chartist.min.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
-			
+
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
 		<script src="../js/modernizr.custom.js"></script>
@@ -61,7 +61,7 @@ ul li{list-style:none;}
                         height:511px;
                         overflow-y: auto;
                         overflow-x: hidden;
-                        
+
                     }
                     #chartdiv {
 	               width: 100%;
@@ -69,35 +69,36 @@ ul li{list-style:none;}
 	              font-size	: 8px;
                       padding: 20px;
                       padding-top: 20px !important;
-                       
-                   }	
+
+                   }
                 </style>
 
-   
+
    </head>
-  
+
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
-			
-			<ul style="margin-left:-20%;margin-top:39px">
- <a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="employee_management.html">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
-</ul>
-			
+
+      <ul style="margin-left:-20%;margin-top:39px">
+          <a href="index.php">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+          <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
+          <a href="user_request.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
+
+          <a  href="javascript:void(o)">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
+      </ul>
+
+
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
-  
+
 <main class="maindiv">
  <div class="header navbar-fixed-top">
   <ul class="logocontainer">
     <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
-   
+
     <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
   </ul>
 <ul class="management_navigation_holder">
-  
+
   <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
 </ul>
 </div>
@@ -105,56 +106,63 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:279%">
+<div class="container-fluid dashboardContainer"  style="width:192%">
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left:15px">
+ <div class="tenant" style="padding-left: 40px;">
   <div class="addTenant">
-    <a href="add_holiday.php" class="addTenantButton">Add Holiday</a>
+    <a href="add_users.html" class="addTenantButton">Add Company</a>
   </div>
-  <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
-    <span style="color:#fff; font-weight: bold;">Holiday Management</span>
- 
-</div>
+
   <!--- data view in table start here -->
-<table class="table table-hover"  >
+<table class="table table-hover">
   <thead>
- 
+
     <tr>
       <th>#</th>
-      <th>Holiday Name</th>
-      <th>Holiday Date</th>
-      <th>Holiday Day</th>
-      <th>Edit</th>
-      <th>Delete</th>
-      
+      <th>Company Name</th>
+      <th>Email</th>
+      <th>Subscription Date</th>
+      <th>No. of emp</th>
+      <th>Plan</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
 
   </thead>
   <tbody>
- <?php
-  include 'dbcon.php';
-        $sql = "select * from holiday_tbl";
-         $result = mysqli_query($con , $sql);
-     $counter = 0;
-    while($row = mysqli_fetch_array($result))
-    {
-    ?>
+  <?php
+
+    $query="select * from companyreg_tbl where company_status='active' ";
+    $rs=  mysqli_query($con, $query);
+    $counter=0;
+    while($arr= mysqli_fetch_array($rs)){
+  ?>
+
+
   <!---- start show data in row loop -->
-  
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-    <tr onclick="">
+
+   <!--- on click  redirect to usefull info page on click event not in href -->
+    <tr onclick="myfunction('<?php echo $arr['company_id'];?>')">
       <th scope="row"><?php echo ++$counter;?></th>
-      <td><?php echo $row["holiday_name"]; ?></td>
-      <td><?php echo $row["holiday_date"];?></td>
-      <td><?php echo $row["holiday_days"];?></td>
-      <td><a href="holiday_edit.php?id=<?php echo $row["holiday_id"];?>"><img height="25px"  src="../images/edit1.png"></a></td>
-      <td><a href="holiday_delete.php?id=<?php echo $row["holiday_id"];?>"><img height="25px" src="../images/delete-icon.png"></a>
+  <input type="hidden" value="<?php echo $arr['company_id'];?>" id="companyid">
+      <td><?php echo $arr['company_name'];?></td>
+      <td><?php echo $arr['company_email'];?></td>
+      <td><?php echo $arr['subscription_date'];?></td>
+      <td><?php echo $arr['number_of_employee'];?></td>
+      <td><?php echo $arr['company_plan'];?></td>
+      <td><img height="25px" src="../images/edit1.png"></td>
+      <td><a href="user_delete.php?company_id=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/delete-icon.png"></a>
 	  </td>
     </tr>
 	<!--- //end loop data -->
-    <?php
-    
-    }?>	  
+
+   <!--- on click  redirect to usefull info page on click event not in href -->
+
+	<!--- //end loop data -->
+	<?php
+    }
+    ?>
   </tbody>
 </table>
 <!---- end table  -->
@@ -169,12 +177,12 @@ ul li{list-style:none;}
 
    <script src="../js/jquery.min.js"></script>
    <script src="../js/bootstrap.min.js"></script>
-  
+
 </body>
 </html>
 	<script src="../js/classie.js"></script>
 		<script>
-		
+
 		$().ready(function(){
 		$(".maindiv").click(function(){
 		//alert();
@@ -193,26 +201,26 @@ ul li{list-style:none;}
 				showRightPush = document.getElementById( 'showRightPush' ),
 				body = document.body;
 
-			
+
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-		
+
 
 			function disableOther( button ) {
-				
+
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
 				}
-				
+
 			}
 		</script>
-  
+
 <script>
-	  
+
 	  <!-- jquery for fixed the div when open menu -->
 	  $().ready(function(){
 	  $('.menuLogo ').click(function(){
@@ -220,7 +228,7 @@ ul li{list-style:none;}
 	  });
 	  });
 	  </script>
-	  
+
 	  <!--- css for margin-regit div on paid & free Vijy -->
 	  <style>
 	  .fixed-right{
@@ -228,4 +236,18 @@ ul li{list-style:none;}
 	  }
 
 	  </style>
-                
+          <!--- script for click on table row to show records -->
+          <script>
+          function myfunction(id){
+
+              var company_id = id;
+
+        window.location = "user_details_per_emp.php?view_user=" + company_id;
+
+
+
+          }
+
+
+
+          </script>

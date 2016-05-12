@@ -77,16 +77,13 @@ ul li{list-style:none;}
    </head>
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
-			
+			<!--main menu's start heare-->
 			<ul style="margin-left:-20%;margin-top:39px">
-<a ng-href="#/dashboard" href="#/dashboard">  <li class="dashboard"><span><img src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/dashboard.png"></span>Dashboard</li></a>
-<a ng-href="#/tenant" href="#/tenant">  <li class="tenanticon"><span><img src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png"></span>Tenant Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png"></span>Energy Analysis</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png"></span>Cost Analysis</li></a>
-<a ng-href="#/tenantBill" href="#/tenantBill">  <li class="tenantbill"><span><img src="http://127.0.0.1/leviton/images/dashboard/tenantbill.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/tenantbill.png"></span>Tenant Bill</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="alarms"><span><img src="http://127.0.0.1/leviton/images/dashboard/alarms.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/alarms.png"></span>Alarms</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="meter-reading"><span><img src="http://127.0.0.1/leviton/images/dashboard/meter-reading.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/meter-reading.png"></span>Meter Reading</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="reports"><span><img src="http://127.0.0.1/leviton/images/dashboard/reports.png" class="sidenavicons" src="http://127.0.0.1/leviton/images/dashboard/reports.png"></span>Reports</li></a>
+<a  href="#">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="#">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -108,24 +105,24 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:183%">
+<div class="container-fluid dashboardContainer"  style="width:200%">
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant">
-  <div class="addTenant">
-    <a href="javascript:void(0)" class="addTenantButton">Add Company</a>
-  </div>
-  
+    <div class="tenant" style="padding-left: 0px;">
+     <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
+    <span style="color:#fff; font-weight: bold;">Leave Management</span>
+ 
+</div>
   <!--- data view in table start here -->
 <table class="table table-hover">
   <thead>
  
     <tr>
       <th>#</th>
-      <th>Company Name</th>
-      <th>Email</th>
-      <th>Subscription Date</th>
-      <th>No. of emp</th>
-      <th>Plan</th>
+      <th>Employee Name</th>
+      <th>Employee ID</th>
+      <th>Total Leaves</th>
+      <th>Leave Taken</th>
+      <th>Balance Leave</th>
       <th></th>
       <th></th>
       <th></th>
@@ -133,49 +130,41 @@ ul li{list-style:none;}
 
   </thead>
   <tbody>
+  <?php
+  // php code start hear for show data from particuler employee
+  include 'dbcon.php';
   
+    $query="select employee_tbl.employee_id,company_id,first_name, last_name,leave_manag_tbl.employee_id ,leave_manag_tbl.total_leave,leave_manag_tbl.leave_taken from employee_tbl INNER join leave_manag_tbl on employee_tbl.employee_id = leave_manag_tbl.employee_id where employee_tbl.company_id='1'";
+    $rs=  mysqli_query($con, $query);
+   
+    $counter=0;
+    while($arr= mysqli_fetch_array($rs))                // -----start while loop----------
+     {
+   
+        $total=$arr['total_leave'];
+         $taken=$arr['leave_taken'];
+         $balance = $total - $taken;
+         
+  ?>
   <!---- start show data in row loop -->
-  
+   
    <!--- on click  redirect to usefull info page on click event not in href --> 
     <tr onclick="">
-      <th scope="row">1</th>
-      <td>Demo company</td>
-      <td>demo@company.com</td>
-      <td>30-12-2016</td>
-      <td>25</td>
-      <td>Paid</td>
-      <td><img height="25px" src="../images/edit1.png">
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
+      <th scope="row"><?php echo ++$counter;?></th>
+      <td><?php echo $arr['first_name']." ".$arr['last_name'];?></td>
+      <td><?php echo $arr['employee_id'];?></td>
+      <td><?php echo $arr['total_leave'];?></td>
+      <td><?php echo $arr['leave_taken'];?></td>
+      <td><?php echo $balance;?></td>
+      <td><?php echo '&nbsp;';?></td>
+      <td><?php echo '';?></td>
+     
     </tr>
+    <?php
+    }     // end while loop
+    ?>
 	<!--- //end loop data -->
   
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-    <tr onclick="">
-      <th scope="row">2</th>
-      <td>Demo company</td>
-      <td>demo@company.com</td>
-      <td>30-12-2016</td>
-      <td>25</td>
-      <td>Paid</td>
-      <td><img height="25px" src="../images/edit1.png">
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
-    </tr>
-	<!--- //end loop data -->  
-   <!--- on click  redirect to usefull info page on click event not in href --> 
-    <tr onclick="">
-      <th scope="row">3</th>
-      <td>Demo company</td>
-      <td>demo@company.com</td>
-      <td>30-12-2016</td>
-      <td>25</td>
-      <td>Paid</td>
-      <td><img height="25px" src="../images/edit1.png">
-      <td><img height="25px" src="../images/delete-icon.png">
-	  </td>
-    </tr>
-	<!--- //end loop data -->
 	  
   </tbody>
 </table>
@@ -232,32 +221,10 @@ ul li{list-style:none;}
 				
 			}
 		</script>
-  <script>
-  var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "pie",
-  "theme": "light",
-  "dataProvider": [ {
-    "title": "24 Paid Account",
-    "value": 24
-  }, {
-    "title": "10 Free Account",
-    "value": 10
-  } ],
-  "titleField": "title",
-  "valueField": "value",
-  "labelRadius": 5,
-
-  "radius": "50%",
-  "innerRadius": "60%",
-  "labelText": "[[title]]",
-  "export": {
-    "enabled": true
-  }
-} );
-</script>
+  
 <script>
 	  
-	  <!-- jquery for fixed the div when open menu -->
+	  // jquery for fixed the div when open menu
 	  $().ready(function(){
 	  $('.menuLogo ').click(function(){
 	  $("#acc-div").toggleClass('fixed-right');

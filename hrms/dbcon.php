@@ -5,5 +5,3 @@ if(!$con){
 	
 	echo mysqli_errno();
 }
-
-

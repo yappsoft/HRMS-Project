@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	   <script src="../js/jquery.min.js"></script>
@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../js/animate.css" media="screen" charset="utf-8">
       <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
 
-    
+
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
-			
+
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
 		<script src="../js/modernizr.custom.js"></script>
@@ -52,7 +52,7 @@ ul li{list-style:none;}
                         height:511px;
                         overflow-y: auto;
                         overflow-x: hidden;
-                        
+
                     }
                     #chartdiv {
 	               width: 100%;
@@ -60,15 +60,15 @@ ul li{list-style:none;}
 	              font-size	: 8px;
                       padding: 20px;
                       padding-top: 20px !important;
-                       
-                   }	
+
+                   }
                 </style>
 
-   
+
    </head>
-  
+
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
-			
+
 			<ul style="margin-left:-20%;margin-top:39px">
 <a href="index.html">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a href="user_details">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
@@ -76,19 +76,19 @@ ul li{list-style:none;}
 
 <a  href="super_account">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
 </ul>
-			
+
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
-  
+
 <main class="maindiv">
  <div class="header navbar-fixed-top">
   <ul class="logocontainer">
     <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
-   
+
     <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
   </ul>
 <ul class="management_navigation_holder">
-  
+
   <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
 </ul>
 </div>
@@ -104,49 +104,49 @@ ul li{list-style:none;}
   <div class="row dashboardgrid">
 <div class="col-md-12 col-lg-12 col-sm-12 ">
       <!-- first grid starts -->
-	  
-	  
+
+
       <div class="col-md-4 col-lg-4 col-sm-4 gridview">
       <div class="dashboardHeader">
         <p class="dashboardHeading">Total Company</p>
         <ul class="dashboardList">
           <li>
-        
+
 
           </li>
           <li></li>
         </ul>
       </div>
-    
 
-         
+
+
       </div>
-   
+
       <!-- first grid ends -->
       <!-- second grid ends -->
       <div class="col-md-4 col-lg-4 col-sm-4 gridview">
         <div class="dashboardHeader">
           <p class="dashboardHeading">Total Users</p>
           <ul class="dashboardList">
-          
-          
+
+
           </ul>
         </div>
           </div>
       <!-- second grid ends -->
-	  
+
 	  <!---- third grid for pennding requ -->
 	  <div class="col-md-4 col-lg-4 col-sm-4 gridview">
         <div class="dashboardHeader">
           <p class="dashboardHeading">Panding Request</p>
           <ul class="dashboardList">
-          
-          
+
+
           </ul>
         </div>
           </div>
 		  <!---- end pennding div -->
-	  
+
     </div>
 	<div class="col-md-12 col-lg-12 col-sm-12 ">
       <!-- first grid starts -->
@@ -199,11 +199,11 @@ ul li{list-style:none;}
                       <span class="textnormal">a company renew payment at 5th may</span>..
                 </div>
              </div>
-          
 
-         
+
+
       </div>
-   
+
       <!-- first grid ends -->
       <!-- second grid ends -->
       <div class="col-md-4 col-lg-4 col-sm-4 gridview alertpf">
@@ -257,23 +257,23 @@ ul li{list-style:none;}
                       <span class="textnormal">a company renew payment at 5th may</span>..
                 </div>
              </div>
-          
-           
+
+
           <!-- out for loop here for alarm notification -->
-        
-        
+
+
 
           </div>
       <!-- second grid ends -->
-	  
-	 
+
+
        <div class="col-md-4 col-lg-4 col-sm-4 gridview"  id="acc-div"style="float:right; margin-right: 12px;">
         <div class="dashboardHeader">
           <p class="dashboardHeading">Free/Paid Accounts</p>
           <div id="chartdiv"></div>
           <ul class="dashboardList" >
               <li></li>
-          
+
           </ul>
         </div>
           </div>
@@ -293,43 +293,43 @@ ul li{list-style:none;}
           </ul>
       </div>
       </div>
-        </div>   
-      
+        </div>
+
       </div>
-     
+
 	  <!---- third grid for pennding requ -->
 
 		  <!---- end pennding div -->
-	  
-	
-	  
-    
+
+
+
+
 		<div class="col-md-12 col-lg-12 col-sm-12 ">
-		
+
 			  <!--- msg div strat -->
-	  
-	  
+
+
 	  <!--msg div end -->
 	  <!---- alert start -->
-		
+
 	  <!--- calnder div-->
-	  	
-         
+
+
 	  <!--- calnder div end-->
-	  
-		
+
+
 		</div>
-	
+
 </div>
 </div></div>
    <script src="../js/jquery.min.js"></script>
    <script src="../js/bootstrap.min.js"></script>
-  
+
 </body>
 </html>
 	<script src="../js/classie.js"></script>
 		<script>
-		
+
 		$().ready(function(){
 		$(".maindiv").click(function(){
 		//alert();
@@ -348,60 +348,77 @@ ul li{list-style:none;}
 				showRightPush = document.getElementById( 'showRightPush' ),
 				body = document.body;
 
-			
+
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-		
+
 
 			function disableOther( button ) {
-				
+
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
 				}
-				
+
 			}
 		</script>
-  <script>
-  var chart = AmCharts.makeChart( "chartdiv", {
-  "type": "pie",
-  "theme": "light",
-  "dataProvider": [ {
-    "title": "24 Paid Account",
-    "value": 24
-  }, {
-    "title": "10 Free Account",
-    "value": 10
-  } ],
-  "titleField": "title",
-  "valueField": "value",
-  "labelRadius": 5,
 
-  "radius": "50%",
-  "innerRadius": "60%",
-  "labelText": "[[title]]",
-  "export": {
-    "enabled": true
-  }
-} );
-</script>
 <script>
-	  
+
 	  <!-- jquery for fixed the div when open menu -->
 	  $().ready(function(){
 	  $('.menuLogo ').click(function(){
 	  $("#acc-div").toggleClass('fixed-right');
 	  });
+$.ajax({
+  url: 'count_status.php',
+  type:'get',
+  dataType:'json',
+  success:function(data){
+
+    //var json = $.parseJSON(data);
+    console.log(data);
+var free_acc = data.free_total;
+var paid_acc = data.paid_total;
+
+    var chart = AmCharts.makeChart( "chartdiv", {
+    "type": "pie",
+    "theme": "light",
+    "dataProvider": [ {
+      "title": paid_acc+" Paid Account",
+      "value": paid_acc
+    }, {
+      "title": free_acc + " Free Account",
+      "value": free_acc
+    } ],
+    "titleField": "title",
+    "valueField": "value",
+    "labelRadius": 5,
+
+    "radius": "50%",
+    "innerRadius": "60%",
+    "labelText": "[[title]]",
+    "export": {
+      "enabled": true
+    }
+    } );
+  }
+
+});
+alert(free_acc);
+
+
+
+
 	  });
 	  </script>
-	  
+
 	  <!--- css for margin-regit div on paid & free Vijy -->
 	  <style>
 	  .fixed-right{
 	  margin-right:5px !important;
 	  }
 	  </style>
-                

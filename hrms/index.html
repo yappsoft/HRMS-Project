@@ -25,9 +25,11 @@
   <strong>Info!</strong>
 </div>
       <div class="col-md-6 col-lg-6 leftcontent">
-        <div class="row">
+       
+
+	   <div class="row">
           <div class="col-md-12 col-lg-12 ">
-            <img class="logoimg" height="75px" src="images/login-logo.png">
+            <img class="logoimg" height="75px">
           </div>
             <div class="col-md-12 col-lg-12">
               <h2>Attendance And  Employment</h2>
@@ -47,7 +49,7 @@
         
              <div class="input-group">
      <span class="input-group-addon" id="basic-addon1">
-         <img alt="" height="20px" width="20px" src="images/username-icon.png">
+<span class="glyphicon glyphicon-envelope"></span>
      </span>
 
      <input type="text" class="form-control username" id="email" placeholder="Enter email" name="email"aria-describedby="basic-addon1" required="">
@@ -57,7 +59,7 @@
               
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+<span class="glyphicon glyphicon-lock"></span>
     </span>
 
     <input type="password" class="form-control password" id="password"  placeholder="*******" name="password"aria-describedby="basic-addon1" required="">
@@ -84,7 +86,7 @@
              
              <div class="input-group">
      <span class="input-group-addon" id="basic-addon1">
-         <img alt="" height="20px" width="20px" src="images/username-icon.png">
+  <span class="glyphicon glyphicon-user"></span>
      </span>
 
      <input type="text" class="form-control " id="com_name" name="com_name"  placeholder="Company Name" aria-describedby="basic-addon1" required="">
@@ -94,7 +96,7 @@
                 
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+<span class="glyphicon glyphicon-envelope"></span>
     </span>
 
     <input type="email" class="form-control" placeholder="company email" onBlur="checkAvailability()" name="com_email"id="com_email" data-toggle="tooltip" data-placement="right" title="Need to verify" required="">
@@ -107,7 +109,7 @@
                 
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+<span class="glyphicon glyphicon-earphone"></span>
     </span>
 
     <input type="text" class="form-control" placeholder="Contact No" name="com_no" id="com_no">
@@ -117,7 +119,7 @@
                 
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+<span class="glyphicon glyphicon-lock"></span>
     </span>
 
     <input type="password" class="form-control" placeholder="*********" id="com_password" name="com_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
@@ -127,7 +129,7 @@
                 
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+<span class="glyphicon glyphicon-lock"></span>
     </span>
 
     <input type="password" class="form-control" placeholder="*******" id="com_cof_password" name= "com_cof_password"data-toggle="tooltip" data-placement="right" title="Type again">
@@ -137,13 +139,16 @@
                 
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+  <span class="glyphicon glyphicon-user"></span>
     </span>
-  <select class="form-control" data-toggle="tooltip" data-placement="right" title="" name="com_emp"> 
+  <select class="form-control" data-toggle="tooltip" data-placement="right" title="" id ="emp_sel"name="com_emp" onchange="show_pop(this);"> 
    <option>No of Emp</option>
-   <option value="0-5">0-5</option>
-   <option value="5-10">5-10</option>
-   <option value="5-10">10-20</option>
+   <option value="1">1</option>
+   <option value="2">2</option>
+   <option value="3">3</option>
+   <option value="4">4</option>
+   <option value="5">5</option>
+   
    
    </select>
            </div>
@@ -152,7 +157,7 @@
                 
               <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">
- <img alt="" height="20px" width="16px" src="images/password-icon.png">
+<span class="glyphicon glyphicon-map-marker"></span>
     </span>
 
    <select class="form-control" name="com_country"> 
@@ -167,7 +172,7 @@
            </div>
             </div>
 
-         
+         <input type="hidden" value="inactive" name="com_status" id="com_status"/>
                 
 				      <div class="col-sm-12 col-md-12 col-lg-12">
                 <button type="submit" class="btn btn-block loginbtn" id="reg_button">Register</button>
@@ -184,6 +189,18 @@
 
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script>
+
+
+
+// for show popup when emp is<5
+function show_pop(){
+var value = document.getElementById("emp_sel").options[document.getElementById("emp_sel").selectedIndex].value;
+if(value  > 5){
+alert('no more 5');
+}
+
+}
+//function for email check
 	function  checkAvailability() {
 
 jQuery.ajax({
@@ -191,11 +208,17 @@ url: "company_db_ins.php",
 data:'check_email='+$("#com_email").val(),
 type: "POST",
 success:function(data){
-
-$("#email_error").text(data).show();
+if(data == 'true'){
+     $("#email_error").text('Email already register').show();
 
 $("#com_email").removeClass('valid');
 $("#com_email").addClass('error');
+$("#reg_button").prop("disabled",'true');
+}else{
+$("#reg_button").prop("disabled",false);
+$("#email_error").text('Email already register').hide();
+
+}
 var errorflag = true;
 },
 error:function (){}
@@ -250,9 +273,35 @@ email: {
             com_email: "please enter a valid email address"
 
        },
-    submitHandler: submitForm 
+    submitHandler: loginsubmit 
        });
 	
+
+function loginsubmit(){
+    var data = $("#loginform").serialize();
+    //alert(data);
+    
+     $.ajax({
+                            type: "POST",
+                            url: "ajax_login.php",
+                            data: data,
+                            cache: false,
+                            success: function (response) {
+                                    if(response == 'spradmin'){
+                                window.location.href = "superadmin/index.php";
+                            }else if(response == 'admin'){
+                                
+                                 window.location.href = "admin/index.php";
+                            }else if(response == 'emp'){
+                                
+                                 window.location.href = "emp/index.php";
+                            }else if(response!= ''){
+                                
+                                alert(response);
+                            }
+                        }
+                        });
+}
 
 	
 	
@@ -329,6 +378,10 @@ $("#registerform").validate({
     position: absolute;
     width: 100%;
     padding: 7px;}
+	.glyphicon{
+	color:#8cc63e;
+	font-size:16px;
+	}
 </style>
   
   

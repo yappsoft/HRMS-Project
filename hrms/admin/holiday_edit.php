@@ -81,11 +81,11 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a ng-href="#/dashboard" href="index.php">  <li class="dashboard"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/dashboard.png" alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a ng-href="#/tenant" href="user_detail.php">  <li class="tenanticon"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/tenanticon.png" alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="energyanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/energyanalysis.png" class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a ng-href="javascript:void(0);" href="unsafe:javascript:void(0);">  <li class="costanalysis"><span><img ng-src="http://127.0.0.1/leviton/images/dashboard/costanalysis.png" class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.html">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -130,18 +130,19 @@ ul li{list-style:none;}
 <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
                  <form methode="post" id="update_holiday" class="ng-pristine ng-valid">
                      <input type="hidden" name="holiday_id" value="<?php echo $row["holiday_id"];?>">
+                     
                    <div class="col-sm-12 col-md-12 col-lg-12">
                      <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday name</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                       <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday name</span></div>
+                       <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <input type="text" id="tenantname" value="<?php echo $row["holiday_name"];?>" name="holiday_name" placeholder="Holiday Name" class=" tenantform"  required="">
                         </div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday date</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                       <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday date</span></div>
+                       <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                      <input type="text" id="datepicker" value="<?php echo $row['holiday_date'];?>" name="holiday_date" placeholder="Holiday Date" class=" tenantform"  required="">
                        </div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                       <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
+                       <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <select name="holiday_day" class="tenantform" style="padding-top: 7px">
                               <option ><?php echo $row['holiday_days'];?></option>>
                                <option value="sunday">Sunday</option>>
@@ -155,18 +156,27 @@ ul li{list-style:none;}
                        </div>
                     </div>
                    </div>
+                     <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none"></div></div>
                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                     <ul class="tenantform">
-                         <li><a href="" onclick="upt()" id="submit" name="submit1">Update</a></li>
+                         
+                       <ul class="tenantform" style="margin-left: -185px">
+                         <li><button type="submit" style="padding: 10px 20px;
+border: 1px solid rgb(123, 193, 67);
+border-radius: 24px;
+font-weight: bold;
+color: rgb(100, 101, 103);
+margin: 0px;background:#fff">Submit</button></li>
                          <li><a href="holiday_management.php" id="" name="submit">Cancel</a></li>  
                      </ul>
                    </div>
+                    
                  </form>
-
+    
 </div>
 </div>
  </div>
-    
+
 <!---- end table  -->
 
 </div>
@@ -229,8 +239,34 @@ ul li{list-style:none;}
 	  });
 	  });
 	  </script>
-          <!--update data post--> 
+          <!--update data post-->
+           <script type="text/javascript" src="../js/validation.min.js"></script>
            <script>
+               	$("#update_holiday").validate({
+                        rules:
+                     {
+
+                      holiday_name: {
+                         required: true,
+                         minlength: 3
+
+                         }, 
+                         holiday_date: {
+                         required: true,
+                         }, 
+                          holiday_day: {
+                         required: true,
+                         }, 
+                      },
+                         messages:
+                      {
+                              holiday_name: "please enter a holiday name",
+                              holiday_date: "please select a holiday date",
+                              holiday_day: "please select a holiday day"
+
+                         },
+                      submitHandler: upt 
+                         });
                            
                                   function upt(){
                                     var data = $('#update_holiday').serialize();
@@ -239,11 +275,13 @@ ul li{list-style:none;}
                                      url: 'holiday_update.php',
                                      data: data,
                                      success: function(responce){
+                                         $('#msg').show().text(responce);
+                                         
                                         // alert(responce);
                                        // window.location.href = "holiday_management.php";
                                      },
                                      error: function (responce) {   
-                                     alert(responce);
+                                      
                                     }
                                  });
                                   }
@@ -263,6 +301,8 @@ ul li{list-style:none;}
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
  <script>
 $(function() {
-$( "#datepicker" ).datepicker();
+$( "#datepicker" ).datepicker({
+    mindate: 0,
+    });
 });
 </script>

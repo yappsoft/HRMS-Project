@@ -1,6 +1,6 @@
 <?php
 
-include "dbcon.php";
+include "../dbcon.php";
 
 if(isset($_POST['status_act'])){
  $id = $_POST['com_id'];
