@@ -157,7 +157,7 @@ ul li{list-style:none;}
                     </div>
                    </div>
                      <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none; background-color: #fff !important;"></div></div>
+                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none"></div></div>
                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                          
                        <ul class="tenantform" style="margin-left: -185px">

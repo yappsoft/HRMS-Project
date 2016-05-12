@@ -119,7 +119,7 @@ ul li{list-style:none;}
 <!--- mian table idv start -->
 
 
-<div class="container-fluid dashboardContainer" >
+<div class="container-fluid dashboardContainer"  style="width:171%">
 <div class="container-fluid dashboardContentHolder ">
     <div class="tenant" style="padding-left:15px">
      <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
@@ -139,8 +139,9 @@ ul li{list-style:none;}
       <th>Plan</th>
       <th>No. of emp</th>
       <th>Country</th>
-      <th>Approve/Reject</th>
-      
+      <th>Approve</th>
+      <th>Reject</th>
+      <th></th>
     </tr>
 
   </thead>
@@ -157,16 +158,17 @@ ul li{list-style:none;}
   <!---- start show data in row loop -->
 
    <!--- on click  redirect to usefull info page on click event not in href -->
-    <tr id="tr"  >
+    <tr id="tr" onclick="crt('<?php echo $row['company_id'];?>')" >
       <th scope="row"><?php echo ++$counter;?></th>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_name'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['registration_date'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_email'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_plan'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['number_of_employee'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['country_name'];?></td>
-      <td><span style="color: green" id="approve" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color: red"  class="glyphicon glyphicon-remove-circle"  onclick="rej_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span></td>
-      
+      <td><?php echo $row['company_name'];?></td>
+      <td><?php echo $row['registration_date'];?></td>
+      <td><?php echo $row['company_email'];?></td>
+      <td><?php echo $row['company_plan'];?></td>
+      <td><?php echo $row['number_of_employee'];?></td>
+      <td><?php echo $row['country_name'];?></td>
+      <td><span style="color: green" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span></td>
+      <td><span style="color: red"  class="glyphicon glyphicon-remove-circle" onclick="rej_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span>
+	  </td>
     </tr>
     <?php
 }?>
@@ -174,15 +176,11 @@ ul li{list-style:none;}
 
 
   </tbody>
-  
 </table>
-  <div class="col-sm-12 col-md-12 col-lg-12 text-center" onclick="crt('<?php echo $row['company_id'];?>')">
-                         <div class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none; background-color: #fff !important;"></div></div>
 <!---- end table  -->
  </div>
 </div>
 </div>
-
 <!--approv modal-->
 <div class="modal" id="myModal" role="dialog" style="top:40%" >
                                                 <div class="modal-dialog modal-sm">
@@ -193,10 +191,9 @@ ul li{list-style:none;}
                                                             <h4 class="modal-title">Approve or Reject</h4>
                                                         </div>
                                                         <div align="center" class="modal-body con_pop" style="cursor: pointer">
-                                                            
+
                                                         </div>
-                                                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="masag" style="display: none; background-color: #fff !important;"></div></div>
+
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                         </div>
@@ -211,7 +208,7 @@ ul li{list-style:none;}
         var com_id = id;
         //$("tr").data('c_id');
         $("#myModal").modal('show');
-        var html = '<div class="content"><form id="myform"><td><span onclick="Confirm_acc('+com_id+')">Approve &nbsp;<span style="color: green" id="right" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('+com_id+')" aria-hidden="true"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <td><span onclick="rej_acc('+com_id+')">Reject &nbsp;<span style="color: red"  class="glyphicon glyphicon-remove-circle" onclick="rej_acc('+com_id+')" aria-hidden="true"></span></span><div class="clearfix"></div></form></div>'
+        var html = '<div class="content"><form id="myform">Approve &nbsp;<td><span style="color: green" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('+com_id+')" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Reject &nbsp;<td><span style="color: red"  class="glyphicon glyphicon-remove-circle" onclick="rej_acc('+com_id+')" aria-hidden="true"></span><div class="clearfix"></div></form></div>'
       $(".con_pop").html(html);
     }
 </script>
@@ -284,8 +281,7 @@ ul li{list-style:none;}
                          url: 'status_conform.php',
                          data: 'com_id=' + com_id +'&status_act='+'active',
                          success: function(responce){
-                             $('#msg').show().text(responce);
-                             $('#masag').show().text(responce);
+
                          $("#tr").fadeOut();
                          location.reload();
                         },
@@ -302,8 +298,7 @@ ul li{list-style:none;}
                          url: 'status_conform.php',
                          data: 'com_id=' + com_id +'&status_rej='+'active',
                          success: function(responce){
-                             $('#msg').show().text(responce);
-                             $('#masag').show().text(responce);
+
                         $("#tr").fadeOut();
                         location.reload();
                         },
