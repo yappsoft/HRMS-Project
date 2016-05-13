@@ -1,6 +1,6 @@
 <?php
 
-include "dbcon.php";
+include "../dbcon.php";
   $id = $_POST['holiday_id'];
   $holiday_name = $_POST['holiday_name'];
    $holiday_date = $_POST['holiday_date'];
@@ -8,7 +8,10 @@ include "dbcon.php";
 $sql = "UPDATE `holiday_tbl` SET holiday_name='$holiday_name' ,holiday_date='$holiday_date',holiday_days='$holiday_days' WHERE holiday_id= $id  ";
 $result = mysqli_query($con , $sql);
 if($result){
-echo "update successfull";
+echo "Holiday update successfully";
+}else{
+	
+	echo "error while update data";
 }
 ?>
 

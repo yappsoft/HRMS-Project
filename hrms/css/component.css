@@ -100,10 +100,14 @@
 	overflow-x: hidden;
 	position: absolute;
 	left: 0;
+	width:100%
 }
-
+ 
 .cbp-spmenu-push-toright {
-	left: 240px;
+
+    width: 82.3%;
+position: absolute;
+left: 240px;
 }
 
 .cbp-spmenu-push-toleft {

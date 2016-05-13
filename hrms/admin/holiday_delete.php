@@ -1,5 +1,5 @@
 <?php
-include "dbcon.php";
+include "../dbcon.php";
  $id = $_GET["id"];
 $sql = "delete from holiday_tbl where holiday_id = $id";
  $result = mysqli_query($con , $sql);

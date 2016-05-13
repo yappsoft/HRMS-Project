@@ -111,7 +111,7 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:141%">
+<div class="container-fluid dashboardContainer"  >
 <div class="container-fluid dashboardContentHolder ">
  <div class="tenant" style="padding-left: 0px;">
   <div class="addTenant">

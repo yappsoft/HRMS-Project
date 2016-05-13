@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php   include '../dbcon.php'; ?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,12 +78,12 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			<!--main menu's start heare-->
-			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="#">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="#">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+	<ul style="margin-left:-20%;margin-top:39px">
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -105,7 +105,7 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:200%">
+<div class="container-fluid dashboardContainer"  >
 <div class="container-fluid dashboardContentHolder ">
     <div class="tenant" style="padding-left: 0px;">
      <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
@@ -132,7 +132,7 @@ ul li{list-style:none;}
   <tbody>
   <?php
   // php code start hear for show data from particuler employee
-  include 'dbcon.php';
+
   
     $query="select employee_tbl.employee_id,company_id,first_name, last_name,leave_manag_tbl.employee_id ,leave_manag_tbl.total_leave,leave_manag_tbl.leave_taken from employee_tbl INNER join leave_manag_tbl on employee_tbl.employee_id = leave_manag_tbl.employee_id where employee_tbl.company_id='1'";
     $rs=  mysqli_query($con, $query);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php include '../dbcon.php';?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,12 +78,12 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
-			<ul style="margin-left:-20%;margin-top:39px">
- <a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="employee_management.html">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+	<ul style="margin-left:-20%;margin-top:39px">
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -105,7 +105,7 @@ ul li{list-style:none;}
 
 <!--- mian table idv start -->
 
-<div class="container-fluid dashboardContainer"  style="width:279%">
+<div class="container-fluid dashboardContainer"  >
 <div class="container-fluid dashboardContentHolder ">
  <div class="tenant" style="padding-left:15px">
   <div class="addTenant">
@@ -121,18 +121,18 @@ ul li{list-style:none;}
  
     <tr>
       <th>#</th>
-      <th>Holiday Name</th>
-      <th>Holiday Date</th>
-      <th>Holiday Day</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th>Name of Holiday</th>
+      <th>Date of Holiday</th>
+      <th>Day of Holiday</th>
+      <th>Edit/Delete</th>
+     
       
     </tr>
 
   </thead>
   <tbody>
  <?php
-  include 'dbcon.php';
+  
         $sql = "select * from holiday_tbl";
          $result = mysqli_query($con , $sql);
      $counter = 0;
@@ -147,8 +147,8 @@ ul li{list-style:none;}
       <td><?php echo $row["holiday_name"]; ?></td>
       <td><?php echo $row["holiday_date"];?></td>
       <td><?php echo $row["holiday_days"];?></td>
-      <td><a href="holiday_edit.php?id=<?php echo $row["holiday_id"];?>"><img height="25px"  src="../images/edit1.png"></a></td>
-      <td><a href="holiday_delete.php?id=<?php echo $row["holiday_id"];?>"><img height="25px" src="../images/delete-icon.png"></a>
+      <td><a href="holiday_edit.php?id=<?php echo $row["holiday_id"];?>"><img height="25px"  src="../images/edit1.png"></a>&nbsp;&nbsp;&nbsp;<a href="holiday_delete.php?id=<?php echo $row["holiday_id"];?>"><img height="25px" src="../images/delete-icon.png"></a></td>
+      <td>
 	  </td>
     </tr>
 	<!--- //end loop data -->
