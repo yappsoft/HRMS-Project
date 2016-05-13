@@ -3,11 +3,10 @@
 include '../dbcon.php';
 
 if(isset($_SESSION['email'])){
-	 $uniqe_id = $_SESSION['company_id']; 
+	
 }else{
-	//header('location:../index.html');
+	header('location:../index.html');
 }
-
 ?>
 <html lang="en">
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -89,11 +88,11 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
 		<ul style="margin-left:-20%;margin-top:39px">
-  <a  href="index.php">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="accounts_billing.php">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -131,8 +130,7 @@ ul li{list-style:none;}
 <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
                  <form methode="post" id="add_holiday" class="ng-pristine ng-valid">
                    <div class="col-sm-12 col-md-12 col-lg-12">
-                       <div class="row">
-                           <input type="hidden" name="uniqe_id" id="uniqe_id" value="<?php echo $uniqe_id;?>">
+                     <div class="row">
                        <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday name</span></div>
                        <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <input type="text" id="tenantname" name="holiday_name" id="holiday_name" placeholder="Holiday Name" class=" tenantform"  required="">
@@ -144,8 +142,8 @@ ul li{list-style:none;}
                        <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
                        <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <select name="holiday_day" class="tenantform" style="padding-top: 7px">
-                              <option value="">Select</option>
-                               <option value="sunday">Sunday</option>
+                              <option value="">Select</option>>
+                               <option value="sunday">Sunday</option>>
                               <option value="monday">Monday</option>
                               <option value="tuesday">Tuesday</option>
                               <option value="wednesday">Wednesday</option>
@@ -155,7 +153,7 @@ ul li{list-style:none;}
                           </select>
                        </div>
                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none; color: #fff;"></div></div>
+                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none"></div></div>
                         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                             <ul class="tenantform" style="margin-left: -175px">
                          <li><button type="submit" style="padding: 10px 20px;
@@ -256,7 +254,7 @@ margin: 0px;background:#fff">Submit</button></li>
                      <script>
                     $(function() {
                     $( "#datepicker" ).datepicker({
-                        minDate: +1,
+                        minDate: 0,
                     });
                    });
                     </script>
@@ -299,12 +297,8 @@ margin: 0px;background:#fff">Submit</button></li>
                                      url: 'addholiday_ins.php',
                                      data: data,
                                      success: function(responce){
-                                         //alert(responce);
                                         $('#msg').show().text(responce);
-                                              window.setTimeout(function(){
-                                                window.location='holiday_management.php'
-
-                                                  },3000)
+                                            //windows.location = 'holiday_management.php';
                                      },
                                      error: function (responce) {
                                      alert(responce);

@@ -4,7 +4,7 @@
 
 
 if(isset($_SESSION['email'])){
-	
+ $unique_id = $_SESSION['company_id'];	
 }else{
 	header('location:../index.html');
 }
@@ -88,7 +88,7 @@ if(isset($_SESSION['email'])){
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 
   	<ul style="margin-left:-20%;margin-top:39px">
-  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+  <a  href="index.php">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
@@ -114,7 +114,7 @@ if(isset($_SESSION['email'])){
 
         <!--- mian table idv start -->
 
-        <div class="container-fluid dashboardContainer"  style="width:152%">
+        <div class="container-fluid dashboardContainer"  >
             <div class="container-fluid dashboardContentHolder ">
                 <div class="tenant">
                     <div class="addTenant">
@@ -142,7 +142,7 @@ if(isset($_SESSION['email'])){
 
                             <?php
 
-                            $result = mysqli_query($con, "select * from employee_tbl");
+                            $result = mysqli_query($con, "select * from employee_tbl where company_id='$unique_id'");
                             $counter = 0;
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_array($result)) {

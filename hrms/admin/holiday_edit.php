@@ -2,7 +2,6 @@
 <?php include '../dbcon.php';
 
 if(isset($_SESSION['email'])){
-    $uniqe_id = $_SESSION['company_id'];
 	
 }else{
 	header('location:../index.html');
@@ -89,11 +88,11 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
 	<ul style="margin-left:-20%;margin-top:39px">
-  <a  href="index.php">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="accounts_billing.php">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -141,7 +140,6 @@ ul li{list-style:none;}
                      
                    <div class="col-sm-12 col-md-12 col-lg-12">
                      <div class="row">
-                         <input type="hidden" name="uniqe_id" id="uniqe_id" value="<?php echo $uniqe_id;?>">
                        <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday name</span></div>
                        <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <input type="text" id="tenantname" value="<?php echo $row["holiday_name"];?>" name="holiday_name" placeholder="Holiday Name" class=" tenantform"  required="">
@@ -166,16 +164,16 @@ ul li{list-style:none;}
                     </div>
                    </div>
                      <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none; color: #fff;"></div></div>
+                         <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none"></div></div>
                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                          
                        <ul class="tenantform" style="margin-left: -185px">
                          <li><button type="submit" style="padding: 10px 20px;
-                                border: 1px solid rgb(123, 193, 67);
-                                border-radius: 24px;
-                                font-weight: bold;
-                                color: rgb(100, 101, 103);
-                                margin: 0px;background:#fff">Submit</button></li>
+border: 1px solid rgb(123, 193, 67);
+border-radius: 24px;
+font-weight: bold;
+color: rgb(100, 101, 103);
+margin: 0px;background:#fff">Submit</button></li>
                          <li><a href="holiday_management.php" id="" name="submit">Cancel</a></li>  
                      </ul>
                    </div>
@@ -287,11 +285,7 @@ ul li{list-style:none;}
                                          $('#msg').show().text(responce);
                                          
                                         // alert(responce);
-                                            //window.location.href = "holiday_management.php";
-                                             window.setTimeout(function(){
-                                                window.location='holiday_management.php'
-
-                                                  },3000)   
+                                       // window.location.href = "holiday_management.php";
                                      },
                                      error: function (responce) {   
                                       
@@ -312,10 +306,10 @@ ul li{list-style:none;}
                      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <script>
-                    $(function() {
-                    $( "#datepicker" ).datepicker({
-                        minDate: +1,
-                    });
-                   });
-                    </script>
+ <script>
+$(function() {
+$( "#datepicker" ).datepicker({
+    mindate: 0,
+    });
+});
+</script>

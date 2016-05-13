@@ -190,7 +190,7 @@ ul li{list-style:none;}
 </div>
 
 <!--approv modal-->
-<div class="modal" id="myModal" role="dialog" style="top:35%" >
+<div class="modal" id="myModal" role="dialog" style="top:40%" >
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
 
@@ -290,8 +290,8 @@ ul li{list-style:none;}
                          url: 'status_conform.php',
                          data: 'com_id=' + com_id +'&status_act='+'active',
                          success: function(responce){
-                            $("#myModal").modal('hide');
                              $('#msg').show().text(responce);
+                             $('#masag').show().text(responce);
                          $("#tr").fadeOut();
                          location.reload();
                         },
@@ -308,9 +308,8 @@ ul li{list-style:none;}
                          url: 'status_conform.php',
                          data: 'com_id=' + com_id +'&status_rej='+'active',
                          success: function(responce){
-                                     $("#myModal").modal('hide');
                              $('#msg').show().text(responce);
-                             //$('.con_pop').append()text(responce);
+                             $('#masag').show().text(responce);
                         $("#tr").fadeOut();
                         location.reload();
                         },
