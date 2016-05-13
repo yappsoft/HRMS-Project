@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<?php
-include("../dbcon.php");
+<?php                             include("../dbcon.php");
+ 
 
 
-
-if (isset($_SESSION['email'])) {
-    
-} else {
-    header('location:../index.html');
+if(isset($_SESSION['email'])){
+	
+}else{
+	header('location:../index.html');
 }
 ?>
-
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +16,7 @@ if (isset($_SESSION['email'])) {
         <script src="../js/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <title>HRMS </title>
-        <link rel="stylesheet" href="../css/animate.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="../js/animate.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
 
         <link rel="stylesheet" href="../css/chartist.min.css" media="screen" charset="utf-8">
@@ -28,9 +26,9 @@ if (isset($_SESSION['email'])) {
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
         <script src="../js/modernizr.custom.js"></script>
         <!--chart for free and paid users-->
-        <script src="../js/amcharts.js"></script>
-        <script src="../js/pie.js"></script>
-        <script src="../js/light.js"></script>
+        <script src="./js/amcharts.js"></script>
+        <script src="./js/pie.js"></script>
+        <script src="./js/light.js"></script>
         <!--end of chart-->
         <style type="text/css">
             body {
@@ -89,14 +87,13 @@ if (isset($_SESSION['email'])) {
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 
-        <ul style="margin-left:-20%;margin-top:39px">
-            <a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-            <a  href="employee_management.html">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-            <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-            <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-            <a  href="#">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
-
-        </ul>
+  	<ul style="margin-left:-20%;margin-top:39px">
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+</ul>
 
     </nav>
     <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -117,11 +114,11 @@ if (isset($_SESSION['email'])) {
 
         <!--- mian table idv start -->
 
-        <div class="container-fluid dashboardContainer">
+        <div class="container-fluid dashboardContainer"  style="width:152%">
             <div class="container-fluid dashboardContentHolder ">
                 <div class="tenant">
                     <div class="addTenant">
-                        <a href="add_employee.php" class="addTenantButton">Add Employee</a>
+                        <a href="add_employee.html" class="addTenantButton">Add Employee</a>
                     </div>
 
                     <!--- data view in table start here -->
@@ -135,15 +132,16 @@ if (isset($_SESSION['email'])) {
                                 <th>Contact Number</th>
                                 <th>Address</th>
                                 <th>Date Of Joining</th>
-                                <th>Edit/Delete</th>
-                                
+                                <th>Edit</th>
+                                <th>Delete</th>
+                                <th></th>
                             </tr>
 
                         </thead>
                         <tbody>
 
                             <?php
-                           
+
                             $result = mysqli_query($con, "select * from employee_tbl");
                             $counter = 0;
                             if (mysqli_num_rows($result) > 0) {
@@ -161,9 +159,9 @@ if (isset($_SESSION['email'])) {
                                         <td><?php echo $row["date_of_joining"] ?></td>
                                         <td>
                                             <a href="edit_employee.php?employee_id=<?php echo $row['employee_id'] ?>"><img height="25px" src="../images/edit1.png"></a>
-                                            <a href="delete_employee.php?employee_id=<?php echo $row['employee_id'] ?>"><img height="25px" src="../images/delete-icon.png"></a>
+                                            <img height="25px" src="../images/delete-icon.png">
                                         </td>
-
+                                        
                                     </tr>
                                     <!--- //end loop data -->
                                     <?php

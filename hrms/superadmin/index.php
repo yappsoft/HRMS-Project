@@ -2,6 +2,10 @@
 include '../dbcon.php';
 
 if(isset($_SESSION['email'])){
+	if($_SESSION['login_type'] != 'superadmin'){
+		header('location:index.html');
+		
+	}
 	
 }else{
 	header('location:../index.html');
@@ -112,9 +116,16 @@ $count_inact =$row['inact_com'];
                 </ul>
                 <ul class="management_navigation_holder">
 
-                    <li class="nav_item"><button type="button" class="navbtn" name="button"  >Welcome, <span class="caret"></span></button></li>
+               
+					<li class="dropdown navbar-user open nav_item" id="userOptionsDropdown">
+						<button  class="dropdown-toggle navbtn show-menu" data-toggle="dropdown" aria-expanded="true">
+							<img src="../images/deflt.gif" class="img-circle"alt="" width="26px" height="26px"> 
+							<span class="hidden-xs"><?php echo $_SESSION['username'];?></span> <b class="caret"></b>
+						</button>
+					
+					</li>
 
-                    <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+                 
                 </ul>
             </div>
         </main>

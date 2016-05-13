@@ -128,11 +128,10 @@ ul li{list-style:none;}
       <th>Company Name</th>
       <th>Email</th>
       <th>Subscription Date</th>
-      <th>No. of emp</th>
+      <th>Total Employee</th>
       <th>Plan</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Action</th>
+  
     </tr>
 
   </thead>
@@ -157,8 +156,8 @@ ul li{list-style:none;}
       <td><?php echo $arr['subscription_date'];?></td>
       <td><?php echo $arr['number_of_employee'];?></td>
       <td><?php echo $arr['company_plan'];?></td>
-      <td><img height="25px" src="../images/edit1.png"></td>
-      <td><a href="user_delete.php?company_id=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/delete-icon.png"></a>
+      <td><img height="25px" src="../images/edit1.png"> &nbsp; &nbsp;   <a href="user_delete.php?company_id=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/delete-icon.png"></a></td>
+      <td>
 	  </td>
     </tr>
 	<!--- //end loop data -->
@@ -225,15 +224,6 @@ ul li{list-style:none;}
 			}
 		</script>
 
-<script>
-
-	  <!-- jquery for fixed the div when open menu -->
-	  $().ready(function(){
-	  $('.menuLogo ').click(function(){
-	  $("#acc-div").toggleClass('fixed-right');
-	  });
-	  });
-	  </script>
 
 	  <!--- css for margin-regit div on paid & free Vijy -->
 	  <style>
@@ -248,12 +238,7 @@ ul li{list-style:none;}
 
               var company_id = id;
 
-        window.location = "user_details_per_emp.php?view_user=" + company_id;
-
-
+              window.location = "user_details_per_emp.php?view_user=" + company_id;
 
           }
-
-
-
           </script>

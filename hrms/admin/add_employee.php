@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<?php
+<?php 
 include '../dbcon.php';
 
-if (isset($_SESSION['email'])) {
-    
-} else {
-    header('location:../index.html');
+if(isset($_SESSION['email'])){
+	
+}else{
+	header('location:../index.html');
 }
 ?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,7 +23,6 @@ if (isset($_SESSION['email'])) {
 
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link rel="stylesheet" type="text/css" href="../css/component.css" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="../js/modernizr.custom.js"></script>
         <!--chart for free and paid users-->
         <script src="../js/amcharts.js"></script>
@@ -89,13 +88,13 @@ if (isset($_SESSION['email'])) {
     </head>
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
-        <ul style="margin-left:-20%;margin-top:39px">
-            <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-            <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-            <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-            <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-            <a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
-        </ul>
+	<ul style="margin-left:-20%;margin-top:39px">
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+</ul>
 
     </nav>
     <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -134,11 +133,11 @@ if (isset($_SESSION['email'])) {
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">First name</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="enp_f_name" name="enp_f_name"  placeholder="First Name" aria-describedby="basic-addon1">
+                                                <input type="text" class="tenantform " id="enp_f_name" name="enp_f_name"  placeholder="First Name" aria-describedby="basic-addon1" required="">
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Email</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="email" class="tenantform" placeholder="Employee Email" name="emp_email" id="emp_email" data-toggle="tooltip" data-placement="right" title="fill email">
+                                                <input type="email" class="tenantform" placeholder="Employee Email" name="emp_email" id="emp_email" data-toggle="tooltip" data-placement="right" title="fill email" required="">
                                                 <label class="error" id="email_error" style="display:none"> </label>
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
@@ -163,7 +162,7 @@ if (isset($_SESSION['email'])) {
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Last name</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="enp_l_name" name="enp_l_name"  placeholder="Last Name" aria-describedby="basic-addon1">
+                                                <input type="text" class="tenantform " id="enp_l_name" name="enp_l_name"  placeholder="Last Name" aria-describedby="basic-addon1" required="">
                                             </div>
 
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Password</span></div>
@@ -175,7 +174,7 @@ if (isset($_SESSION['email'])) {
 
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm Password</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="password" class="tenantform" placeholder="*******" id="emp_cof_password" name= "emp_cof_password" data-toggle="tooltip" data-placement="right" title="Type again">
+                                                <input type="password" class="tenantform" placeholder="*******" id="emp_cof_password" name= "emp_cof_password"data-toggle="tooltip" data-placement="right" title="Type again">
 
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Family Contact no.</span></div>
@@ -210,14 +209,18 @@ if (isset($_SESSION['email'])) {
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                                                     <input type="text" class="tenantform " id="education" name="education"  placeholder="Education" aria-describedby="basic-addon1">
                                                 </div>  
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Numbers Of Leave</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="Numbers Of Leave" name="Numbers_Of_Leave"  placeholder="Numbers Of Leave" aria-describedby="basic-addon1">
+                                                </div>   
 
                                                 <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Account No.</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="bank_acc_no" name="bank_acc_no"  placeholder="Account No." aria-describedby="basic-addon1">
+                                                    <input type="text" class="tenantform " id="bank_acc_no" name="bank_acc_no"  placeholder="Account No." aria-describedby="basic-addon1" required="">
                                                 </div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank Branch name</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="bank_branch_name" name="bank_branch_name"  placeholder="Bank Branch Name" aria-describedby="basic-addon1">
+                                                    <input type="text" class="tenantform " id="bank_branch_name" name="bank_branch_name"  placeholder="Bank Branch Name" aria-describedby="basic-addon1" required="">
                                                 </div>   
 
 
@@ -231,7 +234,7 @@ if (isset($_SESSION['email'])) {
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
 
                                                     <select name="dob_day" class="dropdate"style="width: auto" >
-                                                        <option selected disabled="">Day</option>
+                                                        <option >Day</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -266,7 +269,7 @@ if (isset($_SESSION['email'])) {
                                                     </select>
 
                                                     <select name="dob_month"class="dropdate" style="width: auto">
-                                                        <option>Month</option>
+                                                        <option >Month</option>
                                                         <option value="1">Jan</option>
                                                         <option value="2">Feb</option>
                                                         <option value="3">Mar</option>
@@ -283,7 +286,7 @@ if (isset($_SESSION['email'])) {
 
 
                                                     <select name="dob_year" class="dropdate" style="width: auto">
-                                                        <option selected disabled="">Year</option>
+                                                        <option >Year</option>
                                                         <?php
                                                         $firstYear = (int) date('Y') - 56;
                                                         $lastYear = (int) date('Y');
@@ -294,64 +297,23 @@ if (isset($_SESSION['email'])) {
                                                     </select>
 
                                                 </div>
-
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank name</span></div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="bank_name" name="bank_name"  placeholder="Bank Name" aria-describedby="basic-addon1">
-                                            </div>
-
-                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Ifsc Code</span></div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="bank_ifsc" name="bank_ifsc"  placeholder="Ifsc Code" aria-describedby="basic-addon1">
-                                            </div>
-
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="addtenantheader col-sm-12 col-md-12 col-lg-12" style="padding-right: 35px;">
-                                    <span>Official Details</span>
-                                    <img class="pull-right" src="../images/edit2.png" height="22px">
-                                </div>               <div class="row">
-                                    <div class=" col-sm-12 col-md-12 col-lg-12">
-
-                                        <div class="col-sm-6 col-md-6 col-lg-6">
-                                            <div class="row">
-
-                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Employee ID</span></div>
-                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="employee_id" name="employee_id"  placeholder="Employee ID" aria-describedby="basic-addon1">
-                                                </div>  
-                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Numbers Of Leave</span></div>
-                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="Numbers Of Leave" name="Numbers_Of_Leave"  placeholder="Numbers Of Leave" aria-describedby="basic-addon1">
-                                                </div>   
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-md-6 col-lg-6 ">
-                                            <div class="row">
-
-                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Department</span></div>
-                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-
-                                                    <select name="department" id="department" class="dropdate"style="width: 230px;" >
-                                                        <option selected disabled=""> Department</option>
-                                                        <option value="development">Development</option>
-                                                        <option value="marketing">Marketing</option>
-                                                        <option value="sales">Sales</option>
-                                                    </select>
-
-                                                </div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Date Of Joining</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1">
+                                                    <input type="text" class="tenantform datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1" required="">
 
                                                 </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank name</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="bank_name" name="bank_name"  placeholder="Bank Name" aria-describedby="basic-addon1" required="">
+                                                </div>
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Ifsc Code</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="bank_ifsc" name="bank_ifsc"  placeholder="Ifsc Code" aria-describedby="basic-addon1" required="">
+                                                </div>
+
+
+
 
                                             </div>
                                         </div>
@@ -360,7 +322,7 @@ if (isset($_SESSION['email'])) {
                                 <!--Basic detail section of a employ end hear-->
                                 <!--submit cancel reset group of buttons-->
                                 <div class="row">
-                                    <div  class="alert alert-success col-md-6 col-md-offset-3" id="msg" align="center" style="display: none; background-color: #7BC143 !important;">
+                                    <div  class="alert alert-success col-md-6 col-md-offset-3" id="msg" style="display: none; background-color: #7BC143 !important;">
                                         <strong>Success!</strong> Form has been send.
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center">
@@ -391,10 +353,6 @@ if (isset($_SESSION['email'])) {
     </body>
 
 </html>
-
-
-    
-
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 
@@ -462,18 +420,18 @@ if (isset($_SESSION['email'])) {
             $("#login-form").hide();
             $("#reg-form").show();
         });
-
+        
         /// Registration form validation 
 
 
         $("#registerform").validate({
             rules:
                     {
-                        enp_f_name: {
+                        emp_f_name: {
                             required: true,
                             minlength: 3
                         },
-                        enp_l_name: {
+                        emp_l_name: {
                             required: true,
                             minlength: 3
                         },
@@ -490,13 +448,27 @@ if (isset($_SESSION['email'])) {
                             required: true,
                             email: true
                         },
-                        emp_no: {
+                        bank_acc_no: {
                             required: true,
-                            digits: true
+                            minlength: 3
+                        },
+                        bank_branch_name: {
+                            required: true,
+                            minlength: 3
+                        },
+                        bank_name: {
+                            required: true,
+                            minlength: 3
+                        },
+                        bank_ifsc: {
+                            required: true,
+                            minlength: 3
+                        },
+                        emp_no: {
+                            required: true
                         },
                         Numbers_Of_Leave: {
-                            required: true,
-                            digits: true
+                            required: true
                         },
                         education: {
                             required: true
@@ -508,51 +480,40 @@ if (isset($_SESSION['email'])) {
                             required: true
                         },
                         emp_alt_no: {
-                            required: true,
-                            digits: true
+                            required: true
                         },
                         emp_family_no: {
-                            required: true,
-                            digits: true
-                        },
-                        dob_year: {
                             required: true
                         },
-                        employee_id: {
-                            required: true
-                        },
-                        department: {
-                            required: true
-                        },
-                        date_of_joining: {
+                        dob_day: {
                             required: true
                         }
-
                     },
             messages:
                     {
-                        enp_f_name: "Please enter first name.",
-                        enp_l_name: "Please enter last name.",
+                        emp_f_name: "please enter first name",
+                        emp_l_name: "please enter last name",
+                        bank_acc_no: "please enter account number",
+                        bank_name: "please enter bank name",
+                        bank_branch_name: "please enter bank branch",
+                        bank_ifsc: "please enter ifsc code",
                         emp_password: {
-                            required: "Please provide a password.",
-                            minlength: "Password at least have 8 characters."
+                            required: "please provide a password",
+                            minlength: "password at least have 8 characters"
                         },
-                        emp_email: "Please enter a valid email address.",
+                        emp_email: "please enter a valid email address",
                         emp_cof_password: {
-                            required: "Please retype your password.",
-                            equalTo: "Password doesn't match !"
+                            required: "please retype your password",
+                            equalTo: "password doesn't match !"
                         },
                         emp_no: "Please enter Mobile Number.",
-                        Numbers_Of_Leave: "Please enter number of leaves.",
+                        Numbers_Of_Leave: "Please enter number of leaves",
                         education: "Please enter education.",
-                        local_add: "Please enter local address.",
+                        local_add: "Please enter local address",
                         emp_par_add: "Please enter permanent address.",
-                        emp_alt_no: "Please enter aleternate number.",
-                        emp_family_no: "Please enter family number.",
-                        dob_year: "Please enter DOB.",
-                        employee_id: "Please enter Employee ID.",
-                        department: "Please enter Department.",
-                        date_of_joining: "Please enter DOJ."
+                        emp_alt_no: "Please enter aleternate number",
+                        emp_family_no: "Please enter family number",
+                        dob_day: "Please enter DOB"
                     },
             submitHandler: submitForm
         });
@@ -568,13 +529,13 @@ if (isset($_SESSION['email'])) {
                 url: "employeedb.php",
                 data: datafrom,
                 success: function (response) {
-                    alert(response);
+
                     window.setTimeout(function () {
                         window.location = 'employee_management.php';
 
                     }, 3000)
 
-                    $('#msg').show().text(response);
+                    $('#msg').show().text(responce);
 
                 },
             });
@@ -585,11 +546,3 @@ if (isset($_SESSION['email'])) {
     });
 </script>
 
-
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-    <script>
-        $(function () {
-            $(".datepicker").datepicker();
-        });
-    </script>

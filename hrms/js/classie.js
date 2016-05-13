@@ -9,6 +9,14 @@
  */
 
 /*jshint browser: true, strict: true, undef: true */
+	var a ='<ul class="animated" style="padding:0"><li><a href="#">Profile</a></li></ul>';
+
+$(document).ready(function(){
+	
+//alert(a);
+            $("#userOptionsDropdown").popover({trigger:"focus",html:true,placement:"bottom", content: a});
+
+           });
 
 ( function( window ) {
 

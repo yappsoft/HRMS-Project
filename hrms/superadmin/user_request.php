@@ -143,8 +143,9 @@ ul li{list-style:none;}
       <th>Request Date</th>
       <th>Email</th>
       <th>Plan</th>
-      <th>No. of emp</th>
+      <th>Total Employee</th>
       <th>Country</th>
+      <th>Email verify</th>
       <th>Approve/Reject</th>
       
     </tr>
@@ -153,7 +154,7 @@ ul li{list-style:none;}
   <tbody>
   <?php
 
-        $sql = "select country_name, company_id, company_name, company_email, registration_date, company_plan, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_status = 'inactive' ";
+        $sql = "select country_name, company_id, company_name, company_email,is_email_var, registration_date, company_plan, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_status = 'inactive' ";
          $result = mysqli_query($con , $sql);
     //var_dump($sql);
      $counter = 0;
@@ -171,6 +172,7 @@ ul li{list-style:none;}
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_plan'];?></td>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['number_of_employee'];?></td>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['country_name'];?></td>
+      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['is_email_var'];?></td>
       <td><span style="color: green" id="approve" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color: red"  class="glyphicon glyphicon-remove-circle"  onclick="rej_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span></td>
       
     </tr>

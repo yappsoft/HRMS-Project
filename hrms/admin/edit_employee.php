@@ -1,69 +1,13 @@
 <!DOCTYPE html>
-<?php
+<?php 
 include '../dbcon.php';
 
-if (isset($_SESSION['email'])) {
-    
-} else {
-    header('location:../index.html');
+if(isset($_SESSION['email'])){
+	
+}else{
+	header('location:../index.html');
 }
 ?>
-
-<?php
-if (isset($_POST["Update"])) {
-    $employee_id = $_GET["employee_id"];
-    $first_name = $_POST["enp_f_name"];
-    $last_name = $_POST["enp_l_name"];
-    $email = $_POST["emp_email"];
-    $mobile_no = $_POST["emp_no"];
-    $alternate_no = $_POST["emp_alt_no"];
-    $family_no = $_POST["emp_family_no"];
-    $local_address = $_POST["local_add"];
-    $permanent_address = $_POST["emp_par_add"];
-    $education = $_POST["education"];
-    $account_no = $_POST["bank_acc_no"];
-    $ifsc_code = $_POST["bank_ifsc"];
-    $bank_name = $_POST["bank_name"];
-    $bank_branch_name = $_POST["bank_branch_name"];
-    $number_of_leaves = $_POST["number_of_leaves"];
-    $department = $_POST["department"];
-
-    $image = '';
-    if(isset($_FILES['image'])){
-      $errors= array();
-      $file_name = $_FILES['image']['name'];
-      $file_size =$_FILES['image']['size'];
-      $file_tmp =$_FILES['image']['tmp_name'];
-      $file_type=$_FILES['image']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-      
-      $expensions= array("jpeg","jpg","png");
-      
-      if(in_array($file_ext,$expensions)=== false){
-         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-      }
-      
-      if($file_size > 2097152){
-         $errors[]='File size must be excately 2 MB';
-      }
-      
-      if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"../upload_images/".$file_name);
-         echo "Success";
-      }else{
-         print_r($errors);
-      }
-   }
-
-    $q = "update employee_tbl set first_name='$first_name', last_name='$last_name', email='$email', mobile_no='$mobile_no', alternate_no='$alternate_no', family_no='$family_no', local_address='$local_address', permanent_address='$permanent_address', education='$education', account_no='$account_no', ifsc_code='$ifsc_code', bank_name='$bank_name', bank_branch_name='$bank_branch_name', number_of_leaves='$number_of_leaves', department='$department', image='$file_name' where employee_id='$employee_id'";
-    mysqli_query($con, $q);
-    //var_dump($q);
-    header('location:employee_management.php');
-    
-}
-?>
-
-
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -144,13 +88,13 @@ if (isset($_POST["Update"])) {
     </head>
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
-        <ul style="margin-left:-20%;margin-top:39px">
-            <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-            <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-            <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-            <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-            <a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
-        </ul>
+	<ul style="margin-left:-20%;margin-top:39px">
+  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+</ul>
 
     </nav>
     <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -183,35 +127,32 @@ if (isset($_POST["Update"])) {
                             <img class="pull-right" src="../images/edit2.png" height="22px">
                         </div>
                         <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12" style="height: auto;; padding-left: 0px;">
-                            <?php
-                            $employee_id = $_GET["employee_id"];
-                            $q = "select * from employee_tbl where employee_id='$employee_id'";
-                            $result = mysqli_query($con, $q);
-                            $row = mysqli_fetch_array($result);
-                            ?>
-                            <form class="" id="registerform" method="post" enctype="multipart/form-data">
+                            <form class="" id="registerform" method="post">
                                 <div class=" col-sm-12 col-md-12 col-lg-12">
                                     <div class="col-sm-6 col-md-6 col-lg-6">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">First name</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="enp_f_name" name="enp_f_name"  placeholder="First Name" aria-describedby="basic-addon1" value="<?php echo $row['first_name'] ?>">
-                                                <input type="hidden" class="tenantform " id="employee_id" name="employee_id"  placeholder="" aria-describedby="basic-addon1" value="<?php echo $row['employee_id'] ?>">
+                                                <input type="text" class="tenantform " id="enp_f_name" name="enp_f_name"  placeholder="First Name" aria-describedby="basic-addon1" required="">
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Email</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="email" class="tenantform" placeholder="Employee Email" name="emp_email" id="emp_email" data-toggle="tooltip" data-placement="right" title="fill email" value="<?php echo $row['email'] ?>">
+                                                <input type="email" class="tenantform" placeholder="Employee Email" name="emp_email" id="emp_email" data-toggle="tooltip" data-placement="right" title="fill email" required="">
                                                 <label class="error" id="email_error" style="display:none"> </label>
                                             </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
 
+                                                <input type="text" class="tenantform" placeholder="Contact No" name="emp_no" id="emp_no" data-toggle="tooltip" data-placement="right" title="Enter contect no.">
+                                            </div>
 
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Alternet Contact no.</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform" placeholder="Alternet Contact No" name="emp_alt_no" id="emp_alt_no" value="<?php echo $row['alternate_no'] ?>">
+                                                <input type="text" class="tenantform" placeholder="Alternet Contact No" name="emp_alt_no" id="emp_alt_no" ">
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Local Address</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <textarea class="tenantform" placeholder="Local Address"  name="local_add" id="local_add"rows="5" id="comment" ><?php echo $row['local_address'] ?></textarea>
+                                                <textarea class="tenantform" placeholder="Local Address"  name="local_add" id="local_add"rows="5" id="comment" ></textarea>
 
                                             </div>
                                         </div>
@@ -221,21 +162,28 @@ if (isset($_POST["Update"])) {
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Last name</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="enp_l_name" name="enp_l_name"  placeholder="Last Name" aria-describedby="basic-addon1" value="<?php echo $row['last_name'] ?>">
+                                                <input type="text" class="tenantform " id="enp_l_name" name="enp_l_name"  placeholder="Last Name" aria-describedby="basic-addon1" required="">
                                             </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
+
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Password</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
 
-                                                <input type="text" class="tenantform" placeholder="Contact No" name="emp_no" id="emp_no" data-toggle="tooltip" data-placement="right" title="Enter contect no." value="<?php echo $row['mobile_no'] ?>">
+                                                <input type="password" class="tenantform" placeholder="*********" id="emp_password" name="emp_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
+
                                             </div>
 
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm Password</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="password" class="tenantform" placeholder="*******" id="emp_cof_password" name= "emp_cof_password"data-toggle="tooltip" data-placement="right" title="Type again">
+
+                                            </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Family Contact no.</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform" placeholder="Family Contact no" name="emp_family_no" id="emp_family_no" value="<?php echo $row['family_no'] ?>">
+                                                <input type="text" class="tenantform" placeholder="Family Contact no" name="emp_family_no" id="emp_family_no">
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Parmanent Address</span></div>
                                             <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <textarea  class="tenantform " placeholder="Parmanent Address"  name="emp_par_add" id="emp_par_add"rows="5" id="comment"><?php echo $row['permanent_address'] ?></textarea>
+                                                <textarea  class="tenantform " placeholder="Parmanent Address"  name="emp_par_add" id="emp_par_add"rows="5" id="comment"></textarea>
 
                                             </div>
 
@@ -259,16 +207,20 @@ if (isset($_POST["Update"])) {
 
                                                 <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Education</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="education" name="education"  placeholder="Education" aria-describedby="basic-addon1" value="<?php echo $row['education'] ?>">
+                                                    <input type="text" class="tenantform " id="education" name="education"  placeholder="Education" aria-describedby="basic-addon1">
                                                 </div>  
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Numbers Of Leave</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="Numbers Of Leave" name="Numbers_Of_Leave"  placeholder="Numbers Of Leave" aria-describedby="basic-addon1">
+                                                </div>   
 
                                                 <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Account No.</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="bank_acc_no" name="bank_acc_no"  placeholder="Account No." aria-describedby="basic-addon1" value="<?php echo $row['account_no'] ?>">
+                                                    <input type="text" class="tenantform " id="bank_acc_no" name="bank_acc_no"  placeholder="Account No." aria-describedby="basic-addon1" required="">
                                                 </div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank Branch name</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="bank_branch_name" name="bank_branch_name"  placeholder="Bank Branch Name" aria-describedby="basic-addon1" value="<?php echo $row['bank_branch_name'] ?>">
+                                                    <input type="text" class="tenantform " id="bank_branch_name" name="bank_branch_name"  placeholder="Bank Branch Name" aria-describedby="basic-addon1" required="">
                                                 </div>   
 
 
@@ -276,59 +228,51 @@ if (isset($_POST["Update"])) {
                                         </div>
 
                                         <div class="col-sm-6 col-md-6 col-lg-6 ">
-
-                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank name</span></div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="bank_name" name="bank_name"  placeholder="Bank Name" aria-describedby="basic-addon1" value="<?php echo $row['bank_name'] ?>">
-                                            </div>
-
-                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Ifsc Code</span></div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="text" class="tenantform " id="bank_ifsc" name="bank_ifsc"  placeholder="Ifsc Code" aria-describedby="basic-addon1" value="<?php echo $row['ifsc_code'] ?>">
-                                            </div>
-
-                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Image</span></div>
-                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                <input type="file" class="tenantform " id="image" name="image"  placeholder="Please upload image" aria-describedby="basic-addon1">
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="addtenantheader col-sm-12 col-md-12 col-lg-12" style="padding-right: 35px;">
-                                    <span>Official Details</span>
-                                    <img class="pull-right" src="../images/edit2.png" height="22px">
-                                </div>               <div class="row">
-                                    <div class=" col-sm-12 col-md-12 col-lg-12">
-
-                                        <div class="col-sm-6 col-md-6 col-lg-6">
                                             <div class="row">
 
-
-                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Numbers Of Leave</span></div>
-                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                                                    <input type="text" class="tenantform " id="number_of_leaves" name="number_of_leaves"  placeholder="Numbers Of Leave" aria-describedby="basic-addon1" value="<?php echo $row['number_of_leaves'] ?>">
-                                                </div>   
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-md-6 col-lg-6 ">
-                                            <div class="row">
-
-                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Department</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Date Of Birth</span></div>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
 
-                                                    <select name="department" id="department" class="dropdate"style="width: 230px;" >
-                                                        <option selected disabled=""> Department</option>
-                                                        <option value="development">Development</option>
-                                                        <option value="marketing">Marketing</option>
-                                                        <option value="sales">Sales</option>
+                                                    <select name="dob_day" class="dropdate"style="width: auto" >
+                                                        <option >Day</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
 
+                                                    <select name="dob_month"class="dropdate" style="width: auto">
+                                                        <option >Month</option>
+                                                        <option value="1">jan</option>
+                                                        <option value="2">feb</option>
+                                                        <option value="3">mar</option>
+                                                    </select>
+
+
+                                                    <select name="dob_year" class="dropdate" style="width: auto">
+                                                        <option >Year</option>
+                                                        <option value="1">1990</option>
+                                                        <option value="2">1991</option>
+                                                        <option value="3">1992</option>
                                                     </select>
 
                                                 </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Date Of Joining</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1" required="">
+
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank name</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="bank_name" name="bank_name"  placeholder="Bank Name" aria-describedby="basic-addon1" required="">
+                                                </div>
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Ifsc Code</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="bank_ifsc" name="bank_ifsc"  placeholder="Ifsc Code" aria-describedby="basic-addon1" required="">
+                                                </div>
+
+
+
 
                                             </div>
                                         </div>
@@ -337,14 +281,13 @@ if (isset($_POST["Update"])) {
                                 <!--Basic detail section of a employ end hear-->
                                 <!--submit cancel reset group of buttons-->
                                 <div class="row">
-                                    <div  class="alert alert-success col-md-6 col-md-offset-3" id="msg" style="display: none; background-color: #7BC143 !important;">
-                                        <strong>Success!</strong> Form has been send.
-                                    </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                        <div class="alert alert-info " id="reposnse"  style="display:none;">
 
+                                        </div>
 
                                         <ul class="tenantform">
-                                            <button type="submit" name="Update" value="Update" style="    padding: 10px 20px 10px 20px;
+                                            <button type="submit" style="    padding: 10px 20px 10px 20px;
                                                     border: 1px solid #7BC143;
                                                     border-radius: 24px;
                                                     font-weight: bold;
@@ -416,50 +359,147 @@ if (isset($_POST["Update"])) {
 <!--validation function script start hear-->
 <script>
 
-            $(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-            $("#emp_no").keypress(function (e) {
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                        $("#emp_no").keypress(function (e) {
 
-    var key = e.charCode || e.keyCode || 0;
-            // only numbers
-            if (key < 48 || key > 58) {
-    return false;
-    }
-    if (key <= 10) {
-    return false;
-    }
+                            var key = e.charCode || e.keyCode || 0;
 
-    });
-            $("#reg_with").click(function () {
-    $("#login-form").hide();
-            $("#reg-form").show();
-    });
-            //  <!--validation function script end hear-->
-                    // submit form 
-                            function  submitForm() {
+                            // only numbers
+                            if (key < 48 || key > 58) {
+
+                                return false;
+                            }
+                            if (key <= 10) {
+                                return false;
+                            }
+
+                        });
+
+
+
+                        $("#reg_with").click(function () {
+                            $("#login-form").hide();
+                            $("#reg-form").show();
+
+                        });
+                        ///login form validation
+                        $("#loginform").validate({
+                            rules:
+                                    {
+                                        password: {
+                                            required: true,
+                                            minlength: 8,
+                                            maxlength: 15
+                                        },
+                                        email: {
+                                            required: true,
+                                            email: true
+                                        },
+                                    },
+                            messages:
+                                    {
+                                        emp_password: {
+                                            required: "please provide a password",
+                                            minlength: "password at least have 8 characters",
+                                        },
+                                        emp_email: "please enter a email address",
+                                    },
+                            submitHandler: submitForm
+                        });
+
+
+
+
+                        /// start singup form validation 
+
+
+                        $("#registerform").validate({
+                            rules:
+                                    {
+                                        emp_f_name: {
+                                            required: true,
+                                            minlength: 3
+                                        },
+                                        emp_l_name: {
+                                            required: true,
+                                            minlength: 3
+                                        },
+                                        emp_password: {
+                                            required: true,
+                                            minlength: 8,
+                                            maxlength: 15
+                                        },
+                                        emp_cof_password: {
+                                            required: true,
+                                            equalTo: '#emp_password'
+                                        },
+                                        emp_email: {
+                                            required: true,
+                                            email: true
+                                        },
+                                        bank_acc_no: {
+                                            required: true,
+                                            minlength: 3
+                                        },
+                                        bank_branch_name: {
+                                            required: true,
+                                            minlength: 3
+                                        },
+                                        bank_name: {
+                                            required: true,
+                                            minlength: 3
+                                        },
+                                        bank_ifsc: {
+                                            required: true,
+                                            minlength: 3
+                                        },
+                                    },
+                            messages:
+                                    {
+                                        emp_f_name: "please enter first name",
+                                        emp_l_name: "please enter last name",
+                                        bank_acc_no: "please enter account number",
+                                        bank_name: "please enter bank name",
+                                        bank_branch_name: "please enter bank branch",
+                                        bank_ifsc: "please enter ifsc code",
+                                        emp_password: {
+                                            required: "please provide a password",
+                                            minlength: "password at least have 8 characters"
+                                        },
+                                        emp_email: "please enter a valid email address",
+                                        emp_cof_password: {
+                                            required: "please retype your password",
+                                            equalTo: "password doesn't match !"
+                                        }
+                                    },
+                            submitHandler: submitForm
+                        });
+                        //  <!--validation function script end hear-->
+                        // submit form 
+                        function  submitForm() {
                             var datafrom = $('#registerform').serialize();
-                                    $("#reg_button").text('').prop("disabled", 'true');
-                                    $("#reg_button").css({'background': '#fff', 'opacity': '.5'});
-                                    $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
-            $.ajax({
-                method: "POST",
-                url: "employeedb.php",
-                data: datafrom,
-                success: function (response) {
-alert(response);
-                   // window.setTimeout(function () {
-                    //    window.location = 'employee_management.php';
+                            $("#reg_button").text('').prop("disabled", 'true');
+                            $("#reg_button").css({'background': '#fff', 'opacity': '.5'});
+                            $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
+                            $.ajax({
+                                method: "POST",
+                                url: "employeedb.php",
+                                data: datafrom,
+                                success: function (response) {
+                                    window.setTimeout(function () {
+                                        window.location = 'employee_management.php';
 
-                  //  }, 3000)
-
-                    $('#msg').show().text(response);
-
-                },
-            });
-        }
+                                    }, 3000)
 
 
 
-    });
+                                },
+                            });
+                        }
+
+
+
+                    });
 </script>
 

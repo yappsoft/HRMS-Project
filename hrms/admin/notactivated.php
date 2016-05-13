@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <?php 
 include '../dbcon.php';
-
+if(isset($_SESSION['email'])){
 if($_SESSION['status']!='inactive'){
 	
 	header('location:index.php');
+}
+}else{
+header('location:index.php');
 }
 ?>
 
@@ -129,7 +132,7 @@ ul li{list-style:none;}
   </ul>
 <ul class="management_navigation_holder">
   
-  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+  <li class="nav_item"><a href="javascript:void(0)"><button type="button" onclick='logout()' class="navbtn" name="button">Log out</button></a></li>
 </ul>
 </div>
 </main>
@@ -145,6 +148,8 @@ ul li{list-style:none;}
     <p>
       Your account is currently idling on the runway waiting for takeoff.    </p>
 
+	  <?php if(isset($_GET['notactive'])){?>
+		  
     <p class="info-block">
       <img src="..	/images/ico_detail.png" alt="">
       Please check your inbox for an email from HRMS and click on the activation link to verify your email address.    </p>
@@ -154,7 +159,13 @@ ul li{list-style:none;}
        
         Resend activation e-mail      </a>
     </div>
+	  <?php } else {?>
+<p class="info-block">
+      <img src="..	/images/ico_detail.png" alt="">
+        Your account is currently in review, please wait some time we touch soon Thank you.     </p>
 
+    <div>
+	  <?php }?>
   </div>
 </div>
 		
@@ -228,7 +239,9 @@ ul li{list-style:none;}
 } );
 </script>
 <script>
-	  
+	  function logout(){
+		  window.location.href="../logout.php";
+	  }
 	  <!-- jquery for fixed the div when open menu -->
 	  $().ready(function(){
 	  $('.menuLogo ').click(function(){
@@ -249,48 +262,6 @@ ul li{list-style:none;}
     font-weight: 400;
     padding: 0;
 }
-.account-activation h2 {
-    color: #55575d;
-    font-size: 32px;
-    margin-bottom: 35px;
-    margin-top: 80px;
-    font-weight: bold;
-	    font-family: "Roboto";
-}
-.account-activation p {
-    color: #535661;
-    font-size: 17px;
-}
-.account-activation .info-block {
-    width: 660px;
-    border: 1.3px solid #e2e1e7;
-    border-radius: 4px;
-    background-color: white;
-    margin: 25px auto;
-    text-align: left;
-    padding: 17px;
-}
-.account-activation .info-block img {
-    display: block;
-    float: left;
-    margin: 8px 30px 15px 15px;
-}
-.account-activation .btn {
-    position: relative;
-    -webkit-transition: padding-left 0.8s ease-in-out;
-    transition: padding-left 0.8s ease-in-out;
-    border-radius: 4px;
-    font-size: 13px;
-    text-transform: uppercase;
-    padding: 15px 25px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-.btn.btn-primary {
-    background-color: #354052;
-    color: #fff;
-    -webkit-transition: background-color 0.4s ease-in-out;
-    transition: background-color 0.4s ease-in-out;
-}
+
 	  </style>
                 

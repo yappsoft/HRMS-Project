@@ -28,6 +28,7 @@ if($type == 'employee'){
 }else if($type == 'superadmin'){
     $_SESSION['email'] = $row['email'];
 	$_SESSION['status'] = $row['login_status'];
+	$_SESSION['username'] = $row['username'];
 	$_SESSION['login_type'] = $row['user_type'];
     echo 'spradmin';
 }else if($type == 'admin'){

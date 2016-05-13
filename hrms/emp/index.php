@@ -1,34 +1,22 @@
 <!DOCTYPE html>
 <?php 
 include '../dbcon.php';
-
 if(isset($_SESSION['email'])){
-	$unique_id = $_SESSION['company_id'];	
-	if(isset($_SESSION['status'])){
-		
-		if($_SESSION['status'] == 'inactive'){
-			
-			header('location:notactivated.php');
-		}
+	$emp_id = $_SESSION['login_emp_id'];
+	$com_id = $_SESSION['company_id'];
 	
-	}
-//query for check status 
-	$query  = mysqli_query($con,"select * from companyreg_tbl where company_id ='$unique_id' limit 1");
-	if($query){
-		$row = mysqli_fetch_array($query);
-		$check_status = $row['is_email_var'];
-		if($check_status == 'inactive'){
-				header('location:notactivated.php?notactive');
-			
-		}
-		
-	}
 
 	
 }else{
-	header('location:../index.html');
+	
+	header('../index.html');
 }
 ?>
+
+
+
+
+
 
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -39,7 +27,7 @@ if(isset($_SESSION['email'])){
     <title>HRMS </title>
     <link rel="stylesheet" href="../js/animate.css" media="screen" charset="utf-8">
       <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
-      <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="screen" charset="utf-8">
+
     
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
 			
@@ -53,6 +41,7 @@ if(isset($_SESSION['email'])){
                <script src="../js/calendar.js"></script>
 <!--end of chart-->
                 <style type="text/css">
+				.alert{color:#fff}
 				body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
     font-size: 14px;
@@ -98,36 +87,91 @@ ul li{list-style:none;}
                    }
                 </style>
 <style> 
-.monthPre{
- color: gray;
- text-align: center;
+
+.dialog__content {
+
+
+    padding: 4em;
+    text-align: center;
+
 }
-.monthNow{
- color: blue;
- text-align: center;
+ .dialog h2 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.3em;
+    padding: 0 0 2em;
+    margin: 0;
+	    color: #c94e50;
+    font-weight: 400;
+
+    font-family: 'Raleway', Arial, sans-serif;
 }
-.dayNow{
- border: 2px solid green;
- color: #FF0000;
- text-align: center;
-}
-.calendar td{
- htmlContent: 2px;
- width: 80px;
-}
-.monthNow th{
- background-color: #8CC63E;
- color: #FFFFFF;
- text-align: center;
-}
-.dayNames{
- background: #354052;
- color: #FFFFFF;;
- text-align: center;
-}
- 
 </style> 
    </head>
+   <script type="text/javascript">
+   var emp_ida = '<?php echo $emp_id?>';
+  $.ajax({
+                         type: 'POST',
+                         url: 'add_attdb.php',
+                         data: 'em_id=' + emp_ida +'&status='+'check',
+                         success: function(responce){
+							 	var fullDate = new Date()
+                               var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+                               var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+                                console.log(currentDate);
+							 if(responce !=currentDate ){
+								        $('#myModal').modal({
+                                       backdrop: 'static',
+                                    keyboard: false
+                                     });
+								 
+							 }
+                         
+                        },
+                     });
+    $(window).load(function(){
+
+ 
+
+    });
+</script>
+  <!-- attendece model start --->
+  
+  <div class="modal dialog__content" id="myModal"tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" style="width:350px;">
+    <div class="modal-content">
+      
+      <div class="modal-body dialog">
+	  <form id="attform" method="post">
+	  <input type="hidden" name="emp_id" id="emp_id" value="<?php echo $emp_id;?>" />
+	  <input type="hidden" name="com_id" id="com_id"  value="<?php echo $com_id;?>"/>
+     <h2><strong>Howdy</strong>, Please mark your attendance</h2>
+	 <div class="alert alert-success" role="alert" id="server_side_200" style="display:none"><strong>Welldone!</strong> Attendance mark successfully</div>
+	 <div class="alert alert-warning" role="alert" id="server_side_400" style="display:none"><strong>Oh snap!</strong> Please try again</div>
+	 <div class="alert alert-info" role="alert" id="server_side_500" style="display:none"><strong>Warning!</strong> server occur error  </div>
+	 
+	   <button   type="button"onclick="submitAtt()"class="btn btn-lg btn-primary btn-orange" id="submit_att">Submit Attendance
+        </button>
+		
+		
+		</form>
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+  
+  
+  
+  
+  
+  
+  <!--- //end attende modal -->
+  
+  
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 			
@@ -140,7 +184,7 @@ ul li{list-style:none;}
 </ul>
 			
 		</nav>
-  <body cz-shortcut-listen="true" class="cbp-spmenu-push" onload="displayCalendar()">
+  <body cz-shortcut-listen="true" class="cbp-spmenu-push" >
   
 <main class="maindiv">
  <div class="header navbar-fixed-top">
@@ -171,28 +215,13 @@ ul li{list-style:none;}
       <div class="col-md-4 col-lg-4 col-sm-4 gridview">
       <div class="dashboardHeader">
         <p class="dashboardHeading">Total Employee</p>
-        <div class="small-box bg-aqua">
-                                    <div class="inner">
-                                        <h3 class="count">
-                                            <h3 class="count" style="font-size: 75px;">
-                                            <?php
+        <ul class="dashboardList">
+          <li>
+        
 
-                                            $sel = "SELECT * FROM employee_tbl where company_id='$unique_id'";
-                                            $query = mysqli_query($con, $sel);
-                                            $row = mysqli_num_rows($query);
-
-                                            echo "$row";
-                                            ?>
-                                        </h3>
-                                        </h3>
-
-                                        <p>Total Employee Register TIll Now</p>
-                                    </div>
-                                    <div class="icon">
-                                      <i class="ion ion-person-stalker"></i>
-                                    </div>
-            <a href="employee_management.php" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
-                                </div>
+          </li>
+          <li></li>
+        </ul>
       </div>
     
 
@@ -204,19 +233,10 @@ ul li{list-style:none;}
       <div class="col-md-4 col-lg-4 col-sm-4 gridview">
         <div class="dashboardHeader">
           <p class="dashboardHeading">Today's Attendance</p>
-          <div class="small-box bg-yellow">
-                                    <div class="inner">
-                                        <h3 class="count" style="font-size: 75px;">
-                                            3/<?php echo $row;?>
-                                        </h3>
-
-                                        <p>Today's Attendance </p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="ion ion-checkmark-round"></i>
-                                    </div>
-                                    <a href="user_request.php" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
-                                </div>
+          <ul class="dashboardList">
+          
+          
+          </ul>
         </div>
           </div>
       <!-- second grid ends -->
@@ -236,24 +256,7 @@ ul li{list-style:none;}
           </div>
            <!---- third grid for calendar -->
 		  <!---- end pennding div -->
-	  <?php 
-         
-          $sel = "SELECT * FROM employee_tbl where company_id='$unique_id' and date_of_birth > DATE_FORMAT(CURDATE(),'%d-%m-%Y')";
-         //  var_dump($sel);
-            
-        /* $sel= "SELECT * FROM employee_tbl where company_id='$unique_id'  month(date_of_birth) >= month(now()) 
-                 and day(date_of_birth) >= day(now()) 
-                  order by date_of_birth asc";*/
-          $query = mysqli_query($con, $sel);
-          while($row = mysqli_fetch_array($query))
-          {
-             if($row['date_of_birth']){
-               $dob = $row['date_of_birth'];
-               $dt_o_b=substr($dob,3,2);
-                echo $dt_o_b; 
-             }
-           ?>
-          
+	  
     </div>
 	<div class="col-md-12 col-lg-12 col-sm-12 ">
       <!-- first grid starts -->
@@ -262,18 +265,30 @@ ul li{list-style:none;}
     <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
             <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/birthday.png"/></div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Upcoming Birthday</div>
-       <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden"></div>
+       <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
       </div>
       <!-- out for loop here for alarm notification -->
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
             <div class="col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
-            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold"><?php echo $row['first_name']." ".$row['last_name'];?></span><br>
-                    <span class="textnormal"> <?php echo $row['date_of_birth'];?></span>..
+            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold">Ruchi Pareta</span><br>
+                    <span class="textnormal">Tomorrow  13/05/2016 </span>..
               </div>
-          <?php }?>
            </div>
-          
+           <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
+             <div class="col-sm-1 col-md-1 col-lg-1"></div>
+             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
+               <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold">Yogendra</span><br>
+                     <span class="textnormal">birthday 26/05/2016</span>..
+               </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
+              <div class="col-sm-1 col-md-1 col-lg-1"></div>
+              <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
+                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold">Vijay Ijardar</span><br>
+                      <span class="textnormal">birthday 30/10/2016</span>..
+                </div>
+             </div>
        <!-- end upcoming birthday here-->
          <!-- start upcoming holidays here-->
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
@@ -281,23 +296,25 @@ ul li{list-style:none;}
             <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding ">Upcoming Holiday</div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
       </div>
-          <?php 
+       <?php 
          
-          $sel = "SELECT * FROM holiday_tbl where company_id='$unique_id' and holiday_date > DATE_FORMAT(CURDATE(),'%m-%d-%Y')";
+          $sel = "SELECT * FROM holiday_tbl where company_id='$com_id' and holiday_date > DATE_FORMAT(CURDATE(),'%m-%d-%Y')";
+		  //var_dump($sel);
           $query = mysqli_query($con, $sel);
-          while($row = mysqli_fetch_array($query))            // backend script for upcoming holidays
+          while($row = mysqli_fetch_array($query))
           {
            ?>
           
          <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
              <div class="col-sm-1 col-md-1 col-lg-1"></div>
-             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/red-dot.png" height="12px" alt="" ></div>
+             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/green-dot.png" height="12px" alt="" ></div>
                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold"><?php echo $row['holiday_name']?></span><br>
-                     <span class="textnormal">on <?php echo $row['holiday_date']." ".$row['holiday_days'] ?></span>..
+                     <span class="textnormal">on <?php echo $row['holiday_date']." ".$row['holiday_days'] ?></span>
                </div>
             </div>
           <?php }?>
-            
+           
+         
       </div>
    
       <!-- first grid ends -->
@@ -360,7 +377,19 @@ ul li{list-style:none;}
         
 
           </div>
-      
+      <!-- second grid alerts ends -->
+	  
+	 
+      <!-- <div class="col-md-4 col-lg-4 col-sm-4 gridview"  id="acc-div"style="float:right; margin-right: 12px;">
+        <div class="dashboardHeader">
+          <p class="dashboardHeading">Free/Paid Accounts</p>
+          <div id="chartdiv"></div>
+          <ul class="dashboardList" >
+              <li></li>
+          
+          </ul>
+        </div>
+          </div>-->
        <!--quick links gride start here-->
         <div class="col-md-4 col-lg-4 col-sm-4  " style="padding-right:0px;">
        <div class="quick-links  col-md-12 col-lg-12 col-sm-12 ">
@@ -371,13 +400,11 @@ ul li{list-style:none;}
       </div>
            <div class=" col-sm-12 col-md-12 col-lg-12 quicklinksContent overflow" style="background:#fff;overflow: auto; height: 470px;">
           <ul class="quicklinkslist">
-              <a href="javascript:void(0);"><li class="quicklinksitems"><img src="../images/ati.png"/> &nbsp;&nbsp;&nbsp;Add Employee</li></a>
-            <a href="javascript:void(0);"><li class="quicklinksitems"> <img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;View Employee</li></a>
-            <a href="user_details"><li class="quicklinksitems"><img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;Account Details</li></a>
+             
           </ul>
       </div>
       </div>
-        </div>   <!--../images/upi.png-->
+        </div>   
       
       </div>
      
@@ -388,21 +415,7 @@ ul li{list-style:none;}
 	
 	  
     
-		<div class="col-md-12 col-lg-12 col-sm-12 ">
 		
-			  <!--- msg div strat -->
-	  
-	  
-	  <!--msg div end -->
-	  <!---- alert start -->
-		
-	  <!--- calnder div-->
-	  	
-         
-	  <!--- calnder div end-->
-	  
-		
-		</div>
 	
 </div>
 </div></div>
@@ -449,22 +462,49 @@ ul li{list-style:none;}
 				}
 				
 			}
+			
+			     function  submitAtt() {
+                      var datafrom = $('#attform').serialize();
+					 // alert(datafrom);
+                      $("#submit_att").text('');
+                      $("#submit_att").css({'background': '#fff', 'opacity': '.5'});
+                      $("#submit_att").append("<img src='../images/loader.gif' />");
+                      $.ajax({
+                          method: "POST",
+                          url: "add_attdb.php",
+                          data: datafrom,
+                          success: function (response) {
+							//  alert(response);
+							  if(response == 'true'){
+                              $('html, body').animate({scrollTop: 0}, 500);
+                              $("#submit_att").text('Submit Attendance');
+							  $("#submit_att").css({'background':'#354052','opacity': '1'});
+							  $("#submit_att").prop('disabled','true');
+							  $("#server_side_200").show();
+							
+                         window.setTimeout(function () {
+                     location.reload()
+            }, 3000)
+							  }else  if(response == 'true'){
+								  
+								      $("#submit_att").text('Submit Attendance');
+							  $("#submit_att").css({'background':'#354052','opacity': '1'});
+							  	  $("#server_side_400").show();
+							  }else if(response!=''){
+								      $("#submit_att").text('Submit Attendance');
+									  	  $("#server_side_500").show();
+							  $("#submit_att").css({'background':'#354052','opacity': '1'});
+								  
+							  }
+                            
+
+
+
+                          },
+                      });
+                  }
+
 		</script>
- 
-<script>
-	  
-	  <!-- jquery for fixed the div when open menu -->
-	  $().ready(function(){
-	  $('.menuLogo ').click(function(){
-	  $("#acc-div").toggleClass('fixed-right');
-	  });
-	  });
-	  </script>
-	  
-	  <!--- css for margin-regit div on paid & free Vijy -->
-	  <style>
-	  .fixed-right{
-	  margin-right:5px !important;
-	  }
-	  </style>
-                
+
+
+

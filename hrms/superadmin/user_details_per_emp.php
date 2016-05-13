@@ -161,7 +161,7 @@ ul li{list-style:none;}
                         </div>
 
                         <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Number Of Employee:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Total Employee:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                            <?php echo $arr['number_of_employee'];?>
                        </div>
@@ -189,6 +189,19 @@ ul li{list-style:none;}
                           <?php echo $arr['subscription_date'];?>
                        </div>
                         </div>
+						<div class="row">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Register Employee :</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                     
+					 <?php $query = mysqli_query ($con, "select count(employee_id) as total_reg from employee_tbl where company_id = '$companyid'" );
+						if($query){
+							$r = mysqli_fetch_assoc($query);
+							echo $r['total_reg'];
+							
+						}
+					 ?>
+                       </div>
+                        </div>
                         <div class="row">
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Email Verification:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
@@ -213,8 +226,9 @@ ul li{list-style:none;}
       <th>#</th>
       <th>Employee ID</th>
       <th>Employee Name</th>
-
       <th>Employee Email</th>
+      <th>Employee Mobile</th>
+      <th>Employee Address</th>
 
     </tr>
 
@@ -237,8 +251,9 @@ ul li{list-style:none;}
       <td scope="row"><?php echo ++$counter;?></td>
       <td><?php echo $arr['employee_id'];?></td>
       <td><?php echo $arr['first_name']." ".$arr['last_name'];?> </td>
-
-      <td><?php echo $arr['emp_email'];?></td>
+      <td><?php echo $arr['email'];?></td>
+      <td><?php echo $arr['mobile_no'];?></td>
+      <td><?php echo ($arr['permanent_address']) ? $arr['permanent_address'] : 'Not updated';?></td>
 
 
     </tr>
