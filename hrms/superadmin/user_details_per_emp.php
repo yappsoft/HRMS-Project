@@ -223,7 +223,7 @@ ul li{list-style:none;}
   <?php
 
      $companyid=$_GET['view_user'];
-    $query="select * from employee_tbl where company_id=$companyid";
+    $query="select * from employee_tbl where company_id= $companyid";
     $rs=  mysqli_query($con, $query);
     $counter=0;
     while($arr= mysqli_fetch_array($rs))
@@ -238,7 +238,7 @@ ul li{list-style:none;}
       <td><?php echo $arr['employee_id'];?></td>
       <td><?php echo $arr['first_name']." ".$arr['last_name'];?> </td>
 
-      <td><?php echo $arr['email'];?></td>
+      <td><?php echo $arr['emp_email'];?></td>
 
 
     </tr>
