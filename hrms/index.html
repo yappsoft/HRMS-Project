@@ -163,8 +163,8 @@
                                             <select class="form-control" name="com_country"> 
                                                 <option>Country</option>
                                                 <option value="1">India</option>
-                                                <option>USA</option>
-                                                <option>Indore</option>
+                                                <option value="2">USA</option>
+                                         
 
 
 
@@ -278,7 +278,7 @@
 
                   function loginsubmit() {
                       var data = $("#loginform").serialize();
-                      //alert(data);
+                      alert(data);
 
                       $.ajax({
                           type: "POST",
@@ -286,6 +286,7 @@
                           data: data,
                           cache: false,
                           success: function (response) {
+						 // alert(response);
                               if (response == 'spradmin') {
                                   window.location.href = "superadmin/index.php";
                               } else if (response == 'admin') {

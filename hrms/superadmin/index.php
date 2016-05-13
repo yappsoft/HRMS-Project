@@ -1,5 +1,11 @@
 <?php
 include '../dbcon.php';
+
+if(isset($_SESSION['email'])){
+	
+}else{
+	header('location:../index.html');
+}
 $sel1 = "select sum(company_status ='active') as act_com,sum(company_status ='inactive') as inact_com from `companyreg_tbl`";
 $obj = mysqli_query($con,$sel1);
 //var_dump($sel);

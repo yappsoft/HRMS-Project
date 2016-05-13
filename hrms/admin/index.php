@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<?php 
+include '../dbcon.php';
+
+if(isset($_SESSION['email'])){
+	
+	if(isset($_SESSION['status'])){
+		
+		if($_SESSION['status'] == 'inactive'){
+			
+			header('location:notactivated.php');
+		}
+	}
+	
+}else{
+	header('location:../index.html');
+}
+?>
 
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -102,7 +119,7 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="deshbord.html"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="index.html"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
@@ -197,22 +214,22 @@ ul li{list-style:none;}
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
             <div class="col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
-            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold">Nitish</span><br>
-                    <span class="textnormal">birthday 15/05/2016</span>..
+            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold">Ruchi Pareta</span><br>
+                    <span class="textnormal">Tomorrow  13/05/2016 </span>..
               </div>
            </div>
            <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
              <div class="col-sm-1 col-md-1 col-lg-1"></div>
              <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold">Yogendra</span><br>
-                     <span class="textnormal">birthday 25/05/2016</span>..
+                     <span class="textnormal">birthday 26/05/2016</span>..
                </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
               <div class="col-sm-1 col-md-1 col-lg-1"></div>
               <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
-                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold">Deepak</span><br>
-                      <span class="textnormal">birthday 29/05/2016</span>..
+                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold">Vijay Ijardar</span><br>
+                      <span class="textnormal">birthday 30/10/2016</span>..
                 </div>
              </div>
        <!-- end upcoming birthday here-->

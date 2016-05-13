@@ -2,6 +2,7 @@
 
 //Insert query
 include("../dbcon.php");
+
 $query = "select * from notification_tbl";
 $result = mysqli_query($con,$query);
 $json = array();

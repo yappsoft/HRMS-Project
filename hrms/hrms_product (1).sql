@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2016 at 02:34 PM
+-- Generation Time: May 13, 2016 at 08:58 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -41,16 +41,14 @@ CREATE TABLE IF NOT EXISTS `companyreg_tbl` (
   `company_status` enum('active','inactive','reject') NOT NULL,
   `company_img` varchar(50) NOT NULL,
   `verfication_code` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `companyreg_tbl`
 --
 
 INSERT INTO `companyreg_tbl` (`company_id`, `country_id`, `company_name`, `company_email`, `company_password`, `company_contact`, `number_of_employee`, `company_plan`, `registration_date`, `is_email_var`, `subscription_date`, `company_status`, `company_img`, `verfication_code`) VALUES
-(8, 1, 'testing user', 'user@test.com', 'vija7898', '975577548', '2', 'free', '2016-05-12 17:24:54', 'inactive', '2016-05-12 17:24:54', 'inactive', '', 'eeab59e1015c78d006f6ab6aaa62f2a4'),
-(9, 1, 'demo', 'user@demo.com', 'vija7898', '975575874', '1', 'paid', '2016-05-12 17:25:48', 'inactive', '2016-05-12 17:25:48', 'active', '', '51bdce10cece492fa6ac9a24312c3a7e'),
-(10, 1, 'DEmo comapny', 'demo@demo.com', 'vija7898', '9755775748', '5', 'free', '2016-05-12 17:34:39', 'inactive', '2016-05-12 17:34:39', 'active', '', 'beb1faacff277ceb0551b4e54bf6e442');
+(13, 1, 'vijay ijardar', 'vijay.yappsoft@gmail.com', 'vija7898', '9755775748', '3', 'free', '2016-05-13 12:15:08', 'active', '2016-05-13 12:15:08', 'active', '', '737684f8082c800d3b3d012940a452db');
 
 -- --------------------------------------------------------
 
@@ -79,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `employee_tbl` (
   `account_no` varchar(35) NOT NULL,
   `ifsc_code` varchar(35) NOT NULL,
   `number_of_leaves` varchar(35) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `employee_tbl`
@@ -93,7 +91,8 @@ INSERT INTO `employee_tbl` (`employee_id`, `company_id`, `first_name`, `last_nam
 (8, 0, 'k', 'k', 'k@gmail.com', '12345678', '123456', '123456', '12345', 'k', 'k', '', 'BE', 'Day-Month-Year', '05/13/2016', 'kkkk', 'DLN', '5454545454', 'sbi', '100'),
 (9, 0, 'k', 'k', 'k@gmail.com', '12345678', '123456', '123456', '12345', 'k', 'k', '', 'BE', '3-3-3', '05/13/2016', 'kkkk', 'DLN', '5454545454', 'sbi', '100'),
 (10, 0, 'nit', 'pat', 'nit@gmail.com', '12345678', '12345', '12345', '12345', 'nit', 'nit', '', 'BE', '3-3-3', '05/13/2016', 'SBI', 'DLN', '12345', 'sbi', '100'),
-(11, 0, 'deno', 'demo', 'demmo@vj.com', 'vija7898', '788787', '8788878', '9755775748', 'indore', 'indore', '', 'BE', '3-2-3', '30-10-1994', 'indore', 'Indore', '999999999', 'indore', '10');
+(11, 0, 'deno', 'demo', 'demmo@vj.com', 'vija7898', '788787', '8788878', '9755775748', 'indore', 'indore', '', 'BE', '3-2-3', '30-10-1994', 'indore', 'Indore', '999999999', 'indore', '10'),
+(12, 0, 'test', 'vijay', 't@test.com', 'vija7898', '8787', '8787', '8787878', '787878', '878778878', '', 'BE', '1-2-1', 'dsfdd', 'dfvfcv', '5655', '326565656', 'dfgxv', '10');
 
 -- --------------------------------------------------------
 
@@ -106,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `holiday_tbl` (
   `holiday_name` varchar(45) NOT NULL,
   `holiday_date` varchar(25) NOT NULL,
   `holiday_days` varchar(35) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `holiday_tbl`
@@ -120,7 +119,11 @@ INSERT INTO `holiday_tbl` (`holiday_id`, `holiday_name`, `holiday_date`, `holida
 (5, 'nitish', '03/05/2016', 'tuesday'),
 (6, 'ruchi', '03/05/2016', 'tuesday'),
 (7, 'asdda', '03/28/2016', 'tuesday'),
-(10, 'demom hloi', '05/20/2016', 'tuesday');
+(10, 'demom hloi', '05/20/2016', 'tuesday'),
+(11, 'demom hloi', '05/19/2016', 'thursday'),
+(12, 'demom hloi', '05/19/2016', 'thursday'),
+(13, 'dzfxcv ', '05/25/2016', 'tuesday'),
+(14, 'srfd', '05/19/2016', 'wednesday');
 
 -- --------------------------------------------------------
 
@@ -159,16 +162,15 @@ CREATE TABLE IF NOT EXISTS `login_tbl` (
   `password` varchar(50) NOT NULL,
   `login_status` enum('active','inactive') NOT NULL,
   `user_type` varchar(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `login_tbl`
 --
 
 INSERT INTO `login_tbl` (`login_id`, `employee_id`, `company_id`, `username`, `email`, `password`, `login_status`, `user_type`) VALUES
-(6, 0, 8, '', 'user@test.com', 'vija7898', 'inactive', 'admin'),
-(7, 0, 9, '', 'user@demo.com', 'vija7898', 'active', 'admin'),
-(8, 0, 10, '', 'demo@demo.com', 'vija7898', 'active', 'admin');
+(1, 0, 0, 'Yappsoft', 'admin@hrms.com', 'superadmin', 'active', 'superadmin'),
+(5, 0, 13, '', 'vijay.yappsoft@gmail.com', 'vija7898', 'active', 'admin');
 
 -- --------------------------------------------------------
 
@@ -222,14 +224,17 @@ CREATE TABLE IF NOT EXISTS `notification_tbl` (
   `notif_type` varchar(15) NOT NULL,
   `notif_date` varchar(15) NOT NULL,
   `to_show` varchar(35) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `notification_tbl`
 --
 
 INSERT INTO `notification_tbl` (`notification_id`, `company_id`, `notif_message`, `notif_type`, `notif_date`, `to_show`) VALUES
-(9, 10, 'a DEmo comapny has send request for account register', 'user request', '2016-05-12 17:3', '');
+(9, 10, 'a DEmo comapny has send request for account register', 'user request', '2016-05-12 17:3', ''),
+(10, 11, 'a vijay test has send request for account register', 'user request', '2016-05-13 12:1', ''),
+(11, 12, 'a vijay ijardar has send request for account register', 'user request', '2016-05-13 12:1', ''),
+(12, 13, 'a vijay ijardar has send request for account register', 'user request', '2016-05-13 12:1', '');
 
 --
 -- Indexes for dumped tables
@@ -291,17 +296,17 @@ ALTER TABLE `notification_tbl`
 -- AUTO_INCREMENT for table `companyreg_tbl`
 --
 ALTER TABLE `companyreg_tbl`
-MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `company_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `employee_tbl`
 --
 ALTER TABLE `employee_tbl`
-MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `holiday_tbl`
 --
 ALTER TABLE `holiday_tbl`
-MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `holiday_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `leave_manag_tbl`
 --
@@ -311,7 +316,7 @@ MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `login_tbl`
 --
 ALTER TABLE `login_tbl`
-MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `main_super_admin`
 --
@@ -326,7 +331,7 @@ MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `notification_tbl`
 --
 ALTER TABLE `notification_tbl`
-MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --

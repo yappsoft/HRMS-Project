@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php 
+include '../dbcon.php';
+
+if(isset($_SESSION['email'])){
+	
+}else{
+	header('location:../index.html');
+}
+?>
 <html lang="en">
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     

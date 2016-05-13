@@ -15,13 +15,29 @@ $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 if($count > 0){
 // If result matched $username and $password, table row  must be 1 row
 $type = $row['user_type'];
+
 if($type == 'employee'){
+	$_SESSION['email'] = $row['email'];
+	$_SESSION['login_emp_id'] = $row['employee_id'];
+	$_SESSION['company_id'] = $row['company_id'];
+	$_SESSION['status'] = $row['login_status'];
+	$_SESSION['login_type'] = $row['user_type'];
+	
     echo 'emp';
     
 }else if($type == 'superadmin'){
-    
+    $_SESSION['email'] = $row['email'];
+	$_SESSION['status'] = $row['login_status'];
+	$_SESSION['login_type'] = $row['user_type'];
     echo 'spradmin';
 }else if($type == 'admin'){
+	
+	
+	$_SESSION['email'] = $row['email'];
+	$_SESSION['login_emp_id'] = $row['employee_id'];
+	$_SESSION['company_id'] = $row['company_id'];
+	$_SESSION['status'] = $row['login_status'];
+	$_SESSION['login_type'] = $row['user_type'];
 echo 'admin';
     
     
