@@ -77,12 +77,6 @@ ul li{list-style:none;}
                       padding-top: 20px !important;
 
                    }
-                   td{
-                       text-align: center;
-                   }
-                    th{
-                       text-align: center;
-                   }
                 </style>
 
 
@@ -91,13 +85,12 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 
       <ul style="margin-left:-20%;margin-top:39px">
-            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
-            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
-            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
+          <a href="index.php">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+          <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
+          <a href="user_request.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
 
-            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
-        </ul>
-
+          <a  href="javascript:void(o)">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
+      </ul>
 
 
 		</nav>
@@ -121,7 +114,7 @@ ul li{list-style:none;}
 
 <div class="container-fluid dashboardContainer">
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left: 0px;">
+ <div class="tenant" style="padding-left: 40px;">
   <div class="addTenant">
     <a href="add_users.html" class="addTenantButton">Add Company</a>
   </div>
@@ -131,7 +124,7 @@ ul li{list-style:none;}
   <thead>
 
     <tr>
-      <th>S.No.</th>
+      <th>#</th>
       <th>Company Name</th>
       <th>Email</th>
       <th>Subscription Date</th>
@@ -147,29 +140,23 @@ ul li{list-style:none;}
 
     $query="select * from companyreg_tbl where company_status='active' ";
     $rs=  mysqli_query($con, $query);
-    $test= mysqli_num_rows($rs);
-    
-    if($test>0)
-    {
     $counter=0;
-    while($arr= mysqli_fetch_array($rs))
-            {
+    while($arr= mysqli_fetch_array($rs)){
   ?>
 
 
   <!---- start show data in row loop -->
 
    <!--- on click  redirect to usefull info page on click event not in href -->
-    <tr >
+    <tr onclick="myfunction('<?php echo $arr['company_id'];?>')">
       <th scope="row"><?php echo ++$counter;?></th>
   <input type="hidden" value="<?php echo $arr['company_id'];?>" id="companyid">
-      <td onclick="myfunction('<?php echo $arr['company_id'];?>')"><?php echo $arr['company_name'];?></td>
-      <td onclick="myfunction('<?php echo $arr['company_id'];?>')"><?php echo $arr['company_email'];?></td>
-      <td onclick="myfunction('<?php echo $arr['company_id'];?>')"><?php echo $arr['subscription_date'];?></td>
-      <td onclick="myfunction('<?php echo $arr['company_id'];?>')"><?php echo $arr['number_of_employee'];?></td>
-      <td onclick="myfunction('<?php echo $arr['company_id'];?>')"><?php echo $arr['company_plan'];?></td>
-      <td><a href="user_edit.php?view_user=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/edit1.png"></a> &nbsp; &nbsp;   <a href="user_delete.php?view_user=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/delete-icon.png"></a>
-      </td>
+      <td><?php echo $arr['company_name'];?></td>
+      <td><?php echo $arr['company_email'];?></td>
+      <td><?php echo $arr['subscription_date'];?></td>
+      <td><?php echo $arr['number_of_employee'];?></td>
+      <td><?php echo $arr['company_plan'];?></td>
+      <td><img height="25px" src="../images/edit1.png"> &nbsp; &nbsp;   <a href="user_delete.php?company_id=<?php echo $arr['company_id'];?>"><img height="25px" src="../images/delete-icon.png"></a></td>
       <td>
 	  </td>
     </tr>
@@ -178,22 +165,9 @@ ul li{list-style:none;}
    <!--- on click  redirect to usefull info page on click event not in href -->
 
 	<!--- //end loop data -->
-	<?php 
-       
-        }
+	<?php
     }
-   else{
- 
-     ?>
- 
-     <tr >
-         <td scope="row" class="text-center" colspan="6"><?php echo "no record found"?></td>
-
-    </tr>
-    <?php
- }
- 
-   ?>
+    ?>
   </tbody>
 </table>
 <!---- end table  -->

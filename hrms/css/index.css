@@ -810,7 +810,7 @@ div.tenant{
       width: 99%;
       background: white;
       margin: -9px 0px 0 7px;
-      padding: 7px 0 0 45px;
+      padding: 7px 0 0 0px;
       border-radius: 3px;
       border: 1px solid #dadada;
 }
