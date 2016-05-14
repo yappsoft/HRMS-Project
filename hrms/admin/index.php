@@ -132,7 +132,7 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="index.html"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="index.php"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
@@ -236,44 +236,43 @@ ul li{list-style:none;}
           </div>
            <!---- third grid for calendar -->
 		  <!---- end pennding div -->
-	  <?php 
-         
-          $sel = "SELECT * FROM employee_tbl where company_id='$unique_id' and date_of_birth > DATE_FORMAT(CURDATE(),'%d-%m-%Y')";
-         //  var_dump($sel);
-            
-        /* $sel= "SELECT * FROM employee_tbl where company_id='$unique_id'  month(date_of_birth) >= month(now()) 
-                 and day(date_of_birth) >= day(now()) 
-                  order by date_of_birth asc";*/
-          $query = mysqli_query($con, $sel);
-          while($row = mysqli_fetch_array($query))
-          {
-             if($row['date_of_birth']){
-               $dob = $row['date_of_birth'];
-               $dt_o_b=substr($dob,3,2);
-                echo $dt_o_b; 
-             }
-           ?>
+	  
           
     </div>
 	<div class="col-md-12 col-lg-12 col-sm-12 ">
       <!-- first grid starts -->
       <!-- start upcoming birthday here-->
+      <div class="row">
       <div class="col-md-4 col-lg-4 col-sm-4 gridview alertpf pointer">
     <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
             <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/birthday.png"/></div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Upcoming Birthday</div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden"></div>
       </div>
-      <!-- out for loop here for alarm notification -->
+          <?php 
+      $sel ="   SELECT
+ 
+    date_of_birth,
+    date_of_birth + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(date_of_birth)) + 0 YEAR AS currbirthday,
+    date_of_birth + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(date_of_birth)) + 1 YEAR AS nextbirthday
+FROM employee_tbl
+ORDER BY CASE
+    WHEN currbirthday >= CURRENT_TIMESTAMP THEN currbirthday
+    ELSE nextbirthday
+END ";
+
+          ?>
+             <!-- out for loop here for alarm notification -->
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
             <div class="col-sm-1 col-md-1 col-lg-1"></div>
             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
             <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold"><?php echo $row['first_name']." ".$row['last_name'];?></span><br>
-                    <span class="textnormal"> <?php echo $row['date_of_birth'];?></span>..
+                    <span class="textnormal"> <?php echo $a;?></span>..
               </div>
-          <?php }?>
+            
            </div>
-          
+           <?php 
+                    ?>
        <!-- end upcoming birthday here-->
          <!-- start upcoming holidays here-->
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
@@ -371,14 +370,14 @@ ul li{list-style:none;}
       </div>
            <div class=" col-sm-12 col-md-12 col-lg-12 quicklinksContent overflow" style="background:#fff;overflow: auto; height: 470px;">
           <ul class="quicklinkslist">
-              <a href="javascript:void(0);"><li class="quicklinksitems"><img src="../images/ati.png"/> &nbsp;&nbsp;&nbsp;Add Employee</li></a>
-            <a href="javascript:void(0);"><li class="quicklinksitems"> <img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;View Employee</li></a>
-            <a href="user_details"><li class="quicklinksitems"><img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;Account Details</li></a>
+              <a href="add_employee.php"><li class="quicklinksitems"><img src="../images/ati.png"/> &nbsp;&nbsp;&nbsp;Add Employee</li></a>
+              <a href="employee_management.php"><li class="quicklinksitems"> <img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;View Employee</li></a>
+            <a href="account.php"><li class="quicklinksitems"><img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;Account Details</li></a>
           </ul>
       </div>
       </div>
         </div>   <!--../images/upi.png-->
-      
+      </div>
       </div>
      
 	  <!----quick links gride end here -->

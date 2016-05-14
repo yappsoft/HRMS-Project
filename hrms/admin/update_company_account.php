@@ -84,13 +84,12 @@ ul li{list-style:none;}
    </head>
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
-
 			<ul style="margin-left:-20%;margin-top:39px">
-  <a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="index.php"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="accounts_billing.php">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
 
 		</nav>
@@ -105,7 +104,7 @@ ul li{list-style:none;}
   </ul>
 <ul class="management_navigation_holder">
 
-  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
 </ul>
 </div>
 </main>
@@ -305,19 +304,19 @@ $("#com_acc_update").validate({
        });
          function com_update(){
                                     var data = $('#com_acc_update').serialize();
-                                    alert(data);
+                               
                                     $.ajax({
                                      type: 'POST',
                                      url: 'company_update_account_ins.php',
                                      data: data,
                                      success: function(responce){
-                                         alert("ddd");
+                                
                                          $('#msg').show().text(responce);
                                         
-                                            // window.setTimeout(function(){
-                                              //  window.location='accounts_billing.php'
-//
-                                                  //},3000)   
+                                            window.setTimeout(function(){
+                                         window.location='accounts_billing.php'
+
+                                                  },3000)   
                                      },
                                      error: function (responce) {   
                                       

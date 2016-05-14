@@ -92,8 +92,8 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			<!--main menu's start heare-->
-	<ul style="margin-left:-20%;margin-top:39px">
-  <a  href="index.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+			<ul style="margin-left:-20%;margin-top:39px">
+<a  href="index.php"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
@@ -112,7 +112,7 @@ ul li{list-style:none;}
   </ul>
 <ul class="management_navigation_holder">
   
-  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
 </ul>
 </div>
 </main>
@@ -137,9 +137,8 @@ ul li{list-style:none;}
       <th>Total Leaves</th>
       <th>Leave Taken</th>
       <th>Balance Leave</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Notification</th>
+    
     </tr>
 
   </thead>

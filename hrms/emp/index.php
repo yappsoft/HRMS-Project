@@ -5,6 +5,13 @@ if(isset($_SESSION['email'])){
 	$emp_id = $_SESSION['login_emp_id'];
 	$com_id = $_SESSION['company_id'];
 	
+	$sel = mysqli_query($con,"select * from `employee_tbl` where employee_id ='$emp_id' limit 1");
+	if($sel){
+		$r = mysqli_fetch_assoc($sel);
+	
+		
+	}
+	
 
 	
 }else{
@@ -137,15 +144,15 @@ ul li{list-style:none;}
 </script>
   <!-- attendece model start --->
   
-  <div class="modal dialog__content" id="myModal"tabindex="-1" role="dialog">
+  <div class="modal fade dialog__content" id="myModal"tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" style="width:350px;">
     <div class="modal-content">
       
-      <div class="modal-body dialog">
+      <div class="modal-body dialog" style="height:235px;">
 	  <form id="attform" method="post">
 	  <input type="hidden" name="emp_id" id="emp_id" value="<?php echo $emp_id;?>" />
-	  <input type="hidden" name="com_id" id="com_id"  value="<?php echo $com_id;?>"/>
-     <h2><strong>Howdy</strong>, Please mark your attendance</h2>
+	  <input type="hidden" name="com_id" id="com_id"  value="<?php echo $com_id;?>"/><br>	<br>
+     <h2 ><strong>Welcome</strong>,<font style="text-transform:uppercase"><?php echo $r['first_name'] . " " .$r['last_name'];?></font> </h2>
 	 <div class="alert alert-success" role="alert" id="server_side_200" style="display:none"><strong>Welldone!</strong> Attendance mark successfully</div>
 	 <div class="alert alert-warning" role="alert" id="server_side_400" style="display:none"><strong>Oh snap!</strong> Please try again</div>
 	 <div class="alert alert-info" role="alert" id="server_side_500" style="display:none"><strong>Warning!</strong> server occur error  </div>
@@ -195,7 +202,7 @@ ul li{list-style:none;}
   </ul>
 <ul class="management_navigation_holder">
   
-  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
 </ul>
 </div>
 </main>

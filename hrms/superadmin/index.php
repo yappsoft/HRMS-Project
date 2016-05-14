@@ -124,7 +124,7 @@ $count_inact =$row['inact_com'];
 						</button>
 					
 					</li>
-
+  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
                  
                 </ul>
             </div>

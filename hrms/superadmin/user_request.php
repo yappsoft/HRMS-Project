@@ -117,7 +117,7 @@ ul li{list-style:none;}
   </ul>
 <ul class="management_navigation_holder">
 
-  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
+  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
 </ul>
 </div>
 </main>

@@ -19,10 +19,14 @@ if(isset($_FILES['company_img']['name'])){
 }
  
  
-$sql = "UPDATE `companyreg_tbl` SET company_name='$com_name',company_email='$com_email',holiday_contact='$com_contact',number_of_employee='$number_of_employee',company_password='$com_password',company_img='$img' WHERE company_id = $com_id ";
+$sql = "UPDATE `companyreg_tbl` SET company_name='$com_name',company_email='$com_email',company_contact='$com_contact',number_of_employee='$number_of_employee',company_password='$com_password',company_img='$img' WHERE company_id = $com_id ";
 $result = mysqli_query($con , $sql);
+//var_dump($sql);
 if($result)
 {
-    echo "successfull"; 
+    echo "Details are updated successfully"; 
+}else{
+	    echo "error while update"; 
+	
 }
 ?>
