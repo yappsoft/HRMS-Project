@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-
+<?php include '../dbcon.php';
+if(isset($_SESSION['email'])){
+	
+}else{
+	header('location:../index.html');
+}
+?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +81,15 @@ ul li{list-style:none;}
    </head>
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
-	<ul style="margin-left:-20%;margin-top:39px">
-<a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
-<a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
-<a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
-</ul>
+
+			 <ul style="margin-left:-20%;margin-top:39px">
+            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
+            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
+
+            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
+        </ul>
+
 
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -102,6 +110,16 @@ ul li{list-style:none;}
 
 <!---- side nav bar --->
 
+<?php
+
+    $companyid=$_GET['view_user'];
+    $query=$sql = "select country_name,companyreg_tbl.country_id, company_name, company_contact,company_status, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_id = '$companyid' ";
+    $rs=  mysqli_query($con, $query);
+    $counter=0;
+    $arr= mysqli_fetch_array($rs);
+  ?>
+
+
 
 
 <div class="container-fluid dashboardContainer ng-scope">
@@ -109,28 +127,29 @@ ul li{list-style:none;}
 <div class="row tenantgridcontainer">
 <div class="addtenantcontainer col-sm-12 col-md-12-col-lg-12">
 <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
-  <span>Add Company</span>
-  <img class="pull-right" src="../images/edit2.png" height="22px">
+  <span>Update Company</span>
+ 
 </div>
 <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12" style="height:370px;">
-        <form class=""id="registerform" method="post">
+        <form class=""id="updateform" method="post">
                    <div class="col-sm-6 col-md-6 col-lg-6">
                      <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Update Comapny name</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Comapny name</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                   <input type="text" class="tenantform " id="com_name" name="com_name"  placeholder="Update Company Name" aria-describedby="basic-addon1" required="">
+                           <input type="text" class="tenantform " id="com_name" name="com_name_u" value="<?php echo $arr['company_name']?>" placeholder="Company Name" aria-describedby="basic-addon1" required="">
                         </div>
-                       
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Update Contact no.</span></div>
+                       <input type="hidden" name="companyid_u" value="<?php echo $companyid;?>">
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
 
-    <input type="text" class="tenantform" placeholder="Update Contact No" name="com_no" id="com_no">
+    <input type="text" class="tenantform" placeholder="Contact No" name="com_no_u" id="com_no" value="<?php echo $arr['company_contact']?>">
                        </div>
                       
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">No of emp</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                          <select  name="com_emp">
-                            <option value="1">1</option>
+                          <select  name="com_emp_U">
+                            <option value="<?php echo $arr['number_of_employee']?>"><?php echo $arr['number_of_employee']?></option>
+                           <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -143,24 +162,35 @@ ul li{list-style:none;}
 
                    <div class="col-sm-6 col-md-6 col-lg-6 ">
                      <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Enter Old Password</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Password</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                       
-                     <input type="password" class="tenantform" placeholder="*********" id="com_old_password" name="com_old_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
+    <input type="password" class="tenantform" placeholder="*********" id="com_password" name="com_password_u"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
                     
                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Enter New Password</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm Password</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_password" name= "com_cof_password_U"data-toggle="tooltip" data-placement="right" title="Type again">
+                       
+                       </div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Country</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                         <select name="com_country_U">
+                           <option value="<?php echo $arr['country_id']?>"><?php echo $arr['country_name']?></option>
+                           <option value="1">India</option>
+                           <option value="2">USA</option>
+                           <option value="3">Denmark</option>
+                         </select>
+                       </div>
                       
-                     <input type="password" class="tenantform" placeholder="*********" id="com_password" name="com_new_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
-                    
-                       </div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm New Password</span></div>
+					   <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Account Status</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_new_password" name= "com_cof_new_password"data-toggle="tooltip" data-placement="right" title="Type again">
-                       
+                         <select name="com_status_u">
+                           <option value="<?php echo $arr['company_status']?>"><?php echo $arr['company_status']?></option>
+                           <option value="inactive">Inactive</option>
+                           <option value="active">Active</option>
+                         </select>
                        </div>
-                       
                        
                      </div>
                    </div>
@@ -175,7 +205,7 @@ ul li{list-style:none;}
     border-radius: 24px;
     font-weight: bold;
     color: #646567;
-    margin: 0 0 0 0;background:#fff;outline:none;" id="reg_button">Save </button>
+    margin: 0 0 0 0;background:#fff;outline:none;" id="udt_button">Update </button>
                    
                           <li><a href="user_details.php">cancel</a></li>
                              <li><a href="user_details.php">close</a></li>
@@ -253,7 +283,7 @@ $("#com_email").removeClass('valid');
 $("#com_email").addClass('error');
 $("#reg_button").prop("disabled",'true');
 }else{
-$("#reg_button").prop("disabled",false);
+$("#udt_button").prop("disabled",false);
 $("#email_error").text('Email already register').hide();
 
 }
@@ -320,7 +350,7 @@ email: {
 	/// start singup form validation 
 	
 	
-$("#registerform").validate({
+$("#updateform").validate({
       rules:
    {
    com_name: {
@@ -359,26 +389,26 @@ $("#registerform").validate({
     submitHandler: submitForm 
        });
 	function  submitForm(){
-	var datafrom = $('#registerform').serialize();
-	     $("#reg_button").text('').prop("disabled",'true');
-		      $("#reg_button").css({'background':'#fff','opacity':'.5'});
-		     $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
+	var datafrom = $('#updateform').serialize();
+	     $("#udt_button").text('').prop("disabled",'true');
+		      $("#udt_button").css({'background':'#fff','opacity':'.5'});
+		     $("#udt_button").append("<img src='../images/loader.gif' height='20px' />");
 	$.ajax({
 	method:"POST",
-	url:"../company_db_ins.php",
+	url:"user_delete.php",
 	data:datafrom,
 	
 	success:function(response){
-	$('html, body').animate({scrollTop:0},500);
-	    $("#reg_button").text('Register');
-		 $("#reg_button").text('').prop("disabled",false);
-	$("#reposnse").text("Company rigster Successfully  & Verifiction mail Send").show();
-	   window.setTimeout(function(){
-	 window.location='user_detail.php';
-	   
-	   },3000)
+	//$('html, body').animate({scrollTop:0},500);
+	  //  $("#udt_button").text('Register');
+		// $("#udt_button").text('').prop("disabled",false);
+	//$("#reposnse").text("Company update Successfully").show();
+	 //  window.setTimeout(function(){
+	// window.location='user_detail.php'
+	   alert(response)
+	   }//,3000)
 
-	
+    }
 	
 	},
 		
@@ -389,3 +419,4 @@ $("#registerform").validate({
 	
 });
 </script>
+
