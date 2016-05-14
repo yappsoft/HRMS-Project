@@ -77,7 +77,10 @@ ul li{list-style:none;}
                       padding: 20px;
                       padding-top: 20px !important;
                        
-                   }	
+                   }
+                   th{
+                       text-align: center;
+                   }
                 </style>
 
    
@@ -114,9 +117,9 @@ ul li{list-style:none;}
 
 <div class="container-fluid dashboardContainer"  >
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left:15px">
+ <div class="tenant" style="padding-left:0px">
   <div class="addTenant">
-    <a href="add_holiday.php" class="addTenantButton">Add Holiday</a>
+      <a href="add_holiday.php" style="margin-left: 20px" class="addTenantButton">Add Holiday</a>
   </div>
   <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
     <span style="color:#fff; font-weight: bold;">Holiday Management</span>
@@ -127,7 +130,7 @@ ul li{list-style:none;}
   <thead>
  
     <tr>
-      <th>#</th>
+      <th>S.No</th>
       <th>Name of Holiday</th>
       <th>Date of Holiday</th>
       <th>Day of Holiday</th>
@@ -137,12 +140,17 @@ ul li{list-style:none;}
     </tr>
 
   </thead>
-  <tbody>
+  <tbody style="text-align: center;">
  <?php
   
         $sql = "select * from holiday_tbl where `company_id`= '$uniqe_id '";
          $result = mysqli_query($con , $sql);
-     $counter = 0;
+    $test = mysqli_num_rows($result);
+             if($test > 0)
+                 {
+         $counter = 0;
+     
+             
     while($row = mysqli_fetch_array($result))
     {
     ?>
@@ -160,8 +168,18 @@ ul li{list-style:none;}
     </tr>
 	<!--- //end loop data -->
     <?php
-    
-    }?>	  
+    }
+    }
+    else{
+        ?>
+       <tr>
+         <td scope="row" class="text-center" colspan="5"><?php echo "No record found"?></td>
+
+    </tr>
+
+        <?php
+    }
+?>	  
   </tbody>
 </table>
 <!---- end table  -->

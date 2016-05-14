@@ -183,6 +183,20 @@ margin: 0px;background:#fff">Submit</button></li>
 </div>
 
 
+<div class="modal fade bs-example-modal-sm" id="resModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+   
+      <div class="modal-body text-center" id="response_text">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 <!--- //end -->
 
    <script src="../js/jquery.min.js"></script>
@@ -251,7 +265,7 @@ margin: 0px;background:#fff">Submit</button></li>
 	  </style>
           <!--date picker-->
                      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-                    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            
                     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
                      <script>
                     $(function() {
@@ -300,11 +314,13 @@ margin: 0px;background:#fff">Submit</button></li>
                                      data: data,
                                      success: function(responce){
                                          //alert(responce);
-                                        $('#msg').show().text(responce);
+                                         
+                                        $('#response_text').text(responce);
+                                        $("#resModal").modal('show');
                                               window.setTimeout(function(){
                                                 window.location='holiday_management.php'
 
-                                                  },3000)
+                                                  },5000)
                                      },
                                      error: function (responce) {
                                      alert(responce);

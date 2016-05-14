@@ -52,6 +52,9 @@ a.addTenantButton {
     margin: -49px 0 0px 0;
 	cursor:pointer;
 }
+th{
+    text-align: center;
+}
  ul >a li {
     color: #a0abbf;
     width: 208px;
@@ -96,13 +99,13 @@ ul li{list-style:none;}
    </head>
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
-      <ul style="margin-left:-20%;margin-top:39px">
-          <a href="index.php">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-          <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
-          <a href="user_request.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
+       <ul style="margin-left:-20%;margin-top:39px">
+            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
+            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
 
-          <a  href="javascript:void(o)">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
-      </ul>
+            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
+        </ul>
 
 
 		</nav>
@@ -127,18 +130,18 @@ ul li{list-style:none;}
 
 <div class="container-fluid dashboardContainer" >
 <div class="container-fluid dashboardContentHolder ">
-    <div class="tenant" style="padding-left:15px">
+    <div class="tenant" style="padding-left:0px">
      <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
     <span style="color:#fff; font-weight: bold;">Company Request</span>
 
      </div><br><br>
 
   <!--- data view in table start here -->
-  <table class="table table-hover" style="padding-top:50px;">
-  <thead>
+  <table class="table table-hover" style="padding-top:50px; ">
+      <thead >
 
-    <tr>
-      <th>#</th>
+          <tr>
+      <th>S.No</th>
       <th>Company Name</th>
       <th>Request Date</th>
       <th>Email</th>
@@ -151,15 +154,21 @@ ul li{list-style:none;}
     </tr>
 
   </thead>
-  <tbody>
+  <tbody style="text-align: center;">
   <?php
 
         $sql = "select country_name, company_id, company_name, company_email,is_email_var, registration_date, company_plan, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_status = 'inactive' ";
          $result = mysqli_query($con , $sql);
     //var_dump($sql);
      $counter = 0;
+      $test = mysqli_num_rows($result);
+             if($test > 0)
+                 {
     while($row = mysqli_fetch_array($result))
     {
+        
+        $date_time = $row['registration_date'];
+                $newDateTime = date('d-M-y h:i A', strtotime($date_time));
     ?>
   <!---- start show data in row loop -->
 
@@ -167,17 +176,27 @@ ul li{list-style:none;}
     <tr id="tr"  >
       <th scope="row"><?php echo ++$counter;?></th>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_name'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['registration_date'];?></td>
+      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $newDateTime;?></td>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_email'];?></td>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['company_plan'];?></td>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['number_of_employee'];?></td>
       <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['country_name'];?></td>
-      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo $row['is_email_var'];?></td>
-      <td><span style="color: green" id="approve" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color: red"  class="glyphicon glyphicon-remove-circle"  onclick="rej_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span></td>
+      <td onclick="crt('<?php echo $row['company_id'];?>')"><?php echo ($row['is_email_var']== 'active')?'Done':'Pennding';?></td>
+      <td><img src="../images/check-mark.png" id="approve" class="" onclick="Confirm_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/reject.png"  class=""  onclick="rej_acc('<?php echo $row['company_id'];?>')" aria-hidden="true"></span></td>
       
     </tr>
     <?php
-}?>
+}
+                 }
+                 else{
+                     ?>
+    <tr>
+         <td scope="row" class="text-center" colspan="9"><?php echo "No request found"?></td>
+
+    </tr>
+    <?php
+     }
+?>
 	<!--- //end loop data -->
 
 
@@ -192,7 +211,7 @@ ul li{list-style:none;}
 </div>
 
 <!--approv modal-->
-<div class="modal" id="myModal" role="dialog" style="top:40%" >
+<div class="modal" id="myModal" role="dialog" style="top:22%" >
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
 
@@ -219,7 +238,7 @@ ul li{list-style:none;}
         var com_id = id;
         //$("tr").data('c_id');
         $("#myModal").modal('show');
-        var html = '<div class="content"><form id="myform"><td><span onclick="Confirm_acc('+com_id+')">Approve &nbsp;<span style="color: green" id="right" class="glyphicon glyphicon-ok-circle" onclick="Confirm_acc('+com_id+')" aria-hidden="true"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <td><span onclick="rej_acc('+com_id+')">Reject &nbsp;<span style="color: red"  class="glyphicon glyphicon-remove-circle" onclick="rej_acc('+com_id+')" aria-hidden="true"></span></span><div class="clearfix"></div></form></div>'
+        var html = '<div class="content"><form id="myform"><td><span onclick="Confirm_acc('+com_id+')"><img src="../images/check-mark.png" id="right" class="" onclick="Confirm_acc('+com_id+')" aria-hidden="true"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><span onclick="rej_acc('+com_id+')"><img src="../images/reject.png"  class="" onclick="rej_acc('+com_id+')" aria-hidden="true"></span></span><div class="clearfix"></div></form></div>'
       $(".con_pop").html(html);
     }
 </script>

@@ -152,7 +152,7 @@ ul li{list-style:none;}
                        <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
                        <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <select name="holiday_day" class="tenantform" style="padding-top: 7px">
-                              <option ><?php echo $row['holiday_days'];?></option>>
+                              <option ></option>>
                                <option value="sunday">Sunday</option>>
                               <option value="monday">Monday</option>
                               <option value="tuesday">Tuesday</option>
@@ -189,6 +189,21 @@ ul li{list-style:none;}
 
 </div>
 </div>
+</div>
+<!--approv modal-->
+<div class="modal fade bs-example-modal-sm" id="resModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+   
+      <div class="modal-body text-center" id="response_text">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -283,10 +298,9 @@ ul li{list-style:none;}
                                      url: 'holiday_update.php',
                                      data: data,
                                      success: function(responce){
-                                         $('#msg').show().text(responce);
-                                         
-                                        // alert(responce);
-                                            //window.location.href = "holiday_management.php";
+                                         $('#response_text').text(responce);
+                                          $("#resModal").modal('show');
+                                       
                                              window.setTimeout(function(){
                                                 window.location='holiday_management.php'
 
@@ -309,7 +323,7 @@ ul li{list-style:none;}
 
 	  </style>
                      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script>
                     $(function() {
@@ -318,3 +332,8 @@ ul li{list-style:none;}
                     });
                    });
                     </script>
+
+
+
+
+
