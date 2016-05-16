@@ -18,8 +18,6 @@ if (isset($_SESSION['email'])) {
         <link rel="stylesheet" href="../css/animate.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
 
-        <link href="../css/gsdk-base.css" rel="stylesheet" />
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
 
@@ -39,16 +37,6 @@ if (isset($_SESSION['email'])) {
                 line-height: 1.42857143;
                 color: #333;
 
-            }
-            div.dashboardgrid3 > div.dashboardmaincontent >.col-md-12, .col-md-3,.col-md-4,.col-md-5,.col-lg-12, .col-sm-12, .col-sm-6, .col-md-6, .col-lg-6{
-
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-            .form-control{
-                opacity: 1;
-                color:#212121;
-                background:#fff;
             }
             ul >a li {
                 color: #a0abbf;
@@ -90,20 +78,25 @@ if (isset($_SESSION['email'])) {
                 padding-bottom:10px;
                 padding-top:4px;
             }
-
+            .dropdate{
+                width: auto;
+                padding-left: 0px;
+                padding-right: 0px;
+            }                                  
         </style>
 
 
     </head>
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
-        			<ul style="margin-left:-20%;margin-top:39px">
+        <ul style="margin-left:-20%;margin-top:39px">
 <a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
 <a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
 </ul>
+
 
     </nav>
     <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -123,287 +116,285 @@ if (isset($_SESSION['email'])) {
         </main>
 
         <!---- side nav bar --->
-        <div class="image-container set-full-height dashboardContainer">
-            <!--   Creative Tim Branding   -->
-
-
-            <!--   Big container   -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2">
-
-                        <!--      Wizard container        -->   
-                        <div class="wizard-container"> 
-
-                            <div class="card wizard-card ct-wizard-orange" id="wizardProfile" style="padding:0">
-                                <form action="" method="post" id="registerform" enctype="multipart/form-data">
-
-
-                                    <ul>
-                                        <li><a href="#about" data-toggle="tab">Personal Details</a></li>
-                                        <li><a href="#account" data-toggle="tab">Communication Details</a></li>
-                                        <li><a href="#address" data-toggle="tab">Official Details </a></li>
-
-                                    </ul>
-
-                                    <div class="tab-content">
-                                        <div class="tab-pane" id="about">
-                                          
-                                            <div class="row">
-
-                                                <div class="col-sm-5 col-sm-offset-1">
-                                                    <div class="picture-container">
-                                                        <div class="picture">
-                                                            <img src="../images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                            <input type="file" id="wizard-picture" name="image">
-                                                        </div>
-                                                        <h6>Select  Picture</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 com-sm-offset-1">
-                                                    <div class="form-group">
-                                                        <label>First Name <small>(required)</small></label>
-                                                        <input type="text" class="form-control" id="enp_f_name" name="enp_f_name"  placeholder="First Name" aria-describedby="basic-addon1">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Last Name <small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="enp_l_name" name="enp_l_name"  placeholder="Last Name" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Email <small>(required)</small></label>
-                                                        <input type="email" class="form-control" placeholder="Employee Email" name="emp_email" id="emp_email" data-toggle="tooltip" data-placement="right" title="fill email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Mobile No <small>(required)</small></label>
-                                                        <input type="text" class="form-control" placeholder="Contact No" name="emp_no" id="emp_no" data-toggle="tooltip" data-placement="right" title="Enter contect no.">
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Password <small>(required)</small></label>
-                                                        <input type="password" class="form-control" placeholder="*********" id="emp_password" name="emp_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Confirm password <small>(required)</small></label>
-                                                        <input type="password" class="form-control" placeholder="*******" id="emp_cof_password" name= "emp_cof_password" data-toggle="tooltip" data-placement="right" title="Type again">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <label>Date of birth <small>(required)</small></label>
-                                                    <div class="form-group">
-
-                                                        <select name="dob_day" class="col-md-3 dropdate form-control"style="width: auto" >
-                                                            <option selected disabled="">Day</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                            <option value="9">9</option>
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                            <option value="13">13</option>
-                                                            <option value="14">14</option>
-                                                            <option value="15">15</option>
-                                                            <option value="16">16</option>
-                                                            <option value="17">17</option>
-                                                            <option value="18">18</option>
-                                                            <option value="19">19</option>
-                                                            <option value="20">20</option>
-                                                            <option value="21">21</option>
-                                                            <option value="22">22</option>
-                                                            <option value="23">23</option>
-                                                            <option value="24">24</option>
-                                                            <option value="25">25</option>
-                                                            <option value="26">26</option>
-                                                            <option value="27">27</option>
-                                                            <option value="28">28</option>
-                                                            <option value="29">29</option>
-                                                            <option value="30">30</option>
-                                                            <option value="31">31</option>
-                                                        </select>
-
-                                                        <select name="dob_month"class=" col-md-4 dropdate form-control" style="width: auto">
-                                                            <option>Month</option>
-                                                            <option value="1">Jan</option>
-                                                            <option value="2">Feb</option>
-                                                            <option value="3">Mar</option>
-                                                            <option value="4">Apr</option>
-                                                            <option value="5">May</option>
-                                                            <option value="6">Jun</option>
-                                                            <option value="7">Jul</option>
-                                                            <option value="8">Aug</option>
-                                                            <option value="9">Sep</option>
-                                                            <option value="10">Oct</option>
-                                                            <option value="11">Nov</option>
-                                                            <option value="12">Dec</option>
-                                                        </select>
-
-
-                                                        <select name="dob_year" class="col-md-5 dropdate form-control" style="width: auto">
-                                                            <option selected disabled="">Year</option>
-                                                            <?php
-                                                            $firstYear = (int) date('Y') - 56;
-                                                            $lastYear = (int) date('Y');
-                                                            for ($i = $firstYear; $i <= $lastYear; $i++) {
-                                                                echo '<option value=' . $i . '>' . $i . '</option>';
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Qualification<small>(required)</small></label>
-                                                        <select name="education" id="education" class="dropdate form-control">
-                                                            <option selected disabled="">Qualification</option>
-                                                            <option value="BE">BE</option>
-                                                            <option value="ME">ME</option>
-                                                            <option value="MCA">MCA</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
 
 
 
+        <div class="container-fluid dashboardContainer ng-scope" style="">
+            <div class="container-fluid dashboardContentHolder" >
+                <div class="row tenantgridcontainer">
+                    <div class="addtenantcontainer col-sm-12 col-md-12-col-lg-12" >
+                        <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
+                            <!--general detail section of a employ start hear-->
+                            <span>Personal Details</span>
+                            <img class="pull-right" src="../images/edit2.png" height="22px">
+                        </div>
+                        <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12" style="height: auto;; padding-left: 0px;">
+                            <form class="" id="registerform" method="post">
+                                <div class=" col-sm-12 col-md-12 col-lg-12">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">First name</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="text" class="tenantform " id="enp_f_name" name="enp_f_name"  placeholder="First Name" aria-describedby="basic-addon1">
                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="account">
-                                            
-                                            <div class="row">
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Family No <small>(required)</small></label>
-                                                        <input type="text" class="form-control" placeholder="Family Contact no" name="emp_family_no" id="emp_family_no">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Alternate  No <small>(required)</small></label>
-                                                        <input type="text" class="form-control" placeholder="Alternet Contact No" name="emp_alt_no" id="emp_alt_no" ">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Local Address <small>(required)</small></label>
-                                                        <textarea class="form-control" placeholder="Local Address"  name="local_add" id="local_add"rows="5" id="comment" ></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Permanent  Address <small>(required)</small></label>
-                                                        <textarea  class="form-control " placeholder="Parmanent Address"  name="emp_par_add" id="emp_par_add"rows="5" id="comment"></textarea>
-                                                    </div>
-                                                </div>
-
-
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Email</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="email" class="tenantform" placeholder="Employee Email" name="emp_email" id="emp_email" data-toggle="tooltip" data-placement="right" title="fill email">
+                                                <label class="error" id="email_error" style="display:none"> </label>
                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="address">
-                                            <div class="row">
-                                               
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Employee  ID <small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="employee_id" name="employee_id"  placeholder="Employee ID" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Department<small>(required)</small></label>
-                                                        <select name="department" id="department" class="dropdate form-control">
-                                                            <option selected disabled=""> Department</option>
-                                                            <option value="development">Development</option>
-                                                            <option value="marketing">Marketing</option>
-                                                            <option value="sales">Sales</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>No of Leave<small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="Numbers Of Leave" name="Numbers_Of_Leave"  placeholder="Numbers Of Leave" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Date of joining<small>(required)</small></label>
-                                                        <input type="text" class="form-control datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-12 ">
-                                                    <div class="form-group">
-                                                        <label>Bank account No<small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="bank_acc_no" name="bank_acc_no"  placeholder="Account No." aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-12 ">
-                                                    <div class="form-group">
-                                                        <label>Bank Name <small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="bank_name" name="bank_name"  placeholder="Bank Name" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>Bank Branch <small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="bank_branch_name" name="bank_branch_name"  placeholder="Bank Branch Name" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 ">
-                                                    <div class="form-group">
-                                                        <label>IFSC code <small>(required)</small></label>
-                                                        <input type="text" class="form-control " id="bank_ifsc" name="bank_ifsc"  placeholder="Ifsc Code" aria-describedby="basic-addon1">
-                                                    </div>
-                                                </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
 
+                                                <input type="text" class="tenantform" placeholder="Contact No" name="emp_no" id="emp_no" data-toggle="tooltip" data-placement="right" title="Enter contect no.">
+                                            </div>
+
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Alternet Contact no.</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="text" class="tenantform" placeholder="Alternet Contact No" name="emp_alt_no" id="emp_alt_no" ">
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Local Address</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <textarea class="tenantform" placeholder="Local Address"  name="local_add" id="local_add"rows="5" id="comment" ></textarea>
 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="wizard-footer">
-                                        <div class="pull-right">
-                                            <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
-                                            <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
+
+                                    <div class="col-sm-6 col-md-6 col-lg-6 ">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Last name</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="text" class="tenantform " id="enp_l_name" name="enp_l_name"  placeholder="Last Name" aria-describedby="basic-addon1">
+                                            </div>
+
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Password</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+
+                                                <input type="password" class="tenantform" placeholder="*********" id="emp_password" name="emp_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
+
+                                            </div>
+
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm Password</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="password" class="tenantform" placeholder="*******" id="emp_cof_password" name= "emp_cof_password" data-toggle="tooltip" data-placement="right" title="Type again">
+
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Family Contact no.</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="text" class="tenantform" placeholder="Family Contact no" name="emp_family_no" id="emp_family_no">
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Parmanent Address</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <textarea  class="tenantform " placeholder="Parmanent Address"  name="emp_par_add" id="emp_par_add"rows="5" id="comment"></textarea>
+
+                                            </div>
 
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="pull-left">
-                                            <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                <!--general detail section of a employ end hear-->
+
+
+                                <!--Basic detail section of a employ start hear-->
+
+                                <div class="addtenantheader col-sm-12 col-md-12 col-lg-12" style="padding-right: 35px;">
+                                    <span>Basic Details</span>
+                                    <img class="pull-right" src="../images/edit2.png" height="22px">
+                                </div>               <div class="row">
+                                    <div class=" col-sm-12 col-md-12 col-lg-12">
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="row">
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Education</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="education" name="education"  placeholder="Education" aria-describedby="basic-addon1">
+                                                </div>  
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Account No.</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="bank_acc_no" name="bank_acc_no"  placeholder="Account No." aria-describedby="basic-addon1">
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank Branch name</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="bank_branch_name" name="bank_branch_name"  placeholder="Bank Branch Name" aria-describedby="basic-addon1">
+                                                </div>   
+
+
+                                            </div>
                                         </div>
-                                        <div class="clearfix"></div>
-                                    </div>	
-                                </form>
-                            </div>
-                        </div> <!-- wizard container -->
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 ">
+                                            <div class="row">
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Date Of Birth</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+
+                                                    <select name="dob_day" class="dropdate"style="width: auto" >
+                                                        <option selected disabled="">Day</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+                                                    </select>
+
+                                                    <select name="dob_month"class="dropdate" style="width: auto">
+                                                        <option>Month</option>
+                                                        <option value="1">Jan</option>
+                                                        <option value="2">Feb</option>
+                                                        <option value="3">Mar</option>
+                                                        <option value="4">Apr</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">Jun</option>
+                                                        <option value="7">Jul</option>
+                                                        <option value="8">Aug</option>
+                                                        <option value="9">Sep</option>
+                                                        <option value="10">Oct</option>
+                                                        <option value="11">Nov</option>
+                                                        <option value="12">Dec</option>
+                                                    </select>
+
+
+                                                    <select name="dob_year" class="dropdate" style="width: auto">
+                                                        <option selected disabled="">Year</option>
+                                                        <?php
+                                                        $firstYear = (int) date('Y') - 56;
+                                                        $lastYear = (int) date('Y');
+                                                        for ($i = $firstYear; $i <= $lastYear; $i++) {
+                                                            echo '<option value=' . $i . '>' . $i . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Bank name</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="text" class="tenantform " id="bank_name" name="bank_name"  placeholder="Bank Name" aria-describedby="basic-addon1">
+                                            </div>
+
+                                            <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Ifsc Code</span></div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                <input type="text" class="tenantform " id="bank_ifsc" name="bank_ifsc"  placeholder="Ifsc Code" aria-describedby="basic-addon1">
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="addtenantheader col-sm-12 col-md-12 col-lg-12" style="padding-right: 35px;">
+                                    <span>Official Details</span>
+                                    <img class="pull-right" src="../images/edit2.png" height="22px">
+                                </div>               <div class="row">
+                                    <div class=" col-sm-12 col-md-12 col-lg-12">
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6">
+                                            <div class="row">
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Employee ID</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="employee_id" name="employee_id"  placeholder="Employee ID" aria-describedby="basic-addon1">
+                                                </div>  
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Numbers Of Leave</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform " id="Numbers Of Leave" name="Numbers_Of_Leave"  placeholder="Numbers Of Leave" aria-describedby="basic-addon1">
+                                                </div>   
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 ">
+                                            <div class="row">
+
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Department</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+
+                                                    <select name="department" id="department" class="dropdate"style="width: 230px;" >
+                                                        <option selected disabled=""> Department</option>
+                                                        <option value="development">Development</option>
+                                                        <option value="marketing">Marketing</option>
+                                                        <option value="sales">Sales</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Date Of Joining</span></div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
+                                                    <input type="text" class="tenantform datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Basic detail section of a employ end hear-->
+                                <!--submit cancel reset group of buttons-->
+                                <div class="row">
+                                    <div  class="alert alert-success col-md-6 col-md-offset-3" id="msg" align="center" style="display: none; background-color: #7BC143 !important;">
+                                        <strong>Success!</strong> Form has been send.
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+
+
+                                        <ul class="tenantform">
+                                            <button type="submit" style="    padding: 10px 20px 10px 20px;
+                                                    border: 1px solid #7BC143;
+                                                    border-radius: 24px;
+                                                    font-weight: bold;
+                                                    color: #646567;
+                                                    margin: 0 0 0 0;background:#fff; outline:none;" id="reg_button">Save </button>
+
+                                            <li><a href="">cancel</a></li>
+                                            <li><a href="">close</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>   <!--end form here -->
+                        </div>
                     </div>
-                </div><!-- end row -->
-            </div> <!--  big container -->
 
 
 
+                </div>
+            </div>
         </div>
-
-
-
     </body>
 
 </html>
 
 
-
+    
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -411,17 +402,6 @@ if (isset($_SESSION['email'])) {
 </body>
 </html>
 <script src="../js/classie.js"></script>
-
-
-
-<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-
-<!--   plugins 	 -->
-<script src="../js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-
-
-<!--  methods for manipulating the wizard and the validation -->
-<script src="../js/wizard.js"></script>
 <script>
 
     $().ready(function () {
@@ -589,7 +569,7 @@ if (isset($_SESSION['email'])) {
                 url: "employeedb.php",
                 data: datafrom,
                 success: function (response) {
-                    //alert(response);
+                    alert(response);
                     window.setTimeout(function () {
                         window.location = 'employee_management.php';
 
@@ -607,10 +587,10 @@ if (isset($_SESSION['email'])) {
 </script>
 
 
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-<script>
-    $(function () {
-        $(".datepicker").datepicker();
-    });
-</script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker();
+        });
+    </script>

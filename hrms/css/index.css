@@ -384,7 +384,8 @@ div.dashboardContentHolder{
 height: auto;
   width: 100%;
   background: transparent;
-  padding:15px 0 0 0px;
+  padding:15px 0px 0px 0px;
+  
   margin: 0 0 0 0;
   transition: all .1s  ease-in-out;
   padding-bottom: 20px;
@@ -775,8 +776,8 @@ div.col-sm-12.col-md-12.col-lg-12.alarm-quicklinks-header {
     background: #354052;
     height: 40px;
     padding: 10px 7px 0 5px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+     border-top-left-radius: 5px;
     color: #a0abbf;
 }
 div.col-sm-8.col-md-8.col-lg-8.alarm-notificationtxt2 {
@@ -810,7 +811,7 @@ div.tenant{
       width: 99%;
       background: white;
       margin: -9px 0px 0 7px;
-      padding: 7px 0 0 0px;
+      padding: 7px 0 0 45px;
       border-radius: 3px;
       border: 1px solid #dadada;
 }
@@ -1229,7 +1230,7 @@ div.addtenantformholder {
       padding: 7px 0 0px 40px;
 }
 span.tenantpadding {
-    padding: 0 45px 0px 0px;
+    padding: 0 45px 0px 0x;
 }
 div.tenantmargin {
     margin: 0 0 7px 0;
@@ -2129,9 +2130,9 @@ div.tenantbilltablecontanetcontainer {
   margin-right:5px !important;
   }
 
-  .table tbody>tr{cursor: pointer}
-    .table tbody>tr{cursor: pointer;border-bottom: 1px solid #ddd}
+   .table tbody>tr{cursor: pointer;border-bottom: 1px solid #ddd}
   .table>thead>tr>th{border-bottom:none !important}
+
   .small-box {
   border-radius: 2px;
   position: relative;
@@ -2142,8 +2143,6 @@ div.tenantbilltablecontanetcontainer {
 width: 103.6%;
 color: #f9f9f9;
 top: 30px;
-border-bottom: 1px solid #ddd;
-
 }
 .bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
   background-color: #00c0ef !important;

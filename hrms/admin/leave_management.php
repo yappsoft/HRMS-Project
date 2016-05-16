@@ -3,7 +3,7 @@
 
 if(isset($_SESSION['email'])){
 	if(isset($_SESSION['status'])){
-		
+		$unique_id = $_SESSION['company_id'];
 		if($_SESSION['status']=='inactive'){
 			header('location:notactivated.html');
 			
@@ -92,13 +92,14 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			<!--main menu's start heare-->
-						<ul style="margin-left:-20%;margin-top:39px">
+			<ul style="margin-left:-20%;margin-top:39px">
 <a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
 <a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
 <a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
 </ul>
+
 			
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -147,7 +148,7 @@ ul li{list-style:none;}
   // php code start hear for show data from particuler employee
 
   
-    $query="select employee_tbl.employee_id,company_id,first_name, last_name,leave_manag_tbl.employee_id ,leave_manag_tbl.total_leave,leave_manag_tbl.leave_taken from employee_tbl INNER join leave_manag_tbl on employee_tbl.employee_id = leave_manag_tbl.employee_id where employee_tbl.company_id='1'";
+    $query="select employee_tbl.employee_id,company_id,first_name, last_name,leave_manag_tbl.employee_id ,leave_manag_tbl.total_leave,leave_manag_tbl.leave_taken from employee_tbl INNER join leave_manag_tbl on employee_tbl.employee_id = leave_manag_tbl.employee_id where employee_tbl.company_id='$unique_id'";
     $rs=  mysqli_query($con, $query);
    
     $counter=0;
