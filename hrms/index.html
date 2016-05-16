@@ -17,11 +17,13 @@
         <!--  <div header></div>
         <div sidenav></div>-->
 
-        <!-- ngView:  --><div ng-view="" class="ng-scope"><div class="container-fluid bgimgholder ng-scope" >
+        <!-- ngView:  --><div ng-view="" class="ng-scope"><div class="container-fluid bgimgholder ng-scope" onload="javascript:customeLoginCtrl();">
                 <div class=" no-margin row">
                     <div class="col-md-12 col-lg-12 maincontainer">
 
-                      
+                        <div class="alert alert-info col-md-6"  style="display:none;">
+                            <strong>Info!</strong>
+                        </div>
                         <div class="col-md-6 col-lg-6 leftcontent">
 
 
@@ -30,13 +32,13 @@
                                     <img class="logoimg" height="75px">
                                 </div>
                                 <div class="col-md-12 col-lg-12">
-                                    <h2>Attendance and  Employment</h2>
+                                    <h2>Attendance And  Employment</h2>
                                 </div>
                                 <div class="col-md-12 col-lg-12">
-                                    <h2>Management  Solution</h2>
+                                    <h2>Management  solution</h2>
                                 </div>
                                 <div class="col-md-12 col-lg-12">
-                                    <h4>Advanced Employment Management</h4>
+                                    <h4>Advanced Employment management</h4>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +67,7 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-12 col-lg-12 form-group">
-                                        <button type="submit" class="btn btn-block loginbtn" id="log_btn">LOGIN</button>
+                                        <button type="submit" class="btn btn-block loginbtn">LOGIN</button>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                         <button type="button" class="btn btn-block loginbtn" id="reg_with">REGISTER WITH US</button>
@@ -158,9 +160,11 @@
                                                 <span class="glyphicon glyphicon-map-marker"></span>
                                             </span>
 
-                                            <select class="form-control" name="com_country" id="com_country"> 
-                                                <option selected disabled>Country</option>
-                                                                               
+                                            <select class="form-control" name="com_country"> 
+                                                <option>Country</option>
+                                                <option value="1">India</option>
+                                                <option value="2">USA</option>
+                                         
 
 
 
@@ -182,47 +186,20 @@
 
             </div>
         </div>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="css/jquery-ui.css">
-	<div class="modal fade bs-example-modal-sm"  id="myModal"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
- <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="myModalLabel">Registration Complete</h4>
-      </div>
-      <div class="modal-body text-center" id="server_response">
 
-      </div>
-    </div>
-  </div>
-</div>
-  
-  
         <script type="text/javascript" src="js/validation.min.js"></script>
         <script>
-$('document').ready(function(){
 
-$(function() {
-  //  $( "#com_country" ).selectmenu();
-	});
-	//alert('in');
-	$.ajax({
-   url: "company_db_ins.php",
-	   data: 'get_counrty='+"country_data",
-	       type: "POST",
-		          success: function (data) {
-					//console.log(data);
-				  $("#com_country").html(data);
-				  }
-	});
-	
-
-});
 
 
         // for show popup when emp is<5
+              function show_pop() {
+                  var value = document.getElementById("emp_sel").options[document.getElementById("emp_sel").selectedIndex].value;
+                  if (value > 5) {
+                      alert('no more 5');
+                  }
 
+              }
         //function for email check
               function  checkAvailability() {
 
@@ -302,9 +279,7 @@ $(function() {
                   function loginsubmit() {
                       var data = $("#loginform").serialize();
                       //alert(data);
-   $("#log_btn").text('');
-                      $("#log_btn").css({'background': '#fff', 'opacity': '.5'});
-                      $("#log_btn").append("<img src='images/loader.gif' />");
+
                       $.ajax({
                           type: "POST",
                           url: "ajax_login.php",
@@ -313,25 +288,15 @@ $(function() {
                           success: function (response) {
 						 // alert(response);
                               if (response == 'spradmin') {
-							        window.setTimeout(function () {
-                                   window.location.href = "superadmin/index.php"
-                              }, 3000)
-                                  
+                                  window.location.href = "superadmin/index.php";
                               } else if (response == 'admin') {
- window.setTimeout(function () {
-                            window.location.href = "admin/index.php"
-                              }, 3000)
-                              
+
+                                  window.location.href = "admin/index.php";
                               } else if (response == 'emp') {
- window.setTimeout(function () {
-                                  window.location.href = "emp/index.php"
-                              }, 3000)
-                              
+
                                   window.location.href = "emp/index.php";
                               } else if (response != '') {
-                         $("#log_btn").text('LOGIN');
-                      $("#log_btn").css({'background': '#8cc63e', 'opacity': '1'});
-                   
+
                                   alert(response);
                               }
                           }
@@ -392,18 +357,11 @@ $(function() {
                           data: datafrom,
                           success: function (response) {
                               $('html, body').animate({scrollTop: 0}, 500);
-							    $('#server_response').text(response);
-								$('#reg_button').css({'background':'#8cc63e','opacity':'1'});
-								$("#reg_button").text('Successfull');
-							  $("#myModal").modal({
-							   keyboard: false,
-							 backdrop:'static'
-							  });
-							
+                              $("#reg_button").text('Register');
+                              $("#reg_msg").text(response).show();
                               window.setTimeout(function () {
-							  
                                   location.reload()
-                              }, 5000)
+                              }, 3000)
 
 
 

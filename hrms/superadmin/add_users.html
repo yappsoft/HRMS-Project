@@ -7,10 +7,10 @@
 	   <script src="../js/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>HRMS </title>
-    <link rel="stylesheet" href="../css/animate.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="../js/animate.css" media="screen" charset="utf-8">
       <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
 
-<meta charset="ISO-8859-1">
+
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
 
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
@@ -33,7 +33,7 @@
     color: #a0abbf;
     width: 208px;
     height: 40px;
-    padding: 11px 0 0 0px;
+    padding: 11px 0 0 13px;
     border: 0px;
     margin: 0 0 8px 0px;
     border-left: 4px solid transparent;
@@ -76,15 +76,13 @@ ul li{list-style:none;}
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 
+			<ul style="margin-left:-20%;margin-top:39px">
+<a href="index.html">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a href="user_details">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
+<a href="user_request">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
 
-      <ul style="margin-left:-20%;margin-top:39px">
-            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
-            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
-            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
-
-            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
-        </ul>
-
+<a  href="super_account">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
+</ul>
 
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -121,15 +119,11 @@ ul li{list-style:none;}
                      <div class="row">
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Comapny name</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                   <input type="text" class="tenantform " id="com_name" name="com_name"  onBlur="checkAvailability_name()" placeholder="Company Name" aria-describedby="basic-addon1" required="">
-				   <span class="glyphicon form-control-feedback" id="name_ok" aria-hidden="true"></span>
-                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                   <input type="text" class="tenantform " id="com_name" name="com_name"  placeholder="Company Name" aria-describedby="basic-addon1" required="">
                         </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Comapny Email</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                     <input type="email" class="tenantform" placeholder="company email" onBlur="checkAvailability()" name="com_email"id="com_email"required="">
-					 <span class="glyphicon  form-control-feedback"  id="email_ok" aria-hidden="true"></span>
-                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                     <input type="email" class="tenantform" placeholder="company email" onBlur="checkAvailability()" name="com_email"id="com_email" data-toggle="tooltip" data-placement="right" title="Need to verify" required="">
 					 	<label class="error" id="email_error" style="display:none"> </label>
                        </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
@@ -157,18 +151,20 @@ ul li{list-style:none;}
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Password</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                       
-    <input type="password" class="tenantform" placeholder="*********" id="com_password" name="com_password">
+    <input type="password" class="tenantform" placeholder="*********" id="com_password" name="com_password"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
                     
                        </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm Password</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_password" name= "com_cof_password">
+                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_password" name= "com_cof_password"data-toggle="tooltip" data-placement="right" title="Type again">
                        
                        </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Country</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                         <select name="com_country" id="com_country">
-                        
+                         <select name="com_country">
+                           <option value="1">India</option>
+                           <option value="2">USA</option>
+                           <option value="3">Denmark</option>
                          </select>
                        </div>
 					   <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Account Status</span></div>
@@ -195,8 +191,8 @@ ul li{list-style:none;}
     color: #646567;
     margin: 0 0 0 0;background:#fff;outline:none;" id="reg_button">Save </button>
                    
-                          <li><a href="user_detail.php">cancel</a></li>
-                             <li><a href="user_detail.php">close</a></li>
+                          <li><a href="user_details.php">cancel</a></li>
+                             <li><a href="user_details.php">close</a></li>
                      </ul>
                    </div>
                  </form>
@@ -208,29 +204,14 @@ ul li{list-style:none;}
 </div>
 </div>
 </div>
+</body>
 
+</html>
  <script src="../js/jquery.min.js"></script>
    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 </html>
-<!--- confirm model -->
-<div class="modal fade bs-example-modal-sm"  id="statusModal"tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-
-     <div class="modal-dialog modal-sm"> 
-	 <div class="modal-content">
-	 <div class="modal-header"> 
-	 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-	 <h4 class="modal-title" id="mySmallModalLabel">Success</h4> </div> 
-	 <div class="modal-body text-center" id="server_response">  </div> 
-	 </div> 
-	 </div>
-
-</div>
-
-
-
-
 	<script src="../js/classie.js"></script>
 		<script>
 
@@ -272,25 +253,6 @@ ul li{list-style:none;}
 		
 <script type="text/javascript" src="../js/validation.min.js"></script>
 <script>
-$('document').ready(function(){
-
-$(function() {
-  //  $( "#com_country" ).selectmenu();
-	});
-	//alert('in');
-	$.ajax({
-   url: "../company_db_ins.php",
-	   data: 'get_counrty='+"country_data",
-	       type: "POST",
-		          success: function (data) {
-					//console.log(data);
-				  $("#com_country").html(data);
-				  }
-	})
-	
-
-});
-
 	function  checkAvailability() {
 
 jQuery.ajax({
@@ -300,13 +262,12 @@ type: "POST",
 success:function(data){
 if(data == 'true'){
      $("#email_error").text('Email already register').show();
-$("#email_ok").removeClass('glyphicon-ok').addClass('glyphicon-remove').css('color','#F44336');
+
 $("#com_email").removeClass('valid');
 $("#com_email").addClass('error');
 $("#reg_button").prop("disabled",'true');
 }else{
 $("#reg_button").prop("disabled",false);
-$("#email_ok").removeClass('glyphicon-remove').addClass('glyphicon-ok').css({'color':'#4CAF50','font-weight':'200'});
 $("#email_error").text('Email already register').hide();
 
 }
@@ -315,33 +276,6 @@ var errorflag = true;
 error:function (){}
 });
 }
-
-	function  checkAvailability_name() {
-
-jQuery.ajax({
-url: "../company_db_ins.php",
-data:'check_name='+$("#com_name").val(),
-type: "POST",
-success:function(data){
-if(data == 'true'){
-     $("#name_error").text('Company name already register').show();
-$("#name_ok").removeClass('glyphicon-ok').addClass('glyphicon-remove').css('color','#F44336');
-$("#com_name").removeClass('valid');
-$("#com_name").addClass('error');
-$("#reg_button").prop("disabled",'true');
-}else{
-$("#reg_button").prop("disabled",false);
-$("#name_ok").removeClass('glyphicon-remove').addClass('glyphicon-ok').css({'color':'#4CAF50','font-weight':'200'});
-$("#name_error").text('').hide();
-
-}
-var errorflag = true;
-},
-error:function (){}
-});
-}
-
-
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 	 $("#com_no").keypress(function (e) {
@@ -452,13 +386,11 @@ $("#registerform").validate({
 	$('html, body').animate({scrollTop:0},500);
 	    $("#reg_button").text('Register');
 		 $("#reg_button").text('').prop("disabled",false);
-		 $('#statusModal').modal('show');
-		var email_sent =  $("#com_email").val();
-		 $("#server_response").text('Compnay Deatils are saved succesfully & verfication Mail send to '+email_sent+'')
-
-	   window.setTimeout(function () {
-                                 windows.location='user_detail.php'
-                              }, 4000)	
+	$("#reposnse").text("Company rigster Successfully  & Verifiction mail Send").show();
+	   window.setTimeout(function(){
+	 window.location='user_detail.php'
+	   
+	   },3000)
 
 	
 	

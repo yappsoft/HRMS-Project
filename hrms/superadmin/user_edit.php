@@ -39,7 +39,7 @@ if(isset($_SESSION['email'])){
     color: #a0abbf;
     width: 208px;
     height: 40px;
-    padding: 11px 0 0 0px;
+    padding: 11px 0 0 13px;
     border: 0px;
     margin: 0 0 8px 0px;
     border-left: 4px solid transparent;
@@ -82,15 +82,13 @@ ul li{list-style:none;}
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 
-		
-      <ul style="margin-left:-20%;margin-top:39px">
+			 <ul style="margin-left:-20%;margin-top:39px">
             <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
             <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
             <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
 
             <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
         </ul>
-
 
 
 		</nav>
@@ -115,7 +113,7 @@ ul li{list-style:none;}
 <?php
 
     $companyid=$_GET['view_user'];
-    $query=$sql = "select country_name,companyreg_tbl.country_id,company_email, company_name, company_contact,company_status, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_id = '$companyid' ";
+    $query=$sql = "select country_name,companyreg_tbl.country_id, company_name, company_contact,company_status, number_of_employee from master_country join companyreg_tbl ON master_country.country_id = companyreg_tbl.country_id where company_id = '$companyid' ";
     $rs=  mysqli_query($con, $query);
     $counter=0;
     $arr= mysqli_fetch_array($rs);
@@ -140,11 +138,6 @@ ul li{list-style:none;}
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                            <input type="text" class="tenantform " id="com_name" name="com_name_u" value="<?php echo $arr['company_name']?>" placeholder="Company Name" aria-describedby="basic-addon1" required="">
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Comapny Email</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                           <input type="email" class="tenantform" placeholder=""value="<?php echo $arr['company_email']?>" name="com_email_u"id="com_email_u" disabled="disable">
-					 	
-                       </div>
                        <input type="hidden" name="companyid_u" value="<?php echo $companyid;?>">
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Contact no.</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
@@ -172,12 +165,12 @@ ul li{list-style:none;}
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Password</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                       
-    <input type="password" class="tenantform" placeholder="*********" id="com_password_u" name="com_password_u"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
+    <input type="password" class="tenantform" placeholder="*********" id="com_password" name="com_password_u"data-toggle="tooltip" data-placement="right" title="Minimum 8 char">
                     
                        </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Confirm Password</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_password_u" name= "com_cof_password_U"data-toggle="tooltip" data-placement="right" title="Type again">
+                         <input type="password" class="tenantform" placeholder="*******" id="com_cof_password" name= "com_cof_password_U"data-toggle="tooltip" data-placement="right" title="Type again">
                        
                        </div>
                        <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Country</span></div>
@@ -276,7 +269,29 @@ ul li{list-style:none;}
 		
 <script type="text/javascript" src="../js/validation.min.js"></script>
 <script>
-	
+	function  checkAvailability() {
+
+jQuery.ajax({
+url: "../company_db_ins.php",
+data:'check_email='+$("#com_email").val(),
+type: "POST",
+success:function(data){
+if(data == 'true'){
+     $("#email_error").text('Email already register').show();
+
+$("#com_email").removeClass('valid');
+$("#com_email").addClass('error');
+$("#reg_button").prop("disabled",'true');
+}else{
+$("#udt_button").prop("disabled",false);
+$("#email_error").text('Email already register').hide();
+
+}
+var errorflag = true;
+},
+error:function (){}
+});
+}
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 	 $("#com_no").keypress(function (e) {
@@ -300,8 +315,35 @@ $(document).ready(function(){
 	$("#reg-form").show();
 	
 	});
-	
+	///login form validation
+	$("#loginform").validate({
+      rules:
+   {
 
+password: {
+   required: true,
+   minlength: 8,
+   maxlength: 15
+   },
+email: {
+            required: true,
+            email: true
+            },
+		
+    },
+       messages:
+    {
+
+            com_password:{
+                      required: "please provide a password",
+                      minlength: "password at least have 8 characters"
+                     },
+            com_email: "please enter a valid email address"
+
+       },
+    submitHandler: submitForm 
+       });
+	
 
 	
 	
@@ -311,20 +353,20 @@ $(document).ready(function(){
 $("#updateform").validate({
       rules:
    {
-   com_name_u: {
+   com_name: {
       required: true,
    minlength: 3
    },
-   com_password_u: {
+   com_password: {
    required: true,
    minlength: 8,
    maxlength: 15
    },
-   com_cof_password_u: {
+   com_cof_password: {
    required: true,
-   equalTo: '#com_password_u'
+   equalTo: '#com_password'
    },
-   com_email_u: {
+   com_email: {
             required: true,
             email: true
             },
@@ -334,12 +376,12 @@ $("#updateform").validate({
        messages:
     {
             com_name: "please enter company name",
-            com_password_u:{
+            com_password:{
                       required: "please provide a password",
                       minlength: "password at least have 8 characters"
                      },
             com_email: "please enter a valid email address",
-   com_cof_password_u:{
+   com_cof_password:{
       required: "please retype your password",
       equalTo: "password doesn't match !"
        }
@@ -353,18 +395,18 @@ $("#updateform").validate({
 		     $("#udt_button").append("<img src='../images/loader.gif' height='20px' />");
 	$.ajax({
 	method:"POST",
-	url:"../company_db_ins.php",
+	url:"user_delete.php",
 	data:datafrom,
 	
 	success:function(response){
-	$('html, body').animate({scrollTop:0},500);
-	    $("#udt_button").text('Register');
-		 $("#udt_button").text('').prop("disabled",false);
-	$("#reposnse").text("Company update Successfully").show();
-	   window.setTimeout(function(){
-	window.location='user_detail.php'
-	   //alert(response);
-	   },3000)
+	//$('html, body').animate({scrollTop:0},500);
+	  //  $("#udt_button").text('Register');
+		// $("#udt_button").text('').prop("disabled",false);
+	//$("#reposnse").text("Company update Successfully").show();
+	 //  window.setTimeout(function(){
+	// window.location='user_detail.php'
+	   alert(response)
+	   }//,3000)
 
     }
 	

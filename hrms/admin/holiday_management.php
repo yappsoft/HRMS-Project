@@ -77,10 +77,7 @@ ul li{list-style:none;}
                       padding: 20px;
                       padding-top: 20px !important;
                        
-                   }
-                   th{
-                       text-align: center;
-                   }
+                   }	
                 </style>
 
    
@@ -88,12 +85,12 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
-	<ul style="margin-left:-20%;margin-top:39px">
-  <a  href="index.php">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="accounts_billing.php">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+				<ul style="margin-left:-20%;margin-top:39px">
+<a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
+<a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -117,9 +114,9 @@ ul li{list-style:none;}
 
 <div class="container-fluid dashboardContainer"  >
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left:0px">
+ <div class="tenant" style="padding-left:15px">
   <div class="addTenant">
-      <a href="add_holiday.php" style="margin-left: 20px" class="addTenantButton">Add Holiday</a>
+    <a href="add_holiday.php" class="addTenantButton">Add Holiday</a>
   </div>
   <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
     <span style="color:#fff; font-weight: bold;">Holiday Management</span>
@@ -130,7 +127,7 @@ ul li{list-style:none;}
   <thead>
  
     <tr>
-      <th>S.No</th>
+      <th>#</th>
       <th>Name of Holiday</th>
       <th>Date of Holiday</th>
       <th>Day of Holiday</th>
@@ -140,17 +137,12 @@ ul li{list-style:none;}
     </tr>
 
   </thead>
-  <tbody style="text-align: center;">
+  <tbody>
  <?php
   
         $sql = "select * from holiday_tbl where `company_id`= '$uniqe_id '";
          $result = mysqli_query($con , $sql);
-    $test = mysqli_num_rows($result);
-             if($test > 0)
-                 {
-         $counter = 0;
-     
-             
+     $counter = 0;
     while($row = mysqli_fetch_array($result))
     {
     ?>
@@ -168,18 +160,8 @@ ul li{list-style:none;}
     </tr>
 	<!--- //end loop data -->
     <?php
-    }
-    }
-    else{
-        ?>
-       <tr>
-         <td scope="row" class="text-center" colspan="5"><?php echo "No record found"?></td>
-
-    </tr>
-
-        <?php
-    }
-?>	  
+    
+    }?>	  
   </tbody>
 </table>
 <!---- end table  -->
