@@ -105,15 +105,47 @@ ul li{list-style:none;}
  .dialog h2 {
     margin: 0;
     font-weight: 400;
-    font-size: 1.3em;
-    padding: 0 0 2em;
+    font-size: 2em;
+    padding: 0 0 0em;
     margin: 0;
-	    color: #c94e50;
+	    color: #8cc63e;
     font-weight: 400;
 
     font-family: 'Raleway', Arial, sans-serif;
 }
+.dialog h3{
+	font-size:1.2em;
+}.dialog h4{
+	font-size:12px;color:#354052;
+	font-weight:bold;
+}
 </style> 
+<script type="text/javascript">
+
+<!-- Put the following code in your JS file or Head Tags ---->
+<!--
+
+function DisplayTime(){
+if (!document.all && !document.getElementById)
+return
+timeElement=document.getElementById? document.getElementById("curTime"): document.all.tick2
+var CurrentDate=new Date()
+var hours=CurrentDate.getHours()
+var minutes=CurrentDate.getMinutes()
+var seconds=CurrentDate.getSeconds()
+var DayNight="PM"
+if (hours<12) DayNight="AM";
+if (hours>12) hours=hours-12;
+if (hours==0) hours=12;
+if (minutes<=9) minutes="0"+minutes;
+if (seconds<=9) seconds="0"+seconds;
+var currentTime=hours+":"+minutes+":"+seconds+" "+DayNight;
+timeElement.innerHTML="<font style='font-family:verdana, arial,tahoma;font-size:12px;color:#354052; font-weight:bold;'>"+currentTime+"</b>"
+setTimeout("DisplayTime()",1000)
+}
+window.onload=DisplayTime
+</script>
+
    </head>
    <script type="text/javascript">
    var emp_ida = '<?php echo $emp_id?>';
@@ -151,13 +183,13 @@ ul li{list-style:none;}
       <div class="modal-body dialog" style="height:235px;">
 	  <form id="attform" method="post">
 	  <input type="hidden" name="emp_id" id="emp_id" value="<?php echo $emp_id;?>" />
-	  <input type="hidden" name="com_id" id="com_id"  value="<?php echo $com_id;?>"/><br>	<br>
-     <h2 ><strong>Welcome</strong>,<font style="text-transform:uppercase"><?php echo $r['first_name'] . " " .$r['last_name'];?></font> </h2>
-	 <div class="alert alert-success" role="alert" id="server_side_200" style="display:none"><strong>Welldone!</strong> Attendance mark successfully</div>
-	 <div class="alert alert-warning" role="alert" id="server_side_400" style="display:none"><strong>Oh snap!</strong> Please try again</div>
-	 <div class="alert alert-info" role="alert" id="server_side_500" style="display:none"><strong>Warning!</strong> server occur error  </div>
-	 
-	   <button   type="button"onclick="submitAtt()"class="btn btn-lg btn-primary btn-orange" id="submit_att">Submit Attendance
+	  <input type="hidden" name="com_id" id="com_id"  value="<?php echo $com_id;?>"/>
+     <h2  class="text-center"><strong>Welcome</strong></h2>
+	
+		 <h3>Kindly mark your today attendance </h3>
+		 <h4> <span><?php echo date("l d-m-Y");?></span> <span id=curTime> </span></h4>
+		 <br>
+	   <button   type="button"onclick="submitAtt()"class="col-md-12 btn btn-lg btn-primary btn-orange" id="submit_att">Submit
         </button>
 		
 		
@@ -183,11 +215,11 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="index.html"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
+<a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
 </ul>
 			
 		</nav>
@@ -474,7 +506,7 @@ ul li{list-style:none;}
                       var datafrom = $('#attform').serialize();
 					 // alert(datafrom);
                       $("#submit_att").text('');
-                      $("#submit_att").css({'background': '#fff', 'opacity': '.5'});
+                      $("#submit_att").css({'background': '#8cc63e', 'opacity': '.5'});
                       $("#submit_att").append("<img src='../images/loader.gif' />");
                       $.ajax({
                           method: "POST",
@@ -484,13 +516,12 @@ ul li{list-style:none;}
 							//  alert(response);
 							  if(response == 'true'){
                               $('html, body').animate({scrollTop: 0}, 500);
-                              $("#submit_att").text('Submit Attendance');
-							  $("#submit_att").css({'background':'#354052','opacity': '1'});
-							  $("#submit_att").prop('disabled','true');
-							  $("#server_side_200").show();
+                      
 							
                          window.setTimeout(function () {
-                     location.reload()
+                  $("#submit_att").text('Contiune'),
+				  
+				    $("#submit_att").css({'background':'#8cc63e','opacity': '1'})
             }, 3000)
 							  }else  if(response == 'true'){
 								  

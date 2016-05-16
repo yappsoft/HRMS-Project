@@ -60,11 +60,12 @@ $count_inact =$row['inact_com'];
                 color: #a0abbf;
                 width: 208px;
                 height: 40px;
-                padding: 11px 0 0 13px;
+                padding: 11px 0 0 0px;
                 border: 0px;
                 margin: 0 0 8px 0px;
                 border-left: 4px solid transparent;
             }
+			
             nav>ul >a{
                 border-left: 12px solid transparent;
             }
@@ -97,11 +98,11 @@ $count_inact =$row['inact_com'];
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 
         <ul style="margin-left:-20%;margin-top:39px">
-            <a href="index.php">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-            <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
-            <a href="user_request.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
+            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
+            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
 
-            <a  href="javascript:void(o)">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
+            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
         </ul>
 
     </nav>
@@ -124,7 +125,7 @@ $count_inact =$row['inact_com'];
 						</button>
 					
 					</li>
-  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
+
                  
                 </ul>
             </div>
@@ -382,31 +383,8 @@ $count_inact =$row['inact_com'];
 
             }
         });
-        function real_time() {
-            $.ajax({
-                url: 'ajax_notif.php',
-                type: 'get',
-                dataType: 'json',
-                success: function (d) {
-                    for (var i = 0; i < d.Data.length; i++) {
-
-                        var msg_type = d.Data[i].msg_type;
-                        var notif_msg = d.Data[i].notif_msg;
-                        var notif_date = d.Data[i].notif_date;
-                        // alert(msg_type);
-                        var html_alert = ' <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification remove"><div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/red-dot.png" height="12px" alt="" src="../images/red-dot.png"></div> <div class="col-sm-11 col-md-11 col-lg-11 alarm-notificationtxt2"><span class="textbold">' + msg_type + ' ' + notif_date + '</span><br><span class="textnormal">' + notif_msg + '</span>..</div></div>';
-                        $('.alert_show').after(html_alert);
-                    }
-
-
-                }
-            });
-        }
-        setInterval(function () {
-
-            $('.remove').hide();
-            real_time();
-        }, 10000);
+  
+      
 
         $(".maindiv").click(function () {
             //alert();

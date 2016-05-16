@@ -32,13 +32,13 @@
                                     <img class="logoimg" height="75px">
                                 </div>
                                 <div class="col-md-12 col-lg-12">
-                                    <h2>Attendance And  Employment</h2>
+                                    <h2>Attendance and  Employment</h2>
                                 </div>
                                 <div class="col-md-12 col-lg-12">
-                                    <h2>Management  solution</h2>
+                                    <h2>Management  Solution</h2>
                                 </div>
                                 <div class="col-md-12 col-lg-12">
-                                    <h4>Advanced Employment management</h4>
+                                    <h4>Advanced Employment Management</h4>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-12 col-lg-12 form-group">
-                                        <button type="submit" class="btn btn-block loginbtn">LOGIN</button>
+                                        <button type="submit" class="btn btn-block loginbtn" id="log_btn">LOGIN</button>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                         <button type="button" class="btn btn-block loginbtn" id="reg_with">REGISTER WITH US</button>
@@ -279,7 +279,9 @@
                   function loginsubmit() {
                       var data = $("#loginform").serialize();
                       //alert(data);
-
+   $("#log_btn").text('');
+                      $("#log_btn").css({'background': '#fff', 'opacity': '.5'});
+                      $("#log_btn").append("<img src='images/loader.gif' />");
                       $.ajax({
                           type: "POST",
                           url: "ajax_login.php",
@@ -288,15 +290,25 @@
                           success: function (response) {
 						 // alert(response);
                               if (response == 'spradmin') {
-                                  window.location.href = "superadmin/index.php";
+							        window.setTimeout(function () {
+                                   window.location.href = "superadmin/index.php"
+                              }, 3000)
+                                  
                               } else if (response == 'admin') {
-
-                                  window.location.href = "admin/index.php";
+ window.setTimeout(function () {
+                            window.location.href = "admin/index.php"
+                              }, 3000)
+                              
                               } else if (response == 'emp') {
-
+ window.setTimeout(function () {
+                                  window.location.href = "emp/index.php"
+                              }, 3000)
+                              
                                   window.location.href = "emp/index.php";
                               } else if (response != '') {
-
+                         $("#log_btn").text('LOGIN');
+                      $("#log_btn").css({'background': '#8cc63e', 'opacity': '1'});
+                   
                                   alert(response);
                               }
                           }
