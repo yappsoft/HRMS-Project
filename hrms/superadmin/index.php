@@ -60,7 +60,7 @@ $count_inact =$row['inact_com'];
                 color: #a0abbf;
                 width: 208px;
                 height: 40px;
-                padding: 11px 0 0 13px;
+                padding: 11px 0 0 0px;
                 border: 0px;
                 margin: 0 0 8px 0px;
                 border-left: 4px solid transparent;
@@ -96,12 +96,13 @@ $count_inact =$row['inact_com'];
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 
-        <ul style="margin-left:-20%;margin-top:39px">
-            <a href="index.php">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-            <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
-            <a href="user_request.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
+    
+      <ul style="margin-left:-20%;margin-top:39px">
+            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
+            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
 
-            <a  href="javascript:void(o)">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
+            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
         </ul>
 
     </nav>

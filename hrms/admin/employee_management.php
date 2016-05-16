@@ -21,7 +21,7 @@ if (isset($_SESSION['email'])) {
         <link rel="stylesheet" href="../css/animate.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
 
-        <link rel="stylesheet" href="../css/chartist.min.css" media="screen" charset="utf-8">
+        
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
 
         <link rel="stylesheet" type="text/css" href="../css/default.css" />

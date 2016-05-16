@@ -48,7 +48,7 @@ a.addTenantButton {
     color: #a0abbf;
     width: 208px;
     height: 40px;
-    padding: 11px 0 0 13px;
+    padding: 11px 0 0 0px;
     border: 0px;
     margin: 0 0 8px 0px;
     border-left: 4px solid transparent;
@@ -82,20 +82,25 @@ ul li{list-style:none;}
                     th{
                         background-color: #354052;
                         color: #fff;
+                        text-align: center;
                     }
+                    td{
+                       text-align: center;
+                   }
+                    
                 </style>
 
    </head>
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
-
+ 
       <ul style="margin-left:-20%;margin-top:39px">
-          <a href="index.php">  <li class="dashboard"><span><img  class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-          <a href="user_detail.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>User Management</li></a>
-          <a href="user_request.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>User Request</li></a>
+            <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+            <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
+            <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
 
-          <a  href="javascript:void(o)">  <li class="reports"><span><img  class="sidenavicons" src="../images/reports.png"></span>Account Details</li></a>
-      </ul>
+            <a  href="javascript:void(o)">  <li class="reports"><label><img  class="sidenavicons" src="../images/reports.png"></label>Account Details</li></a>
+        </ul>
 
 
 		</nav>
@@ -119,7 +124,7 @@ ul li{list-style:none;}
 
 <div class="container-fluid dashboardContainer"  >
 <div class="container-fluid dashboardContentHolder ">
- <div class="tenant" style="padding-left: 0px;">
+ <div class="tenant" style="padding-left: 0px; height: auto">
   <div class="addTenant">
   </div>
 
@@ -223,7 +228,7 @@ ul li{list-style:none;}
   <thead>
 
     <tr>
-      <th>#</th>
+      <th>S.No.</th>
       <th>Employee ID</th>
       <th>Employee Name</th>
       <th>Employee Email</th>
@@ -240,12 +245,20 @@ ul li{list-style:none;}
     $query="select * from employee_tbl where company_id= $companyid";
     $rs=  mysqli_query($con, $query);
     $counter=0;
+    $test= mysqli_num_rows($rs);
+    
+    if($test>0)
+    {
     while($arr= mysqli_fetch_array($rs))
     {
+   
+       
   ?>
 
   <!---- start show data in row loop -->
 
+  
+   
    <!--- on click  redirect to usefull info page on click event not in href -->
     <tr onclick="myfunction()">
       <td scope="row"><?php echo ++$counter;?></td>
@@ -260,10 +273,27 @@ ul li{list-style:none;}
 	<!--- //end loop data -->
 
    <!--- on click  redirect to usefull info page on click event not in href -->
+ <?php 
+       
+        }
+    }
+   else{
+ 
+     ?>
+ 
+     <tr>
+         <td scope="row" class="text-center" colspan="6"><?php echo "no record found"?></td>
 
-
+    </tr>
+    <?php
+ }
+ 
+   ?>
+   
+  
   </tbody>
-    <?php }?>
+   
+  
 </table>
 <!---- end table  for company employee details -->
 

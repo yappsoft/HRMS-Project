@@ -318,7 +318,7 @@ img.dashboardlogo {
 }
 img.menuLogo {
     height: 19px;
-    margin: 21px 11px 0 -23px;
+    margin: 16px 11px 0 -23px;
     cursor: pointer;
 }
 div.sidenav{
@@ -404,7 +404,7 @@ div.dashboardgrid{
 margin: 0px 0 13px 13px;
 height: 215px;
 border: 1px solid #c7c5c5;
-border-radius: 2px;
+border-radius: 6px;
 padding-left: 0;
 padding-right: 0;
 width: 32%;
@@ -810,7 +810,7 @@ div.tenant{
       width: 99%;
       background: white;
       margin: -9px 0px 0 7px;
-      padding: 7px 0 0 0px;
+      padding: 7px 0 0 45px;
       border-radius: 3px;
       border: 1px solid #dadada;
 }
@@ -2129,7 +2129,8 @@ div.tenantbilltablecontanetcontainer {
   margin-right:5px !important;
   }
 
-  .table tbody>tr{cursor: pointer}
+  .table tbody>tr{cursor: pointer;border-bottom: 1px solid #ddd}
+  .table>thead>tr>th{border-bottom:none !important}
   .small-box {
   border-radius: 2px;
   position: relative;
@@ -2178,7 +2179,7 @@ top: 30px;
   color: rgba(0,0,0,0.15);
 }
 .small-box>.small-box-footer {
-  
+
   text-align: center;
   padding: 3px 0;
   color: #fff;
@@ -2214,7 +2215,7 @@ webkit-transition: all .4s linear;
 
   background-color: black !important;
   opacity: 0.4;
-  
+
 }
 div.popover{
   z-index: 9999 !important;
@@ -2239,13 +2240,13 @@ margin-left: 10px;
 
                     width:100px;
                       display:inline-block;margin-bottom:8px;
-                     
-						   		   	
+
+
                       border-radius:5px;
-                    
+
 
                 }
-				
+
 
        .popover > .popover-content >ul>li a{
 
@@ -2289,8 +2290,9 @@ margin-left: 10px;
 }
 
 .btn.btn-primary {
-    background-color: #354052;
+    background-color: #8cc63e;
     color: #fff;
+    border: none;
     -webkit-transition: background-color 0.4s ease-in-out;
     transition: background-color 0.4s ease-in-out;
 }
@@ -2324,7 +2326,7 @@ ul li{list-style:none;}
                         height:511px;
                         overflow-y: auto;
                         overflow-x: hidden;
-                        
+
                     }
                     #chartdiv {
 	               width: 100%;
@@ -2332,9 +2334,23 @@ ul li{list-style:none;}
 	              font-size	: 8px;
                       padding: 20px;
                       padding-top: 20px !important;
-                       
+
                    }
                    .pointer{
                        cursor: pointer;
                    }
-		
+		ul>a>li>label{
+
+   width:46px;
+    }
+    span.form-control-feedback{
+
+      right: 28% !important;
+    top: 3px !important;
+}
+.error{
+
+  font-weight: 300 !important;
+  color: #FF1744 !important
+
+}
