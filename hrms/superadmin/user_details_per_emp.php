@@ -82,21 +82,14 @@ ul li{list-style:none;}
                     th{
                         background-color: #354052;
                         color: #fff;
-                        text-align: center;
                     }
-                    td{
-                       text-align: center;
-                   }
-                   .textalign{   // css for text left aling & pading on company details
-                        text-align: left;
-                        padding-left: 100px;
-                   }
                 </style>
 
    </head>
 
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
- <ul style="margin-left:-20%;margin-top:39px">
+
+       <ul style="margin-left:-20%;margin-top:39px">
             <a href="index.php">  <li class="dashboard"><label><img  class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
             <a href="user_detail.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>User Management</li></a>
             <a href="user_request.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>User Request</li></a>
@@ -113,7 +106,7 @@ ul li{list-style:none;}
   <ul class="logocontainer">
     <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
 
-    
+    <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
   </ul>
 <ul class="management_navigation_holder">
 
@@ -125,8 +118,8 @@ ul li{list-style:none;}
 <!--- mian table idv start -->
 
 <div class="container-fluid dashboardContainer"  >
-    <div class="container-fluid dashboardContentHolder " style="padding-bottom: 0px;">
- <div class="tenant" style="padding-left: 0px; height: auto">
+<div class="container-fluid dashboardContentHolder ">
+ <div class="tenant" style="padding-left: 0px;">
   <div class="addTenant">
   </div>
 
@@ -155,26 +148,26 @@ ul li{list-style:none;}
                  <form name="addTenantForm" class="ng-pristine ng-valid">
                    <div class="col-sm-6 col-md-6 col-lg-6">
                      <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor" >Company Name:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Company Name:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                         <?php echo $arr['company_name'];?>
                         </div>
                      </div>
                         <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor " >Company Email:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Company Email:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                       <?php echo $arr['company_email'];?>
                        </div>
                         </div>
 
                         <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor " >Total Employee:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Total Employee:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                            <?php echo $arr['number_of_employee'];?>
                        </div>
                          </div>
                        <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor " >Company Plan:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Company Plan:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                           <?php echo $arr['company_plan'];?>
                        </div>
@@ -185,19 +178,19 @@ ul li{list-style:none;}
                    <div class="col-sm-6 col-md-6 col-lg-6 ">
 
                      <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor " >Registration Date:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Registration Date:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                          <?php echo $arr['registration_date'];?>
                        </div>
                      </div>
                        <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor " >Subscription Date:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Subscription Date:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                           <?php echo $arr['subscription_date'];?>
                        </div>
                         </div>
 						<div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor " >Register Employee :</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Register Employee :</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                      
 					 <?php $query = mysqli_query ($con, "select count(employee_id) as total_reg from employee_tbl where company_id = '$companyid'" );
@@ -210,7 +203,7 @@ ul li{list-style:none;}
                        </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-6  tenantmargin textalign"><span class="tenantpadding  tenanttextcolor"  >Email Verification:</span></div>
+                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Email Verification:</span></div>
                        <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
                           <?php echo $arr['is_email_var'];?>
                        </div>
@@ -230,13 +223,12 @@ ul li{list-style:none;}
   <thead>
 
     <tr>
-      <th>S.No.</th>
+      <th>#</th>
       <th>Employee ID</th>
       <th>Employee Name</th>
-      <th>Department</th>
       <th>Employee Email</th>
       <th>Employee Mobile</th>
-      
+      <th>Employee Address</th>
 
     </tr>
 
@@ -248,54 +240,30 @@ ul li{list-style:none;}
     $query="select * from employee_tbl where company_id= $companyid";
     $rs=  mysqli_query($con, $query);
     $counter=0;
-    $test= mysqli_num_rows($rs);
-    
-    if($test>0)
-    {
     while($arr= mysqli_fetch_array($rs))
     {
-   
-       
   ?>
 
   <!---- start show data in row loop -->
 
-  
-   
    <!--- on click  redirect to usefull info page on click event not in href -->
     <tr onclick="myfunction()">
       <td scope="row"><?php echo ++$counter;?></td>
       <td><?php echo $arr['employee_id'];?></td>
       <td><?php echo $arr['first_name']." ".$arr['last_name'];?> </td>
-      <td><?php echo ($arr['emp_department']) ? $arr['emp_department'] : 'Not updated';?></td>
       <td><?php echo $arr['email'];?></td>
       <td><?php echo $arr['mobile_no'];?></td>
-     
+      <td><?php echo ($arr['permanent_address']) ? $arr['permanent_address'] : 'Not updated';?></td>
+
+
     </tr>
 	<!--- //end loop data -->
 
    <!--- on click  redirect to usefull info page on click event not in href -->
- <?php 
-       
-        }
-    }
-   else{
- 
-     ?>
- 
-     <tr>
-         <td scope="row" class="text-center" colspan="6"><?php echo "no record found"?></td>
 
-    </tr>
-    <?php
-        }
- 
-   ?>
-   
-  
+
   </tbody>
-   
-  
+    <?php }?>
 </table>
 <!---- end table  for company employee details -->
 

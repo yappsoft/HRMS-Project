@@ -11,6 +11,8 @@ $result = mysqli_query($con , $sql);
 if($sql && $result){
     echo "Approve";
     
+}else{
+    echo "error while approval";
 }
 }
 
@@ -21,6 +23,8 @@ $result = mysqli_query($con , $sql);
 if($result){
     echo "Reject";
     
+}else{
+    echo "error while rejected";
 }
 }
 ?>

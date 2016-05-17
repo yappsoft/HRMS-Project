@@ -89,13 +89,13 @@ ul li{list-style:none;}
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
-<a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
-<a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
+<a  href="index.php"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
+<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
 </ul>
-
+			
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
   
@@ -141,7 +141,9 @@ ul li{list-style:none;}
                        <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                      <input type="text" id="datepicker" name="holiday_date" placeholder="Holiday Date" class=" tenantform"  required="">
                        </div>
+                        
                        <div class="col-sm-5 col-md-5 col-lg-5 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Holiday day</span></div>
+                      
                        <div class="col-sm-7 col-md-7 col-lg-7 tenantmargin">
                            <select name="holiday_day" class="tenantform" style="padding-top: 7px">
                               <option value="">Select</option>
@@ -158,7 +160,7 @@ ul li{list-style:none;}
                          <div  class="alert alert-success col-md-5 col-md-offset-3" id="msg" style="display: none; color: #fff;"></div></div>
                         <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                             <ul class="tenantform" style="margin-left: -175px">
-                         <li><button type="submit" style="padding: 10px 20px;
+                                <li><button id="add_hld" type="submit" style="padding: 10px 20px;
 border: 1px solid rgb(123, 193, 67);
 border-radius: 24px;
 font-weight: bold;
@@ -183,6 +185,20 @@ margin: 0px;background:#fff">Submit</button></li>
 </div>
 
 
+<div class="modal fade bs-example-modal-sm" id="resModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+   
+      <div class="modal-body text-center" id="response_text">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 <!--- //end -->
 
    <script src="../js/jquery.min.js"></script>
@@ -251,7 +267,7 @@ margin: 0px;background:#fff">Submit</button></li>
 	  </style>
           <!--date picker-->
                      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-                    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            
                     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
                      <script>
                     $(function() {
@@ -294,18 +310,29 @@ margin: 0px;background:#fff">Submit</button></li>
                                   function sub(){
                                       
                                  var data = $('#add_holiday').serialize();
+                                 $("#add_hld").text('');
+                                 $("#add_hld").css({'background': '#fff', 'opacity': '.5'});
+                                  $("#add_hld").append("<img src='../images/loader.gif' width='23'/>");
                                     $.ajax({
                                      type: 'POST',
                                      url: 'addholiday_ins.php',
                                      data: data,
                                      success: function(responce){
-                                         //alert(responce);
-                                        $('#msg').show().text(responce);
+                                        
+                                        $('html, body').animate({scrollTop: 0}, 500);
+                                       // $("#add_hld").text('Submit');
+                                        $('#response_text').text(responce);
+                                      
+                                        window.setTimeout(function(){
+                                                 $("#resModal").modal('show')
+
+                                                  },2000)
                                               window.setTimeout(function(){
                                                 window.location='holiday_management.php'
 
-                                                  },3000)
+                                                  },4000)
                                      },
+                                     
                                      error: function (responce) {
                                      alert(responce);
                                     }

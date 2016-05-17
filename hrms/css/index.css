@@ -384,8 +384,7 @@ div.dashboardContentHolder{
 height: auto;
   width: 100%;
   background: transparent;
-  padding:15px 0px 0px 0px;
-  
+  padding:15px 0 0 0px;
   margin: 0 0 0 0;
   transition: all .1s  ease-in-out;
   padding-bottom: 20px;
@@ -776,8 +775,8 @@ div.col-sm-12.col-md-12.col-lg-12.alarm-quicklinks-header {
     background: #354052;
     height: 40px;
     padding: 10px 7px 0 5px;
-     border-top-right-radius: 5px;
-     border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
     color: #a0abbf;
 }
 div.col-sm-8.col-md-8.col-lg-8.alarm-notificationtxt2 {
@@ -1230,7 +1229,7 @@ div.addtenantformholder {
       padding: 7px 0 0px 40px;
 }
 span.tenantpadding {
-    padding: 0 45px 0px 0x;
+    padding: 0 45px 0px 0px;
 }
 div.tenantmargin {
     margin: 0 0 7px 0;

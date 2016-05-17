@@ -88,27 +88,3 @@ if(!$mail->Send()) {
    echo "server side validation failed";
  }
 }
-  // backend code for updete user information
-if(isset($_POST['uniqe']))
-   // echo $_POST['com_email_u'];
- $com_name_u = $_POST['com_name_u'];
-    $company_id_u=$_POST['companyid_u'];
- $com_password_u = $_POST['com_password_u'];
- $com_cof_password_u = $_POST['com_cof_password_u'];
- $com_contact_u = $_POST['com_no_u'];
- $com_emp_u = $_POST['com_emp_u'];
- $com_country_u = $_POST['com_country_u'];
- $com_status_u = $_POST['com_status_u'];
- 
- $query= "update companyreg_tbl set country_id=$com_country_u,company_name='$com_name_u',company_password ='$com_password_u' ,company_contact='$com_contact_u',number_of_employee='$com_emp_u',company_status='$com_status_u' where company_id='$company_id_u'";
-$rs=mysqli_query($con, $query);
-var_dump($rs);
-$res=  mysqli_affected_rows($rs);
-if($rs){
-    
-    echo "Update successfull";
-    
-}
-else{
-    echo 'record not update';
-}

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<?php include '../dbcon.php';?>
-<?php
+<?php include '../dbcon.php';
 
 if(isset($_SESSION['email'])){
-	 $uniqe_id = $_SESSION['company_id']; 
+    $uniqe_id = $_SESSION['company_id'];
+	
 }else{
-	header('location:../index.php');
+	header('location:../index.html');
 }
 ?>
 <html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -91,13 +91,14 @@ ul li{list-style:none;}
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7.8%;border-top:1px solid #2C3543">
 			
-			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="index.php"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
+            <ul style="margin-left:-20%;margin-top:39px">
+  <a  href="deshbord.html">  <li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
+<a  href="employee_management.html">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
 <a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
 <a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
 <a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
-</ul>
+
+            </ul>
 			
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push">
@@ -113,7 +114,7 @@ ul li{list-style:none;}
      
      <ul class="management_navigation_holder">
     
-  <li class="nav_item"><a href ="../logout.php"><button type="button" class="navbtn" name="button">Log out</button></a></li>
+  <li class="nav_item"><button type="button" class="navbtn" name="button">Log out</button></li>
 </ul>
 </div>
 </main>
@@ -127,7 +128,14 @@ ul li{list-style:none;}
   </div>
   
   <!--- data fatch from company table -->
-
+<?php
+   
+   //$holiday_id = $_GET["id"];
+        $sql = "select * from main_super_admin where holiday_id = $uniqe_id";
+         $result = mysqli_query($con , $sql);
+    $row = mysqli_fetch_array($result)
+    
+    ?>
   
   
 
@@ -140,114 +148,61 @@ ul li{list-style:none;}
  
 </div>
 <div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
-          
-                 <form name="addTenantForm" class="ng-pristine ng-valid">
-                       <?php
-  
-                        $sql = "select * from companyreg_tbl where company_id = $uniqe_id";
-                         $result = mysqli_query($con , $sql);
+                 <form name="" class="ng-pristine ng-valid">
+                   <div class="col-md-3 col-md-offset-1 avatar-box">
+                    <div class="personal-image">
+                        <img class="avatar img-circle" alt="avatar" src="../images/background.jpg" height="80px" width="80px">
+                   
+                    <input type="file">
+                    </div>
+                    </div>
 
-                    while($row = mysqli_fetch_array($result))
-                    {
-                    ?>
-                   <div class="col-sm-6 col-md-6 col-lg-6">
-                     <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Name:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                        <?php echo $row['company_name'];?> 
+                   <div class="col-sm-7 col-md-7 col-lg-7 ">
+                       <div class="row">
+                       <div class="col-sm-4 col-md-4 col-lg-4 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Username:</span></div>
+                       <div class="col-sm-4 col-md-4 col-lg-4 tenantmargin">
+                           <input type="text" name="" value="<?php echo $row["superadmin_username"];?>">
                         </div>
                      </div>
                         <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Email:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                     <?php echo $row['company_email'];?> 
-                       </div>
-                        </div>
-                       <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Contact:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                      <?php echo $row['company_contact'];?> 
+                       <div class="col-sm-4 col-md-4 col-lg-4 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Email:</span></div>
+                       <div class="col-sm-4 col-md-4 col-lg-4 tenantmargin">
+                      <input type="text" name="" value="<?php echo $row["superadmin_email"];?>">
                        </div>
                         </div>
                         
-                   </div>
-
-                   <div class="col-sm-6 col-md-6 col-lg-6 ">
                         <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Employees:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                         <?php echo $row['number_of_employee'];?> 
+                       <div class="col-sm-4 col-md-4 col-lg-4 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Password:</span></div>
+                       <div class="col-sm-4 col-md-4 col-lg-4 tenantmargin">
+                          <input type="text" name="" value="<?php echo $row["superadmin_password"];?>">
                        </div>
                          </div>
                        <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Plan:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                        <?php echo $row['company_plan'];?> 
+                       <div class="col-sm-4 col-md-4 col-lg-4 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor"> Contact:</span></div>
+                       <div class="col-sm-4 col-md-4 col-lg-4 tenantmargin">
+                         <input type="text" name="" value="<?php echo $row["superadmin_contact"];?>">
                        </div>
                         </div>
+                       
                      
-                   </div>
-                         <!--submit cancel reset group of buttons-->
-            <div class="row">
-                   <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-				   	<div class="alert alert-info " id="reposnse"  style="display:none;">
-
-                                        </div>
-				   
-                     <ul class="tenantform">
-                            <li><a href="update_company_account.php?id=<?php echo $row['company_id'];?>">Edit</a></li>
-                            <li><a href="index.php">close</a></li>
+                        <div class="row">
+                            <ul class="tenantform" style="margin-left: 65px;">
+                            <li><a href="">Save Changes</a></li>
+                            <li><a href="deshbord.html">close</a></li>
                      </ul>
                    </div>
+                       
+                   </div>
+                         <!--submit cancel reset group of buttons-->
+            
             </div>
-                 
-                 </form>
-    
-                     </div>
-    <div class="addtenantheader col-sm-12 col-md-12 col-lg-12">
-    <span style="color:#fff; font-weight: bold;">Billing Details</span>
+  </div>
+   
+   
  
 </div>
-<div class="addtenantformholder col-sm-12 col-md-12 col-lg-12">
-                 <form name="addTenantForm" class="ng-pristine ng-valid">
-                   <div class="col-sm-6 col-md-6 col-lg-6">
-                       <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Registration Date:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                          <?php echo $row['registration_date'];?> 
-                       </div>
-                     </div>
-                       <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Last Pyment Date:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                         <?php echo $row['subscription_date'];?> 
-                        </div>
-                     </div>
-                      
-                     
-                   </div>
 
-                   <div class="col-sm-6 col-md-6 col-lg-6 ">
-                       <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Subscription Date:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                          <?php echo $row['subscription_date'];?> 
-                       </div>
-                        </div>
-                        <div class="row">
-                       <div class="col-sm-6 col-md-6 col-lg-6 text-right tenantmargin"><span class="tenantpadding  tenanttextcolor">Plan Expiry:</span></div>
-                       <div class="col-sm-6 col-md-6 col-lg-6 tenantmargin">
-                          <?php echo $row['subscription_date'];?>
-                       </div>
-                        </div>
-                        
-                      
-                   </div>
-                      <?php
-                 
-    }?>  
-                     </div>
-                   </div>
+  </div>
 
 
 <!--table for employee details of particuler-->
