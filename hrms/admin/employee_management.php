@@ -70,7 +70,7 @@ if (isset($_SESSION['email'])) {
             }
             nav>ul >a:hover {
                 color: #fff !important;
-
+             
             }
             nav>ul >a:hover li{    color: #fff !important;}
             ul li{list-style:none;}
@@ -88,32 +88,32 @@ if (isset($_SESSION['email'])) {
                 padding-top: 20px !important;
 
             }	
-            label{
-                font-weight:700;
-            }
+           label{
+			   font-weight:700;
+		   }
         </style>
 
 
     </head>
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
-        <ul style="margin-top:63px">
-            <li class="dropdown navbar-user open user_profile" id="userOptionsDropdown" align="center">
-
-                <img src="../images/deflt.gif" class="img-circle"alt="" width="60" height="60"> 
-                <label class="user_msg">Welcome,</label>
-                <label class="user_name"><?php echo $_SESSION['username']; ?></span></label>
-
-                </button>
-
-            </li>
-        </ul>
-
-        <ul style="margin-left:-20%;margin-top:21px;background:#354052;height:100%">
-            <a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
-            <a  href="employee_management.php" class="current">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
-            <a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
-            <a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
-            <a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
+     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
+		<ul style="margin-top:63px">
+		<li class="dropdown navbar-user open user_profile" id="userOptionsDropdown" align="center">
+						
+							<img src="../images/deflt.gif" class="img-circle"alt="" width="60" height="60"> 
+							<label class="user_msg">Welcome,</label>
+							<label class="user_name"><?php echo $_SESSION['username'];?></span></label>
+									
+						</button>
+					
+					</li>
+		</ul>
+    
+      <ul style="margin-left:-20%;margin-top:21px;background:#354052;height:100%">
+        <a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+<a  href="employee_management.php" class="current">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
+<a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
         </ul>
 
     </nav>
@@ -122,7 +122,7 @@ if (isset($_SESSION['email'])) {
         <main class="maindiv">
             <div class="header navbar-fixed-top">
                 <ul class="logocontainer">
-
+            
                 </ul>
                 <ul class="management_navigation_holder">
 
@@ -170,7 +170,6 @@ if (isset($_SESSION['email'])) {
                                     <!--- on click  redirect to usefull info page on click event not in href --> 
                                     <tr onclick="">
                                         <th scope="row"><?php echo ++$counter; ?></th>
-                        <input type="hidden" name="employee_id" value="<?php echo $row['employee_id']?>">
                                         <td><?php echo $row["first_name"] ?></td>
                                         <td><?php echo $row["department"] ?></td>
                                         <td><?php echo $row["email"] ?></td>
@@ -179,20 +178,20 @@ if (isset($_SESSION['email'])) {
                                         <td><?php echo $row["date_of_joining"] ?></td>
                                         <td>
                                             <a href="edit_employee.php?employee_id=<?php echo $row['employee_id'] ?>"><img height="25px" src="../images/edit1.png"></a>
-                                            <a id="delete_emp"><img height="25px" src="../images/delete-icon.png"></a>
+                                            <a href="delete_employee.php?employee_id=<?php echo $row['employee_id'] ?>"><img height="25px" src="../images/delete-icon.png"></a>
                                         </td>
 
                                     </tr>
                                     <!--- //end loop data -->
                                     <?php
                                 }
-                            } else {
-                                echo '
+                            }else{
+								echo '
 								  <tr onclick="">
 								  <td colspan="8" align="center">No details found</td>
 								  </tr>
 								  ';
-                            }
+							}
                             ?>
                         </tbody>
                     </table>
@@ -220,11 +219,6 @@ if (isset($_SESSION['email'])) {
 
         $("#emp_reg").click(function () {
             $("#reg_modal").modal('show');
-
-        });
-
-        $("#delete_emp").click(function () {
-            $("#myModal").modal('show');
 
         });
         $(".maindiv").click(function () {
@@ -266,26 +260,25 @@ if (isset($_SESSION['email'])) {
 <script>
 
     $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-        $("#emp_no").keypress(function (e) {
+            $('[data-toggle="tooltip"]').tooltip();
+    $("#emp_no").keypress(function (e) {
 
-            var key = e.charCode || e.keyCode || 0;
+    var key = e.charCode || e.keyCode || 0;
             // only numbers
-            if (key < 48 || key > 58) {
+    if (key < 48 || key > 58) {
 
-                return false;
-            }
-            if (key <= 10) {
-                return false;
-            }
+    return false;
+    }     if (key <= 10) {
+    return false;
+    }
 
-        });
-        $("#reg_with").click(function () {
-            $("#login-form").hide();
-            $("#reg-form").show();
-        });
-        /// Registration form validation         
-        ///// Registration form validation 
+    });
+    $("#reg_with").click(function () {
+    $("#login-form").hide();
+    $("#reg-form").show();
+            });
+            /// Registration form validation         
+            ///// Registration form validation 
 
 
         $("#registerform").validate({
@@ -337,12 +330,6 @@ if (isset($_SESSION['email'])) {
                             required: true,
                             digits: true
                         },
-                        dob_day: {
-                            required: true
-                        },
-                        dob_month: {
-                            required: true
-                        },
                         dob_year: {
                             required: true
                         },
@@ -359,16 +346,37 @@ if (isset($_SESSION['email'])) {
                     },
             messages:
                     {
-                        
+                        enp_f_name: "Please enter first name.",
+                        enp_l_name: "Please enter last name.",
+                        emp_password: {
+                            required: "Please provide a password.",
+                            minlength: "Password at least have 8 characters."
+                        },
+                        emp_email: "Please enter a valid email address.",
+                        emp_cof_password: {
+                            required: "Please retype your password.",
+                            equalTo: "Password doesn't match !"
+                        },
+                        emp_no: "Please enter Mobile Number.",
+                        Numbers_Of_Leave: "Please enter number of leaves.",
+                        education: "Please enter education.",
+                        local_add: "Please enter local address.",
+                        emp_par_add: "Please enter permanent address.",
+                        emp_alt_no: "Please enter aleternate number.",
+                        emp_family_no: "Please enter family number.",
+                        dob_year: "Please enter DOB.",
+                        employee_id: "Please enter Employee ID.",
+                        department: "Please enter Department.",
+                        date_of_joining: "Please enter DOJ."
                     },
             submitHandler: submitForm
         });
-        // submit form 
-        function  submitForm() {
-            var datafrom = $('#registerform').serialize();
-            $("#reg_button").text('');
-            $("#reg_button").css({'background': '#fff', 'opacity': '.5'});
-            $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
+                    // submit form 
+                            function  submitForm() {
+                            var datafrom = $('#registerform').serialize();
+                                    $("#reg_button").text('');
+                                    $("#reg_button").css({'background': '#fff', 'opacity': '.5'});
+                                    $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
             $.ajax({
                 method: "POST",
                 url: "employeedb.php",
@@ -381,7 +389,7 @@ if (isset($_SESSION['email'])) {
                     }, 3000)
 
                     $('#msg').show().text(response);
-
+                    
 
                 },
             });
@@ -395,18 +403,18 @@ if (isset($_SESSION['email'])) {
 <script>
 
 <!-- jquery for fixed the div when open menu -->
-    $().ready(function () {
-        $('.menuLogo ').click(function () {
-            $("#acc-div").toggleClass('fixed-right');
-        });
-    });</script>
+                                    $().ready(function () {
+                            $('.menuLogo ').click(function () {
+                            $("#acc-div").toggleClass('fixed-right');
+                            });
+                            });</script>
 
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
-    $(function () {
-        $(".datepicker").datepicker();
-    });</script>
+                                    $(function () {
+                                    $(".datepicker").datepicker();
+                                    });</script>
 <script type="text/javascript" src="../js/validation.min.js"></script>    <!--lybrary for validation-->
 
 <!--- css for margin-regit div on paid & free Vijy -->
@@ -488,7 +496,7 @@ if (isset($_SESSION['email'])) {
                                                         </div>
                                                         <div class="col-sm-6 ">
                                                             <div class="form-group">
-                                                                <label>Emergency Contact Name <small>*</small></label>
+                                                                <label>Emergency Contact<small>*</small></label>
                                                                 <input type="text" class="form-control" placeholder="Family Contact no" name="emp_family_no" id="emp_family_no">
                                                             </div>
                                                         </div>
@@ -563,7 +571,7 @@ if (isset($_SESSION['email'])) {
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <div class="form-group">
-                                                                <label>Qualification <small>*</small></label>
+                                                                <label>Qualification<small>*</small></label>
                                                                 <input type="text" class="form-control" placeholder="Enter qualification" name="education" id="education">
                                                             </div>
                                                         </div>
@@ -664,18 +672,17 @@ if (isset($_SESSION['email'])) {
                                                 </div>
                                             </div>
                                             <div class="wizard-footer">
-
+                                                
                                                 <div class="pull-right">
-                                                    <input type='button' style="margin-right: 15px;" class='btn btn-fill btn-warning btn-wd btn-sm' data-dismiss="modal" name='cancel' value='Cancel' />
-                                                    <input type='button' style="margin-right: 15px;" class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+                                                    <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
                                                     <input type='submit' id="reg_button" class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Save All' />
 
                                                 </div>
 
                                                 <div class="pull-right" style="padding-right:20px;">
-                                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                                    <input type='button'  style="padding-right:20px;"class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
                                                 </div>
-
+                                                
                                                 <div class="clearfix"></div>
                                             </div>	
                                         </form>
@@ -697,25 +704,3 @@ if (isset($_SESSION['email'])) {
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
-<!--- modal for forget user name & Password -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog modal-sm " style="width:340px;" role="document">
-        <div class="modal-content" style="margin-top:60%">
-            <div class="modal-header">
-
-                <h5 class="modal-title"  style="color:#212121;text-align:center">Are you sure want to delete it ?</h5>
-            </div>
-            <div class="modal-footer">
-                
-                    <div class="form-group" align="center">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-primary" onclick="delete()">Yes</button>
-
-                    </div>
-            </div>
-            
-          
-    </div>
-</div>

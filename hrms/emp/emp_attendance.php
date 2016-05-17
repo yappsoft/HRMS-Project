@@ -38,7 +38,8 @@ if(isset($_SESSION['email'])){
                <link href="../css/datepicker.min.css" rel="stylesheet" type="text/css">	
     
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
-			
+		<!--full calender css-->
+                <link href='../css/fullcalendar.css' rel='stylesheet' />
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
 		<script src="../js/modernizr.custom.js"></script>
@@ -47,10 +48,13 @@ if(isset($_SESSION['email'])){
                 <script src="../js/pie.js"></script>
                 <script src="../js/light.js"></script>
                 <!--script for calender-->
-		<script src="../js/datepicker.min.js"></script>
+		
                 
-		<!-- Include English language -->
-		<script src="../js/datepicker.en.js"></script>
+                <script src='../js/moment.min.js'></script>
+                
+                <script src='../js/fullcalendar.js'></script>
+
+
 <!--end of chart-->
                 <style type="text/css">
 				.alert{color:#fff}
@@ -80,7 +84,7 @@ nav>ul >a{
 nav>ul >a:hover li{    color: #fff !important;}
 ul li{list-style:none;}
                     .alertpf{
-                        height:330px;
+                        height:511px;
                         overflow-y: auto;
                         overflow-x: hidden;
                         
@@ -260,210 +264,10 @@ window.onload=DisplayTime
 <div class="container-fluid dashboardContentHolder">
   <div class="row dashboardgrid">
 <div class="col-md-12 col-lg-12 col-sm-12 ">
-      <!-- first grid for total Employs starts -->
-	  
-	  
-      <div class="col-md-4 col-lg-4 col-sm-4  gridview">
-      <div class="dashboardHeader">
-        <p class="dashboardHeading">Total Attendance</p>
-       
-      </div>
-    
-
-         
-      </div>
-        <div class="col-md-4 col-lg-4 col-sm-4  gridview">
-            <div class="dashboardHeader">
-        <p class="dashboardHeading">Total Leave</p>
-       
-      </div>
-    
-
-         
-      </div>
-        <div class="col-md-4 col-lg-4 col-sm-4  gridview " style="height:260px;">
-      <div class="dashboardHeader">
-          <p class="dashboardHeading" >Calendar</p>
-       
-      </div>
-     <div class="datepicker-here" data-language="en" inline="true"  ></div> 
-
-         
-      </div>
-          </div>
-      <!-- first grid ends -->
-      
-    <!--  second gride  -->
-      
-            
-           
-		  <!---- end second -->
-	  
-    </div>
-	<div class="col-md-12 col-lg-12 col-sm-12 ">
-      <!-- first grid starts -->
-      <!-- start upcoming birthday here-->
-      <div class="row">
-          <div class="col-md-4 col-lg-4 col-sm-4 gridview  pointer" style="height:100%; margin-top: -50px; ">
-          
-          
-          
-          
-          <div class="col-sm-12 col-md-12 col-lg-12 "style="height: 165px;" >
-              <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header"  >
-                  <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/calendar.png"/></div>
-       <div class="col-sm-5 col-md-5 col-lg-5 text-center no-padding">Upcoming Birthday</div>
-       <div class="col-sm-3 col-md-3 col-lg-3 text-right no-padding visibility-hidden"></div>
-       </div>
-         <?php 
-         $rs=0;
-            if ($rs==1)
-            {
-          ?>
-             <!-- out for loop here for alarm notification -->
-             <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
-            <div class="col-sm-1 col-md-1 col-lg-1"></div>
-            <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"></div>
-            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold">Yogendra chouhan</span><br>
-                    <span class="textnormal"> Birthday on  26/05/2016</span>..
-              </div>
-            
-           </div>
-           <?php 
-            } else {?>
-             
-             <div class="col-sm-12 col-md-12 col-lg-12 text-center" style="padding-top:50px;">
-                 <?php echo "No  birthday in this month";?></div>
-           <?php
-     } ?>
-      </div>
-          </div>
-           
-        
-       <!-- end upcoming birthday here-->
-        
-      <!-- first grid ends -->
-      <!-- second grid start for alerts -->
-      <div class="row">
-      <div class="col-md-4 col-lg-4 col-sm-4 gridview  pointer"style=" height:360px; margin-top: -50px; ">
-        <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
-            <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/alarms.png"/></div>
-       <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Alerts</div>
-       <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
-      </div>
-
-         <div class="col-sm-12 col-md-12 col-lg-12 " style="">
-          <!-- out for loop here for alarm notification -->
-          
-            <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
-              <div class="col-sm-1 col-md-1 col-lg-1"></div>
-              <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/green-dot.png" height="12px" alt="" src="../images/red-dot.png"></div>
-                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2"><span class="textbold">Payment renew</span><br>
-                      <span class="textnormal">a company renew payment at 5th may</span>..
-                </div>
-             </div>
-           <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
-            <div class="col-sm-1 col-md-1 col-lg-1"></div>
-            <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/red-dot.png" height="12px" alt="" src="../images/red-dot.png"></div>
-              <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2"><span class="textbold">User Update</span><br>
-                    <span class="textnormal">a demo user send request for account approval</span>..
-              </div>
-           </div>
-           <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
-             <div class="col-sm-1 col-md-1 col-lg-1"></div>
-             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/red-dot.png" height="12px" alt="" src="../images/green-dot.png"></div>
-               <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2"><span class="textbold">Request for demo</span><br>
-                     <span class="textnormal">a loren company request for register </span>..
-               </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
-              <div class="col-sm-1 col-md-1 col-lg-1"></div>
-              <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/green-dot.png" height="12px" alt="" src="../images/red-dot.png"></div>
-                <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2"><span class="textbold">Payment renew</span><br>
-                      <span class="textnormal">a company renew payment at 5th may</span>..
-                </div>
-             </div>
-          
-         </div>
-          <!-- out for loop here for alarm notification -->
-        
-        
-
-          </div>
-      
-       <!--quick links gride start here-->
-         <div class="col-md-4 col-lg-4 col-sm-4 gridview  pointer"style="height:311px;">
-       <div class="quick-links  col-md-12 col-lg-12 col-sm-12 ">
-        <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
-       <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding "><img height="22px"src="../images/energyanalysis.png"/></div>
-       <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Quick Links</div>
-       <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
-      </div>
-           <div class=" col-sm-12 col-md-12 col-lg-12 quicklinksContent overflow" style="background:#fff;overflow: auto; height: 270px;">
-          <ul class="quicklinkslist">
-              <a href="#"><li class="quicklinksitems"><img src="../images/view.png" height="28px"/> &nbsp;&nbsp;&nbsp;View attendance</li></a>
-              <a href="#"><li class="quicklinksitems"> &nbsp;<img src="../images/iac.png"/> &nbsp;&nbsp;&nbsp;&nbsp;Apply for leave</li></a>
-            <a href="#"><li class="quicklinksitems"><img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;Account details</li></a>
-          </ul>
-      </div>
-      </div>
-        </div> 
-       <!--../images/upi.png-->
-        <div class="col-md-4 col-lg-4 col-sm-4  gridview fixed-left" style="margin-top: 130px; position: absolute;height: 180px;" >
-         <div class="col-sm-12 col-md-12 col-lg-12 " >
-          <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
-            <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/alarms.png"/></div>
-            <div class="col-sm-5 col-md-5 col-lg-5 text-center no-padding " >Upcoming Holiday</div>
-       <div class="col-sm-3 col-md-3 col-lg-3 text-right no-padding visibility-hidden">vijay</div>
-      </div>
-          <?php 
-         
-          $sel = "SELECT * FROM holiday_tbl where company_id='$com_id' and holiday_date > DATE_FORMAT(CURDATE(),'%m-%d-%Y')";
-          $query = mysqli_query($con, $sel);
-          $test= mysqli_num_rows($query);
-          if($test)
-          {
-          while($row = mysqli_fetch_array($query))
-                  // backend script for upcoming holidays
-          {
-           ?>
-          
-         <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
-             <div class="col-sm-1 col-md-1 col-lg-1"></div>
-             <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/red-dot.png" height="12px" alt="" ></div>
-               <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 "><span class="textbold"><?php echo $row['holiday_name']?></span><br>
-                     <span class="textnormal">on <?php echo $row['holiday_date']." ".$row['holiday_days'] ?></span>..
-               </div>
-            </div>
-          <?php }}
-                 else {
-                  ?> <div class="col-sm-12 col-md-12 col-lg-12 text-center" style="padding-top: 50px;">
-                 <?php echo "No holiday in this month";?></div>
-                     
-                     <?php  }
-                 ?>
-          </div>  
-      
-         </div>
-        
-        <!-- start upcoming holidays here-->
-      </div>
-      </div>
-      </div>
-     
-	  <!----quick links gride end here -->
-
-
-		  <!---- end pennding div -->
-	  
-	
-	  
-    
+      <!--start attendance calendar here -->
+               <div id='calendar'></div>	
 </div>
-</div>
-               
-	
-
+  </div></div></div>
    <script src="../js/jquery.min.js"></script>
    <script src="../js/bootstrap.min.js"></script>
 
@@ -550,5 +354,74 @@ window.onload=DisplayTime
 
 		</script>
 
+<!--calender script-->
 
+<script>
 
+	$(document).ready(function() {
+
+		$('#calendar').fullCalendar({
+			defaultDate: '2016-05-12',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{
+					title: 'All Day Event',
+					start: '2016-05-01'
+				},
+				{
+					title: 'Long Event',
+					start: '2016-05-07',
+					end: '2016-05-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-05-09T16:00:00'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-05-16T16:00:00'
+				},
+				{
+					title: 'Conference',
+					start: '2016-05-11',
+					end: '2016-05-13'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-05-12T10:30:00',
+					end: '2016-05-12T12:30:00'
+				},
+				{
+					title: 'Lunch',
+					start: '2016-05-12T12:00:00'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-05-12T14:30:00'
+				},
+				{
+					title: 'Happy Hour',
+					start: '2016-05-12T17:30:00'
+				},
+				{
+					title: 'Dinner',
+					start: '2016-05-12T20:00:00'
+				},
+				{
+					title: 'Birthday Party',
+					start: '2016-05-13T07:00:00'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2016-05-28'
+				}
+			]
+		});
+		
+	});
+$('#calendar').fullCalendar('next');
+</script>
