@@ -1,6 +1,6 @@
 /* General styles for all menus */
 .cbp-spmenu {
-	background: #354052;
+	background: #fff;
 	position: fixed;
 }
 
@@ -102,7 +102,7 @@
 	left: 0;
 	width:100%
 }
- 
+
 .cbp-spmenu-push-toright {
 
     width: 82.3%;

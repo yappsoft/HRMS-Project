@@ -147,7 +147,7 @@ position: relative;
   height: 52px;
   width: 100%;
   background: #354052;
-  z-index: 1;
+  z-index:9999;
 }
 .managementcontent{
   height: calc(100vh - 60px);
@@ -354,14 +354,25 @@ a,a:hover,a:focus,a:active{
   text-decoration: none;
 }
 div.sidenav ul >a li:hover{
-    background: #2C3543;
+
     color: white;
     width: 208px;
     height: 46px;
     padding: 11px 0 0 13px;
     border: 0px;
     margin: 0 0 8px 0px;
-    border-left: 4px solid #8cc63e;
+
+
+}
+div.sidenav ul a li.current{
+    background: #2C3543 !important;
+    color: white;
+    width: 208px;
+    height: 46px;
+    padding: 11px 0 0 13px;
+    border: 0px;
+    margin: 0 0 8px 0px;
+    border-left: 4px solid #8cc63e !important;
 
 }
 .sidenavicons {
@@ -2317,9 +2328,15 @@ nav>ul >a{
 }
  nav>ul >a:hover {
     color: #fff !important;
-		background: #2C3543;
-       border-left: 12px solid #8cc63e;;
+
+
 }
+nav>ul >a.current {
+   color: #fff !important;
+   background: #2C3543;
+      border-left: 12px solid #8cc63e;;
+}
+
 nav>ul >a:hover li{    color: #fff !important;}
 ul li{list-style:none;}
                     .alertpf{
@@ -2345,7 +2362,7 @@ ul li{list-style:none;}
     }
     span.form-control-feedback{
 
-      right: 28% !important;
+      right: 13% !important;
     top: 3px !important;
 }
 .error{
@@ -2353,4 +2370,32 @@ ul li{list-style:none;}
   font-weight: 300 !important;
   color: #FF1744 !important
 
+}
+
+/* css for user profile image */
+li.user_profile{
+  display: inline-block;
+  margin: 6px 0 0 -29px;
+  padding: 0 63px 0 1px;
+
+}
+li.user_profile label{
+    position: absolute;
+  }
+  label.user_msg{
+   top: 10px;
+   float: right;
+   right: -25px;
+   color: #8cc63e;
+   text-transform: capitalize;
+   font-size: 16px;
+  }
+label.user_name{
+  color: #70757d;
+  overflow-x:hidden;
+  text-overflow: ellipsis;
+  top: 29px;
+  left: 76px;
+  font-weight: normal;
+  text-transform: capitalize;
 }
