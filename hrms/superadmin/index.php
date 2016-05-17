@@ -96,6 +96,7 @@ $count_inact =$row['inact_com'];
 
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
 		<ul style="margin-top:63px">
+		<li style="float:right;margin-right:9px;"><img class="profile_edit" src="../images/edit1.png"  width="22"/></li>
 		<li class="dropdown navbar-user open user_profile" id="userOptionsDropdown" align="center">
 						
 							<img src="../images/deflt.gif" class="img-circle"alt="" width="60" height="60"> 

@@ -229,8 +229,8 @@ ul li{list-style:none;}
           <div class="col-sm-12 col-md-12 col-lg-12" style="height: 240px;">
               <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header"  >
                   <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/calendar.png"/></div>
-       <div class="col-sm-5 col-md-5 col-lg-5 text-center no-padding">Upcoming Birthday</div>
-       <div class="col-sm-3 col-md-3 col-lg-3 text-right no-padding visibility-hidden"></div>
+       <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Upcoming Birthday</div>
+       <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden"></div>
        </div>
          <?php 
          $rs=0;
@@ -249,7 +249,7 @@ ul li{list-style:none;}
            <?php 
             } else {?>
              
-             <div class="col-sm-12 col-md-12 col-lg-12 text-center" style="padding-top: 90px;!importent">
+             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                  <?php echo "No  birthday in this month";?></div>
            <?php
      } ?>
@@ -261,8 +261,8 @@ ul li{list-style:none;}
          <div class="col-sm-12 col-md-12 col-lg-12" style="height:250px;">
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
             <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/alarms.png"/></div>
-           <div class="col-sm-5 col-md-5 col-lg-5 text-center no-padding " style="height:250px;">Upcoming Holiday</div>
-       <div class="col-sm-3 col-md-3 col-lg-3 text-right no-padding visibility-hidden">vijay</div>
+            <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding " style="height:250px;">Upcoming Holiday</div>
+       <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
       </div>
           <?php 
          
@@ -285,7 +285,7 @@ ul li{list-style:none;}
             </div>
           <?php }}
                  else {
-                     ?> <div class="col-sm-12 col-md-12 col-lg-12 text-center" style="padding-top: 90px;!importent">
+                  ?> <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                  <?php echo "No holiday in this month";?></div>
                      
                      <?php  }

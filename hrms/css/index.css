@@ -389,7 +389,7 @@ div.dashboardContainer{
   background: #efefef;
   padding-top: 50px !important;
 
-    width: 99.0%;
+    width: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
@@ -2400,4 +2400,40 @@ label.user_name{
   left: 76px;
   font-weight: normal;
   text-transform: capitalize;
+}
+label.control-label{
+
+  color:#212121;
+}
+.warning{
+
+  background: #fb4c2f;
+}
+.warning:hover{
+
+  background: #fb4c2f;
+  opacity: .9;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+
+background-color: black;
+opacity: .4;
+
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+}
+img.profile_edit{
+cursor: pointer;
+
+}
+label.error{
+
+  display: none !important;
+}
+html.body {
+  -webkit-user-select: none !important;  /* Chrome all / Safari all */
+  -moz-user-select: none !important;     /* Firefox all */
+  -ms-user-select: none !important;      /* IE 10+ */
+  user-select: none !important;          /* Likely future */
 }
