@@ -9,7 +9,7 @@ $password = $_POST['password'];
 
 
 
-$result=mysqli_query($con,"SELECT * FROM login_tbl WHERE email='$email' and password='$password'");
+$result=mysqli_query($con,"SELECT * FROM login_tbl WHERE email='$email' or `username` ='$email'  and password='$password'");
 $count=mysqli_num_rows($result);
 $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 if($count > 0){
