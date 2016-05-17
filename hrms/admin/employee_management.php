@@ -89,11 +89,7 @@ if (isset($_SESSION['email'])) {
                 padding-top: 20px !important;
 
             }	
-            .table>tbody>tr>td {
-                border-bottom: 2px solid #ddd;
-
-
-            }
+           
         </style>
 
 
@@ -368,7 +364,7 @@ if (isset($_SESSION['email'])) {
                             function  submitForm() {
                             var datafrom = $('#registerform').serialize();
                                     $("#reg_button").text('');
-                                    //$("#reg_button").css({'background': '#fff', 'opacity': '.5'});
+                                    $("#reg_button").css({'background': '#fff', 'opacity': '.5'});
                                     $("#reg_button").append("<img src='../images/loader.gif' height='20px' />");
             $.ajax({
                 method: "POST",
@@ -608,7 +604,7 @@ if (isset($_SESSION['email'])) {
                                                         <div class="col-sm-6 ">
                                                             <div class="form-group">
                                                                 <label>Date of joining<small>*</small></label>
-                                                                <input type="text" class="form-control datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1" disabled="disabled" ondblclick="this.disabled=false;">
+                                                                <input type="text" class="form-control datepicker" id="date_of_joining" name="date_of_joining"  placeholder="Date Of Joining" aria-describedby="basic-addon1" >
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 ">
@@ -672,8 +668,8 @@ if (isset($_SESSION['email'])) {
 
                                                 </div>
 
-                                                <div class="pull-right">
-                                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                                <div class="pull-right" style="padding-right:20px;">
+                                                    <input type='button'  style="padding-right:20px;"class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
                                                 </div>
                                                 
                                                 <div class="clearfix"></div>
