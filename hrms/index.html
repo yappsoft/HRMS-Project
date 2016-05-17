@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="css/index.css" media="screen" charset="utf-8">
         <style type="text/css"></style></head>
-    <body style="overflow:hidden" cz-shortcut-listen="true">
+    <body  class="ng-scope" cz-shortcut-listen="true">
         <!--  <div header></div>
         <div sidenav></div>-->
 
@@ -50,7 +50,7 @@
                                                 <span class="glyphicon glyphicon-envelope"></span>
                                             </span>
 
-                                            <input type="text" class="form-control username" id="email" placeholder="Email or Username" name="email"aria-describedby="basic-addon1" required="">
+                                            <input type="text" class="form-control username" id="email" placeholder="Enter email" name="email"aria-describedby="basic-addon1" required="">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -60,25 +60,20 @@
                                                 <span class="glyphicon glyphicon-lock"></span>
                                             </span>
 
-                                            <input type="password" class="form-control password" id="password"  placeholder="Password" name="password"aria-describedby="basic-addon1" required="">
+                                            <input type="password" class="form-control password" id="password"  placeholder="*******" name="password"aria-describedby="basic-addon1" required="">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-12 col-md-12 col-lg-12 form-group">
-									
-									<label class="error" style="display:none">Incorrect username & Password</label>
                                         <button type="submit" class="btn btn-block loginbtn" id="log_btn">LOGIN</button>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
                                         <button type="button" class="btn btn-block loginbtn" id="reg_with">REGISTER WITH US</button>
-                                    </div>
-									    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <a   href="javascript:void(0)" id="forget_password" class=""style="color:#fff;padding-left:40px">Forget Username / Password </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-6  rightcontent"  id="reg-form" style="margin-top:-140px;display:none" >
+                        <div class="col-md-6 col-lg-6  rightcontent"  id="reg-form" style="margin-top:-90px;display:none" >
                             <div class="row">
 
                                 <div class="alert alert-info col-md-6" id="reg_msg" style="display:none;margin-top:-100px;">
@@ -102,46 +97,13 @@
                                                 <span class="glyphicon glyphicon-envelope"></span>
                                             </span>
 
-                                            <input type="email" class="form-control" placeholder="Company Email" onBlur="checkAvailability()" name="com_email"id="com_email"  required="">
+                                            <input type="email" class="form-control" placeholder="company email" onBlur="checkAvailability()" name="com_email"id="com_email"  required="">
 
                                             <label class="error" id="email_error" style="display:none"> </label>
                                         </div>
                                     </div>
-  <div class="col-sm-12 col-md-12 col-lg-12 ">
 
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1">
-                                                <span class="glyphicon glyphicon-user"></span>
-                                            </span>
-
-                                            <input type="text" class="form-control " id="com_username" name="com_username" onBlur="check_username()"  placeholder="Username" aria-describedby="basic-addon1" required="">
-											   <span  style=" right: 1% !important;display:none" class="glyphicon  form-control-feedback" id="user_loader"><img src="images/loader.gif" width="20"/></span>
-											   <span  style=" right: 1% !important"class="glyphicon  form-control-feedback" id="username_found"></span>
-											   
-                                        </div>
-                                    </div>
-                                 
                                     <div class="col-sm-12 col-md-12 col-lg-12">
-
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1">
-                                                <span class="glyphicon glyphicon-lock"></span>
-                                            </span>
-
-                                            <input type="password" class="form-control" placeholder="Password" id="com_password" name="com_password">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1">
-                                                <span class="glyphicon glyphicon-lock"></span>
-                                            </span>
-
-                                            <input type="password" class="form-control" placeholder="Confirm Password" id="com_cof_password" name= "com_cof_password">
-                                        </div>
-                                    </div>
-									   <div class="col-sm-12 col-md-12 col-lg-12">
 
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1">
@@ -149,6 +111,26 @@
                                             </span>
 
                                             <input type="text" class="form-control" placeholder="Contact No" name="com_no" id="com_no">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <span class="glyphicon glyphicon-lock"></span>
+                                            </span>
+
+                                            <input type="password" class="form-control" placeholder="*********" id="com_password" name="com_password">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">
+                                                <span class="glyphicon glyphicon-lock"></span>
+                                            </span>
+
+                                            <input type="password" class="form-control" placeholder="*******" id="com_cof_password" name= "com_cof_password">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -176,26 +158,20 @@
                                                 <span class="glyphicon glyphicon-map-marker"></span>
                                             </span>
 
-                                            <select class="form-control " name="com_country" id="com_country"> 
+                                            <select class="form-control" name="com_country" id="com_country"> 
                                                 <option selected disabled>Country</option>
                                                                                
 
 
 
                                             </select>
-
                                         </div>
                                     </div>
 
                                     <input type="hidden" value="inactive" name="com_status" id="com_status"/>
 
-                                    <div class="col-sm-6 col-md-6 col-lg-6">
-									         <button type="submit" class="btn btn-block loginbtn col-md-6" id="reg_button">Submit</button>
-                                        <button type="button" class="btn btn-block loginbtn col-md-6 " id="cancel">Cancel</button>
-										
-                                    </div>
-									  <div class="col-sm-6 col-md-6 col-lg-6">
-                                       
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <button type="submit" class="btn btn-block loginbtn" id="reg_button">Register</button>
                                     </div>
                                 </form>
                             </div>
@@ -215,34 +191,17 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title text-center" id="myModalLabel">Registration Complete</h4>
       </div>
-      <div class="modal-body text-center" style="color:#212121" id="server_response">
+      <div class="modal-body text-center" id="server_response">
 
       </div>
     </div>
   </div>
 </div>
-
   
   
         <script type="text/javascript" src="js/validation.min.js"></script>
         <script>
 $('document').ready(function(){
-//start forget password and username script //
-	$("#email_forget").on( 'click focusout',function(){
-	$("#email_success").hide();
-	});
-	
-	//click on close pop 
-	$("#pop_close").click(function(){
-	//alert();
-	$("#forget_modal").modal('hide');
-  window.location.href = "index.html";
-	});
-	$("#forget_password").click(function(){
-		$('#forget_modal').modal('show');
-	});
-
-
 
 $(function() {
   //  $( "#com_country" ).selectmenu();
@@ -261,58 +220,6 @@ $(function() {
 
 });
 
-//check username
-function check_username(){
-$("#user_loader").show();
-jQuery.ajax({
-                      url: "company_db_ins.php",
-                      data: 'check_username=' + $("#com_username").val(),
-                      type: "POST",
-                      success: function (data) {
-                          if (data == 'true') {
-						  $("#username_found").addClass('glyphicon-remove').removeClass('glyphicon-ok').css('color','#FF1744');
-						 	  $("#pop_send").prop('disabled','true');
-				$("#user_loader").hide();
-                          } else {
-						  $("#pop_send").prop('disabled',false);
-						  	  $("#username_found").addClass('glyphicon-ok').removeClass('glyphicon-remove').css('color','#8cc63e ');
-						  				$("#user_loader").hide();
-
-                          }
-                          var errorflag = true;
-                      },
-                      error: function () {
-                      }
-                  });
-
-
-
-}
- 
-				     function  checkEmail() {
-
-                  jQuery.ajax({
-                      url: "company_db_ins.php",
-                      data: 'check_email=' + $("#email_forget").val(),
-                      type: "POST",
-                      success: function (data) {
-                          if (data == 'true') {
-						  $("#email_found").removeClass('glyphicon-remove').addClass('glyphicon-ok').css('color','#8cc63e');
-						   $("#pop_send").prop('disabled',false);
-							var  flag = true;
-                          } else {
-						  $("#pop_send").prop('disabled','true');
-						  	  $("#email_found").addClass('glyphicon-remove').css('color','#FF1744 ');
-						  		  $("#email_success").text('Email address  not found').css('color','#FF1744 ');
-                                 $("#email_success").show();
-
-                          }
-                          var errorflag = true;
-                      },
-                      error: function () {
-                      }
-                  });
-              }
 
         // for show popup when emp is<5
 
@@ -365,11 +272,6 @@ jQuery.ajax({
                       $("#reg-form").show();
 
                   });
-				      $("#cancel").click(function () {
-                      $("#login-form").show();
-                      $("#reg-form").hide();
-
-                  });
                   ///login form validation
                   $("#loginform").validate({
                       rules:
@@ -379,7 +281,10 @@ jQuery.ajax({
                                       minlength: 8,
                                       maxlength: 15
                                   },
-                                
+                                  email: {
+                                      required: true,
+                                      email: true
+                                  },
                               },
                       messages:
                               {
@@ -387,7 +292,7 @@ jQuery.ajax({
                                       required: "please provide a password",
                                       minlength: "password at least have 8 characters"
                                   },
-                             
+                                  com_email: "please enter a valid email address"
 
                               },
                       submitHandler: loginsubmit
@@ -397,12 +302,9 @@ jQuery.ajax({
                   function loginsubmit() {
                       var data = $("#loginform").serialize();
                       //alert(data);
-                        $("#log_btn").text('');
+   $("#log_btn").text('');
                       $("#log_btn").css({'background': '#fff', 'opacity': '.5'});
                       $("#log_btn").append("<img src='images/loader.gif' />");
-					  $(".form-control").prop('disabled','true');
-					$("#forget_password").hide();
-					  $('#reg_with').hide();
                       $.ajax({
                           type: "POST",
                           url: "ajax_login.php",
@@ -428,12 +330,9 @@ jQuery.ajax({
                                   window.location.href = "emp/index.php";
                               } else if (response != '') {
                          $("#log_btn").text('LOGIN');
-						 		$("#forget_password").show();
                       $("#log_btn").css({'background': '#8cc63e', 'opacity': '1'});
-					  	  $(".form-control").prop('disabled',false);
-              
-					     $('#reg_with').show();
-                                //  alert(response);
+                   
+                                  alert(response);
                               }
                           }
                       });
@@ -450,11 +349,6 @@ jQuery.ajax({
                                   com_name: {
                                       required: true,
                                       minlength: 3
-                                  },
-								  com_username: {
-                                      required: true,
-                                      minlength: 3,
-									  maxlength:10
                                   },
                                   com_password: {
                                       required: true,
@@ -474,7 +368,16 @@ jQuery.ajax({
                               },
                       messages:
                               {
-                                 
+                                  com_name: "please enter company name",
+                                  com_password: {
+                                      required: "please provide a password",
+                                      minlength: "password at least have 8 characters"
+                                  },
+                                  com_email: "please enter a valid email address",
+                                  com_cof_password: {
+                                      required: "please retype your password",
+                                      equalTo: "password doesn't match !"
+                                  }
                               },
                       submitHandler: submitForm
                   });
@@ -489,7 +392,7 @@ jQuery.ajax({
                           data: datafrom,
                           success: function (response) {
                               $('html, body').animate({scrollTop: 0}, 500);
-							    $('#server_response').text('Thanks for Register with us , Kindly check your email for verify your account');
+							    $('#server_response').text(response);
 								$('#reg_button').css({'background':'#8cc63e','opacity':'1'});
 								$("#reg_button").text('Successfull');
 							  $("#myModal").modal({
@@ -507,60 +410,8 @@ jQuery.ajax({
                           },
                       });
                   }
-				  
-				 
-				  
-				  // validation for email popup
-				         $("#pop_form").validate({
-                      rules:
-                              {
-                                  
-                                  email_forget: {
-                                      required: true,
-                                      email: true
-                                  },
-                              },
-                      messages:
-                              {
-                                 
-
-                              },
-                      submitHandler: send_password
-                  });
-
-function send_password(){
 
 
-  var popdata = $('#pop_form').serialize();
-    checkEmail();
-	
-	
-         $("#pop_send").text('');
-         $("#pop_close").hide();
-			$("#pop_send").css({
-			'background':'#fff','border':'1px solid #b6b6b6','outline':'none'
-			})
-                      $("#pop_send").append("<img src='images/loader.gif'  width='20'/>");
-					
-  $.ajax({
-	type:"POST",
-	data:popdata,
-	url:'company_db_ins.php',
-	success:function(response){
-if(response == 'true'){
-$("#input_email").hide();
-$("#server_succ").show();
-   $("#pop_send").hide();
-   $("#pop_close").show().addClass('btn-primary').remove('btn-default').text('ok');
- }else{
-      $("#pop_send").text('send');
-	    $("#pop_close").show();
- }
-	}
-  });
-  
-  
-}
 
               });
         </script>
@@ -577,33 +428,3 @@ $("#server_succ").show();
 
 
     </body></html>
-	
-	<!--- modal for forget user name & Password -->
-	<div class="modal fade" id="forget_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog modal-sm " style="width:350px;" role="document">
-    <div class="modal-content" style="margin-top:60%">
-      <div class="modal-header">
-       
-        <h5 class="modal-title"  style="color:#212121;text-align:center">Please enter your registered email address</h5>
-      </div>
-      <div class="modal-body">
-        <form id="pop_form" method="post">
-          <div class="form-group" id="input_email">
-                   <input type="text" class="form-control"  onBlur="checkEmail()"style="background:#fff;color:#212121;opacity:1;position:static"  placeholder="Enter email " name="email_forget" id="email_forget" autocomplete="false">
-				     <span class="glyphicon  form-control-feedback" id="email_found"style=" top: 17px !important;float: right;right: 5% !important;"></span>
-          </div>
-		     <div class="form-group" id="server_succ" style="display:none">
-                  <label style="color:#8cc63e">Login deatils successfully sent on your email</label>
-          </div>
-			
-		<label id="email_success" style="color:#212121;display:none;margin-left:6px;margin-top:9px;font-weight:300"></label>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default"  id="pop_close">Close</button>
-        <button type="submit" class="btn btn-primary" id="pop_send">Send </button>
-      </div>
-	 </form>
-    </div>
-  </div>
-</div>
-<!-- ///end modal -->

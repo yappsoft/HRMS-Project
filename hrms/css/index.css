@@ -414,13 +414,13 @@ div.dashboardgrid{
 }
 .gridview{
   background: white;
-margin: 0px 0 13px 13px;
+margin: 0px 0 13px 15px;
 height: 215px;
 border: 1px solid #c7c5c5;
 border-radius: 6px;
 padding-left: 0;
 padding-right: 0;
-width: 32%;
+width: 23%;
 }
 div.dashboardHeader {
   background: transparent;
@@ -2005,7 +2005,7 @@ div.quick-links.col-md-6.col-lg-6.col-sm-6 {
     float: right;
 }
 div.col-sm-12.col-md-12.col-lg-12.quicklinksContent {
-    height: 233px;
+    height: 152px;
     border-bottom: 1px solid #c7c5c5;
     border-right: 1px solid #c7c5c5;
     border-left: 1px solid #c7c5c5;
@@ -2018,7 +2018,7 @@ div.dashboardgrid4 div.dashboardmaincontent {
 ul.quicklinkslist {
     list-style-type: none;
     float: left;
-    margin: 6px 0 0 61px;
+    margin: 6px 0 0 11px;
 }
 ul.quicklinkslist > a li.quicklinksitems {
     border: 1px solid #c5c7c7;
@@ -2170,9 +2170,10 @@ top: 30px;
 .small-box h3 {
   font-size: 83px;
   font-weight: bold;
-  margin: 0 0 10px 0;
+  margin: 0 0 10px 43px;
   white-space: nowrap;
   padding: 0;
+  position: absolute;
 }
 .small-box h3, .small-box p {
   z-index: 5;
@@ -2195,11 +2196,11 @@ top: 30px;
 
   text-align: center;
   padding: 3px 0;
-  color: #fff;
+ // color: skyblue;
   color: rgba(255,255,255,0.8);
   display: block;
   z-index: 10;
-  background: rgba(0,0,0,0.1);
+ //  background: rgba(0,0,0,0.1);
   text-decoration: none;
 }
 .bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
@@ -2342,7 +2343,8 @@ nav>ul >a.current {
 nav>ul >a:hover li{    color: #fff !important;}
 ul li{list-style:none;}
                     .alertpf{
-                        height:511px;
+                        height:425px;
+                        width:31%;
                         overflow-y: auto;
                         overflow-x: hidden;
 
@@ -2400,40 +2402,4 @@ label.user_name{
   left: 76px;
   font-weight: normal;
   text-transform: capitalize;
-}
-label.control-label{
-
-  color:#212121;
-}
-.warning{
-
-  background: #fb4c2f;
-}
-.warning:hover{
-
-  background: #fb4c2f;
-  opacity: .9;
-}
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
-
-background-color: black;
-opacity: .4;
-
-}
-input:-webkit-autofill {
-  -webkit-text-fill-color: black !important;
-}
-img.profile_edit{
-cursor: pointer;
-
-}
-label.error{
-
-  display: none !important;
-}
-html.body {
-  -webkit-user-select: none !important;  /* Chrome all / Safari all */
-  -moz-user-select: none !important;     /* Firefox all */
-  -ms-user-select: none !important;      /* IE 10+ */
-  user-select: none !important;          /* Likely future */
 }
