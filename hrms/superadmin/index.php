@@ -36,8 +36,7 @@ $count_inact =$row['inact_com'];
         <link rel="stylesheet" href="../css/animate.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="screen" charset="utf-8">
-          <!--include calendar css-->
-              
+
 
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
 
@@ -48,10 +47,6 @@ $count_inact =$row['inact_com'];
         <script src="../js/amcharts.js"></script>
         <script src="../js/pie.js"></script>
         <script src="../js/light.js"></script>
-        <script src="../js/datepicker.min.js"></script>
-                 <link href="../css/datepicker.min.css" rel="stylesheet" type="text/css">	
-		<!-- Include English language -->
-		<script src="../js/datepicker.en.js"></script>
         <!--end of chart-->
         <style type="text/css">
             body {
@@ -61,7 +56,6 @@ $count_inact =$row['inact_com'];
                 color: #333;
 
             }
-            
             ul >a li {
                 color: #a0abbf;
                 width: 208px;
@@ -92,7 +86,7 @@ $count_inact =$row['inact_com'];
                 height: 200px;
                 font-size	: 8px;
                 padding: 20px;
-                padding-top: 0px !important;
+                padding-top: 20px !important;
 
             }
         </style>
@@ -153,12 +147,12 @@ $count_inact =$row['inact_com'];
                         <!-- first grid starts -->
 
 
-                        <div class="col-md-3 col-lg-3 col-sm-3 gridview">
+                        <div class="col-md-4 col-lg-4 col-sm-4 gridview">
                             <div class="dashboardHeader">
                                 <p class="dashboardHeading">Total Company</p>
-                                <div class="small-box ">
+                                <div class="small-box bg-aqua">
                                     <div class="inner">
-                                        <h3 class="count"  style="color: skyblue;">
+                                        <h3 class="count">
                                             <?php
 
                                          echo $count_act;
@@ -168,9 +162,9 @@ $count_inact =$row['inact_com'];
                                         <p>Total Company Register TIll Now</p>
                                     </div>
                                     <div class="icon">
-                                        <i class=""></i>
+                                        <i class="ion ion-bag"></i>
                                     </div>
-                                    <a href="user_detail.php" style="color: #70757D;" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
+                                    <a href="user_detail.php" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
                                 </div>
                             </div>
 
@@ -180,12 +174,12 @@ $count_inact =$row['inact_com'];
 
                         <!-- first grid ends -->
                         <!-- second grid ends -->
-                        <div class="col-md-3 col-lg-3 col-sm-3 gridview">
+                        <div class="col-md-4 col-lg-4 col-sm-4 gridview">
                             <div class="dashboardHeader">
                                 <p class="dashboardHeading">Total Users</p>
-                                <div class="small-box ">
+                                <div class="small-box bg-green">
                                     <div class="inner">
-                                        <h3 class="count"  style="color: green;">
+                                        <h3 class="count">
                                             <?php
 
                                             $sel = "SELECT * FROM employee_tbl";
@@ -199,21 +193,21 @@ $count_inact =$row['inact_com'];
                                         <p>Number of users</p>
                                     </div>
                                     <div class="icon">
-                                            <i class="ion ion-person-stalker"></i>
+                                        <i class="ion ion-person-stalker"></i>
                                     </div>
-                                    <a href="user_detail.php" style="color: #70757D;" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
+                                    <a href="user_detail.php" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
                                 </div>
                             </div>
                         </div>
                         <!-- second grid ends -->
 
                         <!---- third grid for pennding requ -->
-                        <div class="col-md-3 col-lg-3 col-sm-3 gridview">
+                        <div class="col-md-4 col-lg-4 col-sm-4 gridview">
                             <div class="dashboardHeader">
                                 <p class="dashboardHeading">Pending Request</p>
-                                <div class="small-box ">
+                                <div class="small-box bg-yellow">
                                     <div class="inner">
-                                        <h3 class="count"  style="color: red;">
+                                        <h3 class="count">
                                             <?php
 
                                              echo $count_inact;
@@ -222,26 +216,15 @@ $count_inact =$row['inact_com'];
 
                                         <p>Total request are pennding for approve </p>
                                     </div>
-                                    <div class="icon" >
+                                    <div class="icon">
                                         <i class="ion ion-person-add"></i>
                                     </div>
-                                    <a href="user_request.php" style="color:#70757D;" class="small-box-footer ">More info <i class="ion ion-arrow-right-c"></i></a>
+                                    <a href="user_request.php" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
                                 </div>
                             </div>
                         </div>
                         <!---- end pennding div -->
-                        <!-- Free/paid account start-->
-                        <div class="col-md-3 col-lg-3 col-sm-3 gridview"  id="acc-div">
-                            <div class="dashboardHeader">
-                                <p class="dashboardHeading">Free/Paid Accounts</p>
-                                <div id="chartdiv"></div>
-                                <ul class="dashboardList" >
-                                    <li></li>
 
-                                </ul>
-                            </div>
-                        </div>
-                         <!-- Free/paid account end-->
                     </div>
                     <div class="col-md-12 col-lg-12 col-sm-12 ">
                         <!-- first grid starts -->
@@ -321,15 +304,26 @@ $count_inact =$row['inact_com'];
                         </div>
                         <!-- second grid ends -->
 
+
+                        <div class="col-md-4 col-lg-4 col-sm-4 gridview fixed-right"  id="acc-div"style="float:right; margin-right: 12px;">
+                            <div class="dashboardHeader">
+                                <p class="dashboardHeading">Free/Paid Accounts</p>
+                                <div id="chartdiv"></div>
+                                <ul class="dashboardList" >
+                                    <li></li>
+
+                                </ul>
+                            </div>
+                        </div>
                         <!--quick links-->
-                        <div class="col-md-4 col-lg-4 col-sm-4" >
+                        <div class="col-md-4 col-lg-4 col-sm-4" style="padding-right:0">
                             <div class="quick-links  col-md-12 col-lg-12 col-sm-12">
                                 <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
                                     <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding visibility-hidden">vijay</div>
                                     <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Quick Links</div>
                                     <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
                                 </div>
-                                <div class=" col-sm-12 col-md-12 col-lg-12 quicklinksContent overflow" style="background:#fff;">
+                                <div class=" col-sm-12 col-md-12 col-lg-12 quicklinksContent overflow" style="background:#fff;overflow: auto">
                                     <ul class="quicklinkslist">
                                         <a href="add_users.html"><li class="quicklinksitems"><img src="../images/ati.png"/> &nbsp;&nbsp;&nbsp;Add Company</li></a>
                                         <a href="user_detail.php"><li class="quicklinksitems"><img src="../images/upi.png"/> &nbsp;&nbsp;&nbsp;View Company</li></a>
@@ -338,19 +332,6 @@ $count_inact =$row['inact_com'];
                                 </div>
                             </div>
                         </div>
-                        <!--Quick link end-->
-                        <!--Calendar start-->
-                        <div class="col-md-4 col-lg-4 col-sm-4  gridview " style="margin-top: 10px; height: 220px; width: 32%; ">
-                            <div class="dashboardHeader" >
-                                <p class="dashboardHeading" >Calendar</p>
-
-                            </div>
-                           <div class="datepicker-here" data-language="en" inline="true"  ></div> 
-
-
-                            </div>
-                        
-                        <!--Calendar end-->
 
                     </div>
 
@@ -474,8 +455,8 @@ $count_inact =$row['inact_com'];
                     "titleField": "title",
                     "valueField": "value",
                     "labelRadius": 5,
-                    "radius": "40%",
-                    "innerRadius": "50%",
+                    "radius": "50%",
+                    "innerRadius": "60%",
                     "labelText": "[[title]]",
                     "export": {
                         "enabled": true

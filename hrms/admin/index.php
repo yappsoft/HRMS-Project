@@ -213,7 +213,7 @@ ul li{list-style:none;}
           <p class="dashboardHeading">Calendar</p>
          </div>
             
-             <div class="datepicker-here" data-language="en" inline="true"  ></div> 
+             <div class="datepicker-here" data-language="en" inline="true"  style="background-color:#354052 ; color: #fff"></div> 
             
           </div>
            <!---- third grid for calendar -->
