@@ -42,7 +42,11 @@ if(isset($_SESSION['email'])){
       <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="screen" charset="utf-8">
     
         <link rel="stylesheet" href="../css/index.css" media="screen" charset="utf-8">
-			
+		 <!--include calendar css-->
+               <link href="../css/datepicker.min.css" rel="stylesheet" type="text/css">	
+               
+               
+               
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
 		<script src="../js/modernizr.custom.js"></script>
@@ -50,7 +54,12 @@ if(isset($_SESSION['email'])){
                 <script src="../js/amcharts.js"></script>
                 <script src="../js/pie.js"></script>
                 <script src="../js/light.js"></script>
-               <script src="../js/calendar.js"></script>
+             
+              
+		<script src="../js/datepicker.min.js"></script>
+                
+		<!-- Include English language -->
+		<script src="../js/datepicker.en.js"></script>
 <!--end of chart-->
                 <style type="text/css">
 				body {
@@ -64,7 +73,7 @@ if(isset($_SESSION['email'])){
     color: #a0abbf;
     width: 208px;
     height: 40px;
-    padding: 11px 0 0 13px;
+    padding: 11px 0 0 0px;
     border: 0px;
     margin: 0 0 8px 0px;
     border-left: 4px solid transparent;
@@ -97,47 +106,19 @@ ul li{list-style:none;}
                        cursor: pointer;
                    }
                 </style>
-<style> 
-.monthPre{
- color: gray;
- text-align: center;
-}
-.monthNow{
- color: blue;
- text-align: center;
-}
-.dayNow{
- border: 2px solid green;
- color: #FF0000;
- text-align: center;
-}
-.calendar td{
- htmlContent: 2px;
- width: 80px;
-}
-.monthNow th{
- background-color: #8CC63E;
- color: #FFFFFF;
- text-align: center;
-}
-.dayNames{
- background: #354052;
- color: #FFFFFF;;
- text-align: center;
-}
- 
-</style> 
+
    </head>
   
   	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1" style="top:7%;border-top:1px solid #2C3543">
 			
 			<ul style="margin-left:-20%;margin-top:39px">
-<a  href="index.php"><li class="dashboard"><span><img alt="" class="sidenavicons" src="../images/dashboard.png"></span>Dashboard</li></a>
-<a  href="employee_management.php">  <li class="tenanticon"><span><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></span>Employe Management</li></a>
-<a   href="leave_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/iac.png"></span>Leave Management</li></a>
-<a  href="holiday_management.php">  <li class="energyanalysis"><span><img  class="sidenavicons" src="../images/energyanalysis.png"></span>Holiday Management</li></a>
-<a  href="accounts_billing.html">  <li class="costanalysis"><span><img  class="sidenavicons" src="../images/costanalysis.png"></span>Accounts & Billing</li></a>
+<a  href="index.php"><li class="dashboard"><label><img alt="" class="sidenavicons" src="../images/dashboard.png"></label>Dashboard</li></a>
+<a  href="employee_management.php">  <li class="tenanticon"><label><img  alt="" class="sidenavicons" src="../images/tenanticon.png"></label>Employe Management</li></a>
+<a   href="leave_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/iac.png"></label>Leave Management</li></a>
+<a  href="holiday_management.php">  <li class="energyanalysis"><label><img  class="sidenavicons" src="../images/energyanalysis.png"></label>Holiday Management</li></a>
+<a  href="accounts_billing.php">  <li class="costanalysis"><label><img  class="sidenavicons" src="../images/costanalysis.png"></label>Accounts & Billing</li></a>
 </ul>
+
 			
 		</nav>
   <body cz-shortcut-listen="true" class="cbp-spmenu-push" onload="displayCalendar()">
@@ -207,7 +188,7 @@ ul li{list-style:none;}
           <div class="small-box bg-yellow">
                                     <div class="inner">
                                         <h3 class="count" style="font-size: 75px;">
-                                            3/<?php echo $row;?>
+                                            0/<?php echo $row;?>
                                         </h3>
 
                                         <p>Today's Attendance </p>
@@ -225,14 +206,10 @@ ul li{list-style:none;}
 	  <div class="col-md-4 col-lg-4 col-sm-4 gridview">
         <div class="dashboardHeader">
           <p class="dashboardHeading">Calendar</p>
-          
-          
-          <ul class="dashboardList">
-         
-          
-          </ul>
-        </div>
-              <div id="calendar" style="padding-left: 2px;padding-right: 2px; width: 100%;"></div>
+         </div>
+            
+             <div class="datepicker-here" data-language="en" inline="true"  style="background-color:#354052 ; color: #fff"></div> 
+            
           </div>
            <!---- third grid for calendar -->
 		  <!---- end pennding div -->
@@ -244,47 +221,53 @@ ul li{list-style:none;}
       <!-- start upcoming birthday here-->
       <div class="row">
       <div class="col-md-4 col-lg-4 col-sm-4 gridview alertpf pointer">
-    <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
-            <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/birthday.png"/></div>
+          <div class="col-sm-12 col-md-12 col-lg-12" style="height: 240px;">
+              <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header"  >
+                  <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/calendar.png"/></div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding">Upcoming Birthday</div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden"></div>
-      </div>
-          <?php 
-      $sel ="   SELECT
- 
-    date_of_birth,
-    date_of_birth + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(date_of_birth)) + 0 YEAR AS currbirthday,
-    date_of_birth + INTERVAL(YEAR(CURRENT_TIMESTAMP) - YEAR(date_of_birth)) + 1 YEAR AS nextbirthday
-FROM employee_tbl
-ORDER BY CASE
-    WHEN currbirthday >= CURRENT_TIMESTAMP THEN currbirthday
-    ELSE nextbirthday
-END ";
-
+       </div>
+         <?php 
+         $rs=0;
+            if ($rs==1)
+            {
           ?>
              <!-- out for loop here for alarm notification -->
-          <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
+             <div class="col-sm-12 col-md-12 col-lg-12 alarm-notification">
             <div class="col-sm-1 col-md-1 col-lg-1"></div>
-            <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"><img src="../images/birthdays.png" height="12px" alt="" ></div>
-            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold"><?php echo $row['first_name']." ".$row['last_name'];?></span><br>
-                    <span class="textnormal"> <?php echo $a;?></span>..
+            <div class="col-sm-1 col-md-1 col-lg-1 alarm-notificationtxt1"></div>
+            <div class="col-sm-8 col-md-8 col-lg-8 alarm-notificationtxt2 " ><span class="textbold">Yogendra chouhan</span><br>
+                    <span class="textnormal"> Birthday on  26/05/2016</span>..
               </div>
             
            </div>
            <?php 
-                    ?>
+            } else {?>
+             
+             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                 <?php echo "No  birthday in this month";?></div>
+           <?php
+     } ?>
+      </div>
+      
+        
        <!-- end upcoming birthday here-->
          <!-- start upcoming holidays here-->
+         <div class="col-sm-12 col-md-12 col-lg-12" style="height:250px;">
           <div class="col-sm-12 col-md-12 col-lg-12 alarm-quicklinks-header">
             <div class="col-sm-4 col-md-4 col-lg-4 text-left no-padding"><img height="22px"src="../images/alarms.png"/></div>
-            <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding ">Upcoming Holiday</div>
+            <div class="col-sm-4 col-md-4 col-lg-4 text-center no-padding " style="height:250px;">Upcoming Holiday</div>
        <div class="col-sm-4 col-md-4 col-lg-4 text-right no-padding visibility-hidden">vijay</div>
       </div>
           <?php 
          
           $sel = "SELECT * FROM holiday_tbl where company_id='$unique_id' and holiday_date > DATE_FORMAT(CURDATE(),'%m-%d-%Y')";
           $query = mysqli_query($con, $sel);
-          while($row = mysqli_fetch_array($query))            // backend script for upcoming holidays
+          $test= mysqli_num_rows($query);
+          if($test)
+          {
+          while($row = mysqli_fetch_array($query))
+                  // backend script for upcoming holidays
           {
            ?>
           
@@ -295,10 +278,17 @@ END ";
                      <span class="textnormal">on <?php echo $row['holiday_date']." ".$row['holiday_days'] ?></span>..
                </div>
             </div>
-          <?php }?>
-            
+          <?php }}
+                 else {
+                  ?> <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                 <?php echo "No holiday in this month";?></div>
+                     
+                     <?php  }
+                 ?>
+          </div>  
       </div>
-   
+
+        
       <!-- first grid ends -->
       <!-- second grid start for alerts -->
       <div class="col-md-4 col-lg-4 col-sm-4 gridview alertpf pointer">
@@ -458,8 +448,12 @@ END ";
 	  $("#acc-div").toggleClass('fixed-right');
 	  });
 	  });
+          $('.my-datepicker').datepicker({
+	language: 'my-lang'
+})
 	  </script>
-	  
+         
+	 
 	  <!--- css for margin-regit div on paid & free Vijy -->
 	  <style>
 	  .fixed-right{

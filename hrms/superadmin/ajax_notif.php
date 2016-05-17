@@ -3,7 +3,7 @@
 //Insert query
 include("../dbcon.php");
 
-$query = "select * from notification_tbl";
+$query = "select * from notification_tbl order by notification_id desc limit 4";
 $result = mysqli_query($con,$query);
 $json = array();
 if($result)
