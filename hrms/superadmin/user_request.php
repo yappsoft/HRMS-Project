@@ -59,7 +59,7 @@ th{
     color: #a0abbf;
     width: 208px;
     height: 40px;
-    padding: 11px 0 0 13px;
+    padding: 11px 0 0 0px;
     border: 0px;
     margin: 0 0 8px 0px;
     border-left: 4px solid transparent;
@@ -125,9 +125,7 @@ ul li{list-style:none;}
 <main class="maindiv">
  <div class="header navbar-fixed-top">
   <ul class="logocontainer">
-    <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
 
-    <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
   </ul>
 <ul class="management_navigation_holder">
 

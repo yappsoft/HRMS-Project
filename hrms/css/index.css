@@ -352,6 +352,7 @@ div.sidenav{
 
 a,a:hover,a:focus,a:active{
   text-decoration: none;
+  outline: none;
 }
 div.sidenav ul >a li:hover{
 
@@ -360,6 +361,7 @@ div.sidenav ul >a li:hover{
     height: 46px;
     padding: 11px 0 0 13px;
     border: 0px;
+    outline: none;
     margin: 0 0 8px 0px;
 
 

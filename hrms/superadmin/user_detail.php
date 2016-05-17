@@ -114,9 +114,7 @@ ul li{list-style:none;}
 <main class="maindiv">
  <div class="header navbar-fixed-top">
   <ul class="logocontainer">
-    <li><img  alt="" id="showLeftPush"class="menuLogo" src="../images/menuicon.png"></li>
-
-    <li><img class="dashboardlogo" src="../images/dashboardlogo.png"/></li>
+  
   </ul>
 <ul class="management_navigation_holder">
 

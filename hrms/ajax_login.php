@@ -21,6 +21,7 @@ if($type == 'employee'){
 	$_SESSION['login_emp_id'] = $row['employee_id'];
 	$_SESSION['company_id'] = $row['company_id'];
 	$_SESSION['status'] = $row['login_status'];
+		$_SESSION['username'] = $row['username'];
 	$_SESSION['login_type'] = $row['user_type'];
 	
     echo 'emp';
@@ -37,6 +38,7 @@ if($type == 'employee'){
 	$_SESSION['email'] = $row['email'];
 	$_SESSION['login_emp_id'] = $row['employee_id'];
 	$_SESSION['company_id'] = $row['company_id'];
+		$_SESSION['username'] = $row['username'];
 	$_SESSION['status'] = $row['login_status'];
 	$_SESSION['login_type'] = $row['user_type'];
 echo 'admin';
